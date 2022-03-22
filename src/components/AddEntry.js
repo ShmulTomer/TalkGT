@@ -6,28 +6,25 @@ import { useState } from 'react'
 
 
 
-export default function Display() {
+export default function AddEntry() {
 
     
   const [count, setCount] = useState(1);
   const countHandler = event => setCount(count + 1);
   
 
-  async function DisplayD() {
+  async function DisplayD(desc, subj, prior) {
     
   const {data, error} = await supabase
     .from('ComplaintDB')
       .insert([
-  { description: document.getElementById('description').value, subject: document.getElementById('subject').value },])
+  { description: desc, subject: subj, priority: prior },])
   
-  setCount(count + 1);
 } 
 
 return (
       <div>
         <header>
-           Number of presses: &nbsp;
-           {count}
           <p>
             New entry into database:
           </p>
@@ -38,16 +35,21 @@ return (
           <textarea id='description' rows="10" cols="60">
             Description
           </textarea>
+          
           <br></br>
           Priority
           <br></br>    
+          
           <label class="switch">
             <input id='toggle' type="checkbox" />
             <span class="slider round"></span>
           </label>
+          
           <br></br>
+          <p>
+          </p>
             
-          <button onClick={() => DisplayD()}> 
+          <button onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle').checked)}> 
              Add Entry to Database
           </button > 
           

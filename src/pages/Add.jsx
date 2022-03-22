@@ -1,6 +1,6 @@
 import React from "react";
 import "./Add.css"
-import Display from "../components/Display";
+import AddEntry from "../components/AddEntry";
 
 const Add = () => {
     return <div className="App">
@@ -11,7 +11,7 @@ const Add = () => {
         </div>
 
         <div className="App-text">
-            <Display />
+            <AddEntry />
 
             <p>
                 

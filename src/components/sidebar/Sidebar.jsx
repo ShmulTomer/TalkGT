@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './sidebar.scss';
+import logo from "./logo.png";
 
 const sidebarNavItems = [
     {
@@ -59,7 +60,8 @@ const Sidebar = () => {
 
     return <div className='sidebar'>
         <div className="sidebar__logo">
-            GT Complaints
+            
+            <img src={logo} />
         </div>
         <div ref={sidebarRef} className="sidebar__menu">
             <div

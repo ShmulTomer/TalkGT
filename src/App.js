@@ -2,11 +2,10 @@ import logo from './logo.svg';
 import { createClient } from '@supabase/supabase-js'
 import Auth from './components/Auth';
 import Account from './pages/Account';
-import Display from './components/Display';
 import './boxicons/css/boxicons.min.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AppLayout from './components/layouts/AppLayout';
-import Blank from './pages/Blank';
+import Dashboard from './pages/Dashboard';
 import Contact from './pages/Contact';
 import Start from './pages/Start';
 import FAQ from './pages/FAQ';
@@ -20,7 +19,7 @@ function App() {
       <BrowserRouter>
           <Routes>
               <Route path='/' element={<AppLayout />}>
-                  <Route index element={<Blank />} />
+                  <Route index element={<Dashboard />} />
                   <Route path='/start' element={<Start />} />
                   <Route path='/add' element={<Add />} />
                   <Route path='/contact' element={<Contact />} />

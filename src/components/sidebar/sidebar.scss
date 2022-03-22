@@ -6,14 +6,23 @@
     width: 320px;
     background-color: #21242b;
 
+    &__logo img {
+        
+
+        width: 240px;
+        height: 150px;
+    }
+
+
     &__logo {
-        display: grid;
+
+        display: block;
+        margin-left: 50px;
+        margin-right: auto;
+        display: flex;
         place-items: center;
+        width: 180px;
         height: 120px;
-        font-size: 1.5rem;
-        font-weight: 300;
-        font-family: Verdana;
-        color: #fff;
     }
 
     &__menu {

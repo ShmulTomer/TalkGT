@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalFilter, useTable, useFilters } from "react-table";
 import ColumnFilter from "./ColumnFilter";
 import GlobalFilter from "./GlobalFilter";
-import '../styles.css'
+import '../../styles.css'
 
 export default function BasicTable({ columns, data }) {
   const defaultColumn = React.useMemo(
@@ -44,7 +44,7 @@ export default function BasicTable({ columns, data }) {
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <p>
-        
+
       </p>
       <table {...getTableProps()}>
         <thead>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles.css"
-import BasicTable from "../components/BasicTable";
+import BasicTable from "../components/dashboard/BasicTable";
 import { supabase } from "../supabaseClient";
 
 

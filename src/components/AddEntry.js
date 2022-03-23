@@ -64,7 +64,7 @@ return (
           </p>
             
           <button onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle').checked)}> 
-             Add Entry to Database
+             Submit complaint
           </button > 
           
       

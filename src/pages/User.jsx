@@ -1,8 +1,8 @@
 import '../styles.css'
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
-import Auth from '../components/Auth'
-import Account from '../components/Account'
+import Auth from '../components/authentication/Auth'
+import Account from '../components/authentication/Account'
 
 const User = () => {
      

@@ -17,7 +17,7 @@ const sidebarNavItems = [
         section: 'start'
     },
     {
-        display: 'Add Entry',
+        display: 'Add Complaint',
         icon: <i className='bx bx-message-square-add'></i>,
         to: '/add',
         section: 'add'

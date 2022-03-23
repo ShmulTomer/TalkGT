@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles.css"
+import AddMessage from "../components/AddMessage";
 
 const Contact = () => {
      
@@ -14,11 +15,13 @@ const Contact = () => {
     </header>
     <div className="App-text2">
         
-        <b>Tomer Shmul</b>
-        <p>
-        Email: &nbsp;&nbsp;tshmul@gatech.edu
-        </p>
+        <b>Tomer Shmul</b> 
         
+        Email: &nbsp;&nbsp;tshmul@gatech.edu
+        <p></p>
+    </div>
+    <div classname="App-text">
+        <AddMessage />
     </div>
     </div>;
 };

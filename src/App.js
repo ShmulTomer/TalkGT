@@ -6,7 +6,7 @@ import Contact from './pages/Contact';
 import Start from './pages/Start';
 import FAQ from './pages/FAQ';
 import Add from './pages/Add';
-import Auth from './components/Auth';
+import Auth from './components/authentication/Auth';
 import User from './pages/User';
 
 function App() {

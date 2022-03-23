@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles.css"
 import BasicTable from "../components/dashboard/BasicTable";
 import { supabase } from "../supabaseClient";
+import ComplaintBox from "../components/dashboard/ComplaintBox";
 
 
 
@@ -66,6 +67,11 @@ function Dashboard() {
      const data = React.useMemo(() => cells, []);
      //console.log(cells);
 
+     /*
+     <ComplaintBox date="2022-01-01" time="9:00" user="Tomer Shmul" title="Student at GT" subj="Subject" desc="Description" prior="true" anon="false" /> 
+     
+    <br></br><br></br>
+     */
 
     return <div className="App">
     <header className="App-header">
@@ -74,7 +80,9 @@ function Dashboard() {
         </p>
         <br></br>
     </header>
+    
 
+    
     <button onClick={getData}> Refresh</button > 
 
     

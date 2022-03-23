@@ -23,6 +23,8 @@ const Start = () => {
         &nbsp;&nbsp; <b>3.</b> &nbsp;Check your email (and spam) for "GT Complaints Link"
         <br></br>
         &nbsp;&nbsp; <b>4.</b> &nbsp;Click the link to return to the website 
+        <br></br>
+        &nbsp;&nbsp; <b>5.</b> &nbsp;Return to the "Account" tab and update your name and title 
         
         </p>
     </div>

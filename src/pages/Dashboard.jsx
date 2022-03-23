@@ -5,21 +5,20 @@ import { supabase } from "../supabaseClient";
 
 
 
-const Dashboard = () => {
+function Dashboard() {
 
     const [cells, setCells] = useState([]);
     const [isLoading, setLoading] = useState(true);
 
     const getData = async () => {
         const { data, error } = await supabase.from('ComplaintDB').select('*');
-        
-        
         /*
         const { data, error } = await supabase
   .from('books')
   .select(
     'title,description:metadata->description,price:metadata->price,low_age:metadata->ages->0,high_age:metadata->ages->1'
   ) */
+
       setCells(data);
     };
 
@@ -45,36 +44,13 @@ const Dashboard = () => {
         []
       );
 
-
     useEffect(() => {
-        const loadData = async () => {
-          await getData();
-          setTimeout(() => {
-            
-          }, 1500);
-          
-        };
-        loadData();
-
-        setLoading(false);
+        getData()
       }, []);
-
-    
-
-     const Render = async () => {
-         getData();
-
-         const data = React.useMemo(() => cells, []);
-         setLoading(false);
-     }
+      
      const data = React.useMemo(() => cells, []);
+     console.log(cells);
 
-     
-    
-    if(isLoading) {
-        
-         return <div className="App">Loading...</div>;
-    }
 
     return <div className="App">
     <header className="App-header">
@@ -82,11 +58,12 @@ const Dashboard = () => {
         Dashboard</i></b>
         </p>
     </header>
-    <button onClick={() => Render()}> 
-             Refresh
-    </button > 
 
-    <>{cells && <BasicTable columns={columns} data={data} />}</>
+    <button onClick={getData}> Refresh</button > 
+
+    
+    {cells && <BasicTable columns={columns} data={cells} />}
+    
 
     
     </div>;

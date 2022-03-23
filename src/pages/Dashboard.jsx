@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-//import "./Add.css"
+import "../styles.css"
 import BasicTable from "../components/BasicTable";
 import { supabase } from "../supabaseClient";
 

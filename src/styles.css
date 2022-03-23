@@ -1,18 +1,7 @@
 .App {
+    color: white;
     text-align: center;
-    
   }
-  
-  .App-logo {
-    height: 40vmin;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
-    }
-  }
-
 
   .App-text {
     background-color: #282c34;
@@ -24,6 +13,18 @@
     font-size: 20px;
     color: white;
   }
+
+  .App-text2 {
+    background-color: #282c34;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    text-align: left;
+    font-size: 20px;
+    color: white;
+  }
   
   .App-header {
     background-color: #282c34;
@@ -32,6 +33,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
     font-size: calc(10px + 2vmin);
     font-family: Verdana;
     color: white;
@@ -43,7 +45,10 @@
   }
   
   textarea {
-    color: rgb(19, 23, 71);
+    color: rgb(24, 24, 26);
+    font-size: 13px;
+    width: 500px;
+    font-family: Verdana;
   }
   
   
@@ -55,7 +60,20 @@
       transform: rotate(360deg);
     }
   }
+
+  .App-logo {
+    height: 40vmin;
+  }
   
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+
+  /* SWITCH AND SLIDER */
+
   /* The switch - the box around the slider */
   .switch {
     position: relative;
@@ -120,6 +138,8 @@
   }
   
   
+  /* BUTTONS */
+
   button,
   .button {
     color: #fdfeff;

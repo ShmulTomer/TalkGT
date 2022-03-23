@@ -6,6 +6,8 @@ import Contact from './pages/Contact';
 import Start from './pages/Start';
 import FAQ from './pages/FAQ';
 import Add from './pages/Add';
+import Auth from './components/Auth';
+import User from './pages/User';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
                   <Route path='/add' element={<Add />} />
                   <Route path='/contact' element={<Contact />} />
                   <Route path='/faq' element={<FAQ />} />
+                  <Route path='/user' element={<User />} />
               </Route>
           </Routes>
       </BrowserRouter>

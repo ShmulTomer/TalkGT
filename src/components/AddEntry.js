@@ -51,6 +51,15 @@ return (
           </label>
           
           <br></br>
+          <br></br>
+          Anonymous &nbsp;&nbsp;  
+          
+          <label class="switch">
+            <input id='toggle2' type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+          
+          <br></br>
           <p>
           </p>
             

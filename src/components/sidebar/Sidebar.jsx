@@ -34,6 +34,12 @@ const sidebarNavItems = [
         to: '/faq',
         section: 'faq'
     },
+    {
+        display: 'Account',
+        icon: <i className='bx bx-user-circle'></i>,
+        to: '/user',
+        section: 'user'
+    },
 ]
 
 const Sidebar = () => {

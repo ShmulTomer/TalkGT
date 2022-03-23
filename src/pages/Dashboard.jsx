@@ -8,7 +8,6 @@ import { supabase } from "../supabaseClient";
 function Dashboard() {
 
     const [cells, setCells] = useState([]);
-    const [isLoading, setLoading] = useState(true);
 
     const getData = async () => {
         const { data, error } = await supabase.from('ComplaintDB').select('*');
@@ -25,8 +24,12 @@ function Dashboard() {
     const columns = React.useMemo(
         () => [
             {
-            Header: "Created",
-            accessor: "created_at" // accessor is the "key" in the data
+            Header: "Date",
+            accessor: "date" // accessor is the "key" in the data
+          },
+          {
+            Header: "Time",
+            accessor: "time" // accessor is the "key" in the data
           },
           {
             Header: "Subject",
@@ -57,6 +60,7 @@ function Dashboard() {
         <p ><b><i>
         Dashboard</i></b>
         </p>
+        <br></br>
     </header>
 
     <button onClick={getData}> Refresh</button > 

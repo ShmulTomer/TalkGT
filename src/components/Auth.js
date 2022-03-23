@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../supabaseClient'
+import "../styles.css"
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
@@ -19,11 +20,15 @@ export default function Auth() {
   }
 
   return (
-    <div className="row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header">Supabase Authentication </h1>
-        <p className="description">Sign in with your email below</p>
-        <div>
+    <div className="App">
+        <div className="App-header">
+          <b><i>Account Authentication</i></b>
+             </div>
+        
+        <div classname="App-text">
+          <br></br>
+          <br></br>
+          <p>Sign in with your email below</p>
           <input
             className="inputField"
             type="email"
@@ -32,7 +37,9 @@ export default function Auth() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
+
+        <div classname="App-text">
+          <br></br>
           <button
             onClick={(e) => {
               e.preventDefault()
@@ -41,10 +48,9 @@ export default function Auth() {
             className={'button block'}
             disabled={loading}
           >
-            {loading ? <span>Loading</span> : <span>Send magic link</span>}
+            {loading ? <span>Loading</span> : <span>Send Email</span>}
           </button>
         </div>
-      </div>
     </div>
   )
 }

@@ -6,8 +6,8 @@ import "../../styles.css"
 export default function Account({ session }) {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
-  const [website, setWebsite] = useState(null)
-  const [avatar_url, setAvatarUrl] = useState(null)
+  const [title, setTitle] = useState(null)
+
 
   useEffect(() => {
     getProfile()
@@ -20,7 +20,7 @@ export default function Account({ session }) {
 
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, website, avatar_url`)
+        .select(`username, title`)
         .eq('id', user.id)
         .single()
 
@@ -30,8 +30,7 @@ export default function Account({ session }) {
 
       if (data) {
         setUsername(data.username)
-        setWebsite(data.website)
-        setAvatarUrl(data.avatar_url)
+        setTitle(data.title)
       }
     } catch (error) {
       alert(error.message)
@@ -40,7 +39,7 @@ export default function Account({ session }) {
     }
   }
 
-  async function updateProfile({ username, website, avatar_url }) {
+  async function updateProfile({ username, title }) {
     try {
       setLoading(true)
       const user = supabase.auth.user()
@@ -48,8 +47,7 @@ export default function Account({ session }) {
       const updates = {
         id: user.id,
         username,
-        website,
-        avatar_url,
+        title,
         updated_at: new Date(),
       }
 
@@ -76,9 +74,9 @@ export default function Account({ session }) {
         <p>
         </p>
     </header>
-      <div classname="input2">
+    <div className="App-text">
+      <div className="input2">
         <label htmlFor="email">Email: &nbsp;&nbsp;</label>
-        
         <input id="email" type="text" value={session.user.email} disabled />
       </div>
       <br></br>
@@ -92,19 +90,20 @@ export default function Account({ session }) {
         />
       </div>
       <br></br>
-      {/* <Avatar
-      url={avatar_url}
-      size={150}
-      onUpload={(url) => {
-        setAvatarUrl(url)
-        updateProfile({ username, website, avatar_url: url })
-      }}
-    /> */}
-
+      <div>
+        <label htmlFor="title">Title: &nbsp;&nbsp;</label>
+        <input
+          id="title"
+          type="text"
+          value={title || ''}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+      </div>
+      <br></br>
       <div>
         <button
           className="button block primary"
-          onClick={() => updateProfile({ username, website, avatar_url })}
+          onClick={() => updateProfile({ username, title })}
           disabled={loading}
         >
           {loading ? 'Loading ...' : 'Update'}
@@ -113,6 +112,7 @@ export default function Account({ session }) {
         <button className="button block" onClick={() => supabase.auth.signOut()}>
           Sign Out
         </button>
+      </div>
       </div>
     </div>
   )

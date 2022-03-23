@@ -38,6 +38,7 @@ return (
           </p>
           <textarea id='name' value={name} onChange={(e) => setName(e.target.value)} rows="2" cols="30">
           </textarea>
+          <br></br>
           <textarea id='email' value={email} onChange={(e) => setEmail(e.target.value)} rows="2" cols="30">
           </textarea>
           <br></br>

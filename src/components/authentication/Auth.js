@@ -12,6 +12,8 @@ export default function Auth() {
       const { error } = await supabase.auth.signIn({ email })
       if (error) throw error
       alert('Check your email for the login link!')
+
+      
     } catch (error) {
       alert(error.error_description || error.message)
     } finally {

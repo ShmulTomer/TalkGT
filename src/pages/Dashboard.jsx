@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import "./Add.css"
+//import "./Add.css"
 import BasicTable from "../components/BasicTable";
 import { supabase } from "../supabaseClient";
 
@@ -49,7 +49,7 @@ function Dashboard() {
       }, []);
       
      const data = React.useMemo(() => cells, []);
-     console.log(cells);
+     //console.log(cells);
 
 
     return <div className="App">

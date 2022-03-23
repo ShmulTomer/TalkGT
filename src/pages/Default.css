@@ -24,18 +24,6 @@
     font-size: 20px;
     color: white;
   }
-
-  .App-text2 {
-    background-color: #282c34;
-    min-height: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: left;
-    text-align: left;
-    font-size: 20px;
-    color: white;
-  }
   
   .App-header {
     background-color: #282c34;
@@ -55,10 +43,7 @@
   }
   
   textarea {
-    color: rgb(24, 24, 26);
-    font-size: 13px;
-    width: 500px;
-    font-family: Verdana;
+    color: rgb(19, 23, 71);
   }
   
   

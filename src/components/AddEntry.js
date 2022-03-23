@@ -11,34 +11,39 @@ export default function AddEntry() {
     
   const [count, setCount] = useState(1);
   const countHandler = event => setCount(count + 1);
+
+  const [desc, setDesc] = useState("Description");
+  const [subj, setSubj] = useState("Subject Line");
+  const [title, setTitle] = useState("Enter a new complaint here!");
   
 
   async function DisplayD(desc, subj, prior) {
     
-  const {data, error} = await supabase
-    .from('ComplaintDB')
-      .insert([
-  { description: desc, subject: subj, priority: prior },])
-  
-} 
+    const {data, error} = await supabase
+      .from('ComplaintDB')
+        .insert([
+    { description: desc, subject: subj, priority: prior },])
+    
+    setDesc("");
+    setSubj("");
+    setTitle("Your complaint has been submitted!");
+  } 
 
 return (
       <div>
         <header>
           <p>
-            New entry into database:
+            {title}
           </p>
-          <textarea id='subject' rows="2" cols="30">
-            Subject Line
+          <textarea id='subject' value={subj} onChange={(e) => setSubj(e.target.value)} rows="2" cols="30">
           </textarea>
           <br></br>
-          <textarea id='description' rows="10" cols="60">
-            Description
+          <textarea id='description' value={desc} onChange={(e) => setDesc(e.target.value)} rows="10" cols="60">
+            
           </textarea>
-          
           <br></br>
-          Priority
-          <br></br>    
+          <br></br>
+          Priority &nbsp;&nbsp;  
           
           <label class="switch">
             <input id='toggle' type="checkbox" />

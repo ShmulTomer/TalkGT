@@ -1,16 +1,25 @@
 import React from "react";
-import "./Contact.css"
+import "./Add.css"
 
 const Start = () => {
      
-    return <div className="Contact">
+    return <div className="App">
     <header className="App-header">
         <p ><b><i>
         Getting Started</i></b>
         </p>
+        <p>
+        </p>
     </header>
-    <div className="App-text">
-        Information about website and getting started
+    <div className="App-text2">
+        <b>To get started:</b>
+
+
+        <p>
+        &nbsp;&nbsp; 1. Add your complaint under the "Add Entry" 
+        <br></br>
+        &nbsp;&nbsp; 2. See the new entry under "Dashboard"
+        </p>
     </div>
     </div>;
 };

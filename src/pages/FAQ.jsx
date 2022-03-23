@@ -12,7 +12,8 @@ const FAQ = () => {
             
         </p>
     </header>
-    <div className="App-text2">
+    
+    <div className="App-text2" >
         <b>Q: &ensp;How do I add a complaint?</b> 
         <p>
             A: &ensp;Use the "Add Entry" tab on the left

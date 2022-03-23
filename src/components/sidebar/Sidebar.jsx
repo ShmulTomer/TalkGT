@@ -6,7 +6,7 @@ import logo from "./logo.png";
 const sidebarNavItems = [
     {
         display: 'Dashboard',
-        icon: <i className='bx bx-home'></i>,
+        icon: <i className='bx bx-home-alt'></i>,
         to: '/',
         section: ''
     },
@@ -18,7 +18,7 @@ const sidebarNavItems = [
     },
     {
         display: 'Add Entry',
-        icon: <i className='bx bx-calendar'></i>,
+        icon: <i className='bx bx-message-square-add'></i>,
         to: '/add',
         section: 'add'
     },

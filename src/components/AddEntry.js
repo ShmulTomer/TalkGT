@@ -1,6 +1,7 @@
 
 import { supabase } from '../supabaseClient'
 import { useState } from 'react'
+import { useEffect } from 'react';
 
 
 
@@ -14,26 +15,60 @@ export default function AddEntry() {
 
   const [desc, setDesc] = useState("Description");
   const [subj, setSubj] = useState("Subject Line");
-  const [title, setTitle] = useState("Enter a new complaint here!");
+  const [msg, setMsg] = useState("Enter a new complaint here!");
   
+  const [loading, setLoading] = useState(true)
+  const [username, setUsername] = useState(null)
+  const [title, setTitle] = useState(null)
 
-  async function DisplayD(desc, subj, prior) {
+
+  useEffect(() => {
+    getProfile()
+  }, [supabase.auth.session()])
+
+  async function getProfile() {
+    try {
+      setLoading(true)
+      const user = supabase.auth.user()
+
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username, title`)
+        .eq('id', user.id)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        setUsername(data.username)
+        setTitle(data.title)
+      }
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function DisplayD(desc, subj, prior, anony) {
     
     const {data, error} = await supabase
       .from('ComplaintDB')
         .insert([
-    { description: desc, subject: subj, priority: prior },])
+    { description: desc, subject: subj, priority: prior, username: username, title: title, anon: anony },])
     
     setDesc("");
     setSubj("");
-    setTitle("Your complaint has been submitted!");
+    setMsg("Your complaint has been submitted!");
   } 
 
 return (
       <div>
         <header>
           <p>
-            {title}
+            {msg}
           </p>
           <textarea id='subject' value={subj} onChange={(e) => setSubj(e.target.value)} rows="2" cols="30">
           </textarea>
@@ -63,7 +98,7 @@ return (
           <p>
           </p>
             
-          <button onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle').checked)}> 
+          <button onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle').checked, document.querySelector('#toggle2').checked)}> 
              Submit complaint
           </button > 
           

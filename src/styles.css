@@ -39,6 +39,9 @@
     font-size: 15px;
     color: white;
   }
+
+  
+
   .complaintButton {
     background-color: #282c34;
     min-height: 20px;
@@ -84,13 +87,42 @@
   }
   
   .box {
-    
     border-radius: 25px;
     border: 2px solid #2196F3;
     padding: 30px;
-
-
   }
+
+  .box-subject {
+    font-size: 20px;
+    text-align: left; 
+  }
+
+  .box-description {
+    font-size: 13px;
+    text-align: left;
+    min-height: 60px; 
+  }
+
+  .box-user {
+    font-size: 20px;
+    text-align: left; 
+  }
+
+  .box-title {
+    font-size: 16px;
+    text-align: left; 
+  }
+
+  .box-right {
+    font-size: 14px;
+    text-align: right; 
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 20px;
+}
   
   textarea {
     color: rgb(24, 24, 26);
@@ -201,6 +233,17 @@
     text-align: center;
     font-size: 0.9rem;
     text-transform: uppercase;
+  }
+
+  button.greenButton,
+  .greenButton {
+    background-color: #5da030;
+    
+  }s
+
+  button.redButton,
+  .redButton {
+    background-color: #971313;
   }
   
   button.primary,

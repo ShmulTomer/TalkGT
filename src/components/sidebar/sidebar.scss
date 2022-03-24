@@ -17,11 +17,13 @@
     &__logo {
 
         display: block;
-        margin-left: 50px;
+        margin-left: 60px;
+        margin-top: 30px;
+        margin-bottom: 20px;
         margin-right: auto;
         display: flex;
         place-items: center;
-        width: 180px;
+        width: 160px;
         height: 120px;
     }
 
@@ -58,7 +60,7 @@
             left: 50%;
             width: calc(100% - 40px);
             border-radius: 10px;
-            background-color: #308efe;
+            background-color: #e0ac1c;
             z-index: -1;
             transform: translateX(-50%);
             transition: 0.3s ease-in-out;

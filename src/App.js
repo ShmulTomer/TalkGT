@@ -6,10 +6,54 @@ import Contact from './pages/Contact';
 import Start from './pages/Start';
 import FAQ from './pages/FAQ';
 import Add from './pages/Add';
-import Auth from './components/authentication/Auth';
 import User from './pages/User';
+import { useState, useEffect } from 'react';
+import styled, { createGlobalStyle } from "styled-components";
+import { Link } from 'react-router-dom';
 
 function App() {
+
+    const [windowDimension, setWindowDimension] = useState(null);
+
+  useEffect(() => {
+    setWindowDimension(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimension(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    
+    const isMobile = windowDimension <= 640;
+  }, []);
+
+  const isMobile = windowDimension <= 640;
+
+//   if(isMobile) {
+//     return (
+//         <MobileNavbar.Wrapper>
+//               <MobileNavbar.Items>
+//                 <MobileNavbar.Item>
+                  
+//                 <Link to={"/faq"} key="1" style={{ textDecoration: 'none' }}>
+//                         Home
+//                     </Link>
+
+
+//                 </MobileNavbar.Item>
+//                 <MobileNavbar.Item>
+//                   Blog
+//                 </MobileNavbar.Item>
+//                 <MobileNavbar.Item>
+//                   About
+//                 </MobileNavbar.Item>
+//               </MobileNavbar.Items>
+//             </MobileNavbar.Wrapper>
+//       );
+//   }
+
   return (
       <BrowserRouter>
           <Routes>
@@ -24,7 +68,9 @@ function App() {
           </Routes>
       </BrowserRouter>
   );
+
 }
+
 
 
 export default App;

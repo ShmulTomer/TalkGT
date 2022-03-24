@@ -12,6 +12,7 @@ body {
  --custom-border-radius: 5px;
  --custom-spacing: 5px;
  
+ 
  padding: 0;
  margin: 0;
  font-family: var(--custom-font-family);

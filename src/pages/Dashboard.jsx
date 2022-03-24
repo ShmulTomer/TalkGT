@@ -73,14 +73,15 @@ function Dashboard() {
      */
 
     return <div className="App">
-    <header className="App-header">
-        <p ><b><i>
-        Dashboard</i></b>
+    <header className="App-header3">
+        <p ><b>
+        Dashboard</b>
         </p>
-        <br></br>
+        
     </header>
+    <div className="Box-center">
     <ComplaintBox date="2022-01-01" time="9:00" user="Tomer Shmul" title="Student at GT" subj="Example Subject" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" prior="true" anon="false" /> 
-    
+    </div>
     <br></br><br></br>
     
     

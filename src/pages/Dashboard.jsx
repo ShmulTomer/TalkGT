@@ -68,9 +68,8 @@ function Dashboard() {
      //console.log(cells);
 
      /*
-     <ComplaintBox date="2022-01-01" time="9:00" user="Tomer Shmul" title="Student at GT" subj="Subject" desc="Description" prior="true" anon="false" /> 
      
-    <br></br><br></br>
+     
      */
 
     return <div className="App">
@@ -80,8 +79,9 @@ function Dashboard() {
         </p>
         <br></br>
     </header>
-    
+    <ComplaintBox date="2022-01-01" time="9:00" user="Tomer Shmul" title="Student at GT" subj="Subject" desc="Description" prior="true" anon="false" /> 
 
+    <br></br><br></br>
     
     <button onClick={getData}> Refresh</button > 
 

@@ -13,7 +13,7 @@ export default function Auth() {
       if (error) throw error
       alert('Check your email for the login link!')
 
-      
+
     } catch (error) {
       alert(error.error_description || error.message)
     } finally {
@@ -27,7 +27,7 @@ export default function Auth() {
           <b><i>Account Authentication</i></b>
              </div>
         
-        <div classname="App-text">
+        <div className="App-text">
           <br></br>
           <br></br>
           <p>Sign in with your email below</p>

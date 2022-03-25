@@ -5,37 +5,37 @@ import logo from "./Web-Logo1.png";
 
 const sidebarNavItems = [
     {
-        display: 'Dashboard',
+        display: '',
         icon: <i className='bx bx-home-alt'></i>,
         to: '/',
         section: ''
     },
     {
-        display: 'Getting Started',
+        display: '',
         icon: <i className='bx bx-star'></i>,
         to: '/start',
         section: 'start'
     },
     {
-        display: 'Add Complaint',
+        display: '',
         icon: <i className='bx bx-message-square-add'></i>,
         to: '/add',
         section: 'add'
     },
     {
-        display: 'Contact',
+        display: '',
         icon: <i className='bx bx-user'></i>,
         to: '/contact',
         section: 'contact'
     },
     {
-        display: 'FAQ',
+        display: '',
         icon: <i className='bx bx-receipt'></i>,
         to: '/faq',
         section: 'faq'
     },
     {
-        display: 'Account',
+        display: '',
         icon: <i className='bx bx-user-circle'></i>,
         to: '/user',
         section: 'user'

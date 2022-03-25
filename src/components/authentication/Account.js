@@ -68,8 +68,8 @@ export default function Account({ session }) {
   return (
     <div className="App">
       <header className="App-header">
-        <p ><b><i>
-        Account Information</i></b>
+        <p ><b>
+        Account Information</b>
         </p>
         <p>
         </p>

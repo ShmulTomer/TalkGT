@@ -19,8 +19,8 @@ const Add = () => {
 
     return <div className="App">
         <div className="App-header">  
-            <p ><b><i>
-            Add your Complaint</i></b>
+            <p ><b>
+            Add your Complaint</b>
             </p>
         </div>
 

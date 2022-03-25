@@ -5,8 +5,8 @@ const FAQ = () => {
      
     return <div className="App">
     <header className="App-header">
-        <p ><b><i>
-        Frequently Asked Questions</i></b>
+        <p ><b>
+        Frequently Asked Questions</b>
         </p>
         <p>
             

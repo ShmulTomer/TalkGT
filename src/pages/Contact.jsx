@@ -6,8 +6,8 @@ const Contact = () => {
      
     return <div className="App">
     <header className="App-header">
-        <p ><b><i>
-        Contact Me</i></b>
+        <p ><b>
+        Contact Me</b>
         </p>
         <p>
             

@@ -24,7 +24,7 @@ export default function Auth() {
   return (
     <div className="App">
         <div className="App-header">
-          <b><i>Account Authentication</i></b>
+          <b>Account Authentication</b>
              </div>
         
         <div className="App-text">

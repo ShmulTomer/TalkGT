@@ -5,8 +5,8 @@ const Start = () => {
      
     return <div className="App">
     <header className="App-header">
-        <p ><b><i>
-        Getting Started</i></b>
+        <p ><b>
+        Getting Started</b>
         </p>
         <p>
         </p>

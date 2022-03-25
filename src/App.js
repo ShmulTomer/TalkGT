@@ -30,25 +30,8 @@ function App() {
     
   }, []);
 
-  const isMobile = windowDimension <= 640;
+  const isMobile = windowDimension <= 900;
 
-//   //if(isMobile) {
-//     return (
-//         <BrowserRouter>
-//           <Navbar />
-//           <Routes>
-//                <Route path='/' element={<AppLayout />}>
-//                    <Route index element={<Dashboard />} />
-//                    <Route path='/start' element={<Start />} />
-//                    <Route path='/add' element={<Add />} />
-//                    <Route path='/contact' element={<Contact />} />
-//                    <Route path='/faq' element={<FAQ />} />
-//                    <Route path='/user' element={<User />} />
-//                </Route>
-//            </Routes>
-//         </BrowserRouter>
-//       );
-//   //}
 
   return (
     <div>

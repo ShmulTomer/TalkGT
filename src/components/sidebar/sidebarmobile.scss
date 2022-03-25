@@ -1,9 +1,9 @@
-.sidebar {
+.sidebarmobile {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
-    width: 320px;
+    width: 200px;
     background-color: #21242b;
 
     &__logo img {
@@ -17,7 +17,7 @@
     &__logo {
 
         display: block;
-        margin-left: 70px;
+        margin-left: 20px;
         margin-top: 30px;
         margin-bottom: 20px;
         margin-right: auto;
@@ -35,7 +35,7 @@
             align-items: center;
             place-content: flex-start;
             padding: 1rem 3rem;
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-family: Verdana;
             font-weight: 500;
             color: #ffffff;

@@ -6,6 +6,7 @@ import ComplaintBox from "../components/dashboard/ComplaintBox";
 
 
 
+
 function Dashboard() {
 
     const [cells, setCells] = useState([]);
@@ -73,6 +74,7 @@ function Dashboard() {
      */
 
     return <div className="App">
+      
     <header className="App-header3">
         <p ><b>
         Dashboard</b>

@@ -79,19 +79,29 @@ function Dashboard() {
         <p ><b>
         Dashboard</b>
         </p>
-        
     </header>
+    <button onClick={getData}> Refresh</button > 
+    
     <div className="Box-center">
+    
+    
+    
+    {
+                cells.map((item, index) => (
+                  <ComplaintBox date={item.date} time={item.time} user={item.username} title={item.title} subj={item.subject} desc={item.description} prior={item.priority} anon={item.anon} /> 
+                ))
+            }
+
     <ComplaintBox date="2022-01-01" time="9:00" user="Tomer Shmul" title="Student at GT" subj="Example Subject" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" prior="true" anon="false" /> 
+    <br></br>
     </div>
     <br></br><br></br>
     
     
-    <button onClick={getData}> Refresh</button > 
-
     
+{/*     
     {cells && <BasicTable columns={columns} data={cells} />}
-   
+    */}
 
     
     </div>;

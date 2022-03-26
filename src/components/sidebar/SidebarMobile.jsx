@@ -53,7 +53,7 @@ const SidebarMobile = () => {
         setTimeout(() => {
             const sidebarItem = sidebarRef.current.querySelector('.sidebarmobile__menu__item');
             indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
-            setStepHeight(sidebarItem.clientHeight - 1);
+            setStepHeight(sidebarItem.clientHeight + 0.5);
         }, 50);
     }, []);
 

@@ -17,6 +17,43 @@ const Add = () => {
     })
   }, [])
 
+  const [loading, setLoading] = useState(true)
+  const [username, setUsername] = useState(null)
+  const [title, setTitle] = useState(null)
+
+
+  useEffect(() => {
+    getProfile()
+  }, [supabase.auth.session()])
+
+  async function getProfile() {
+    if(session) {
+      try {
+        setLoading(true)
+        const user = supabase.auth.user()
+
+        let { data, error, status } = await supabase
+          .from('profiles')
+          .select(`username, title`)
+          .eq('id', user.id)
+          .single()
+
+        if (error && status !== 406) {
+          throw error
+        }
+
+        if (data) {
+          setUsername(data.username)
+          setTitle(data.title)
+        }
+      } catch (error) {
+        alert(error.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+  }
+
     return <div className="App">
         <div className="App-header">  
             <p ><b>
@@ -26,7 +63,7 @@ const Add = () => {
 
         <div className="App-text">
             
-            {!session ? <PleaseLogin /> : <AddEntry />}
+            {(!session || !username || !title) ? <PleaseLogin /> : <AddEntry />}
             <p>
                 
             </p>

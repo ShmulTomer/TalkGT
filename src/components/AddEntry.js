@@ -20,6 +20,7 @@ export default function AddEntry() {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [title, setTitle] = useState(null)
+  const [email, SetEmail] = useState(null)
 
 
   useEffect(() => {
@@ -44,6 +45,7 @@ export default function AddEntry() {
       if (data) {
         setUsername(data.username)
         setTitle(data.title)
+        SetEmail(data.email)
       }
     } catch (error) {
       alert(error.message)
@@ -57,7 +59,7 @@ export default function AddEntry() {
     const {data, error} = await supabase
       .from('ComplaintDB')
         .insert([
-    { description: desc, subject: subj, priority: prior, username: username, title: title, anon: anony },])
+    { description: desc, subject: subj, priority: prior, username: username, title: title, anon: anony, email: email },])
     
     setDesc("");
     setSubj("");

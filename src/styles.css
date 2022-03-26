@@ -6,6 +6,7 @@
 .App {
     color: white;
     text-align: center;
+    font-family: 'Ubuntu', sans-serif;
   }
 
   .App-text {

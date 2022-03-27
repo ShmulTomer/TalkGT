@@ -20,7 +20,7 @@ export default function AddEntry() {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [title, setTitle] = useState(null)
-  const [email, SetEmail] = useState(null)
+  const [email, setEmail] = useState(null)
 
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function AddEntry() {
       if (data) {
         setUsername(data.username)
         setTitle(data.title)
-        SetEmail(data.email)
+        setEmail(data.email)
       }
     } catch (error) {
       alert(error.message)

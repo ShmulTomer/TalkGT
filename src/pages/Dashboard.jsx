@@ -12,13 +12,10 @@ function Dashboard() {
     const [cells, setCells] = useState([]);
 
     const getData = async () => {
-        const { data, error } = await supabase.from('ComplaintDB').select('*');
-        /*
         const { data, error } = await supabase
-  .from('books')
-  .select(
-    'title,description:metadata->description,price:metadata->price,low_age:metadata->ages->0,high_age:metadata->ages->1'
-  ) */
+          .from('ComplaintDB')
+          .select('*')
+          .order('id', { ascending: false });
 
       setCells(data);
     };
@@ -85,17 +82,17 @@ function Dashboard() {
     <button onClick={getData}> Refresh</button > 
     
     <div className="Box-center">
-    
+    <br></br>
     
     
     {
                 cells.map((item, index) => (
-                  <ComplaintBox date={item.date} time={item.time} user={item.username} title={item.title} subj={item.subject} desc={item.description} prior={item.priority} anon={item.anon} /> 
+                  <ComplaintBox id={item.id} date={item.date} time={item.time} user={item.username} title={item.title} subj={item.subject} desc={item.description} prior={item.priority} anon={item.anon} like={item.like} dislike={item.dislike} /> 
                 ))
             }
 
-    <ComplaintBox date="2022-01-01" time="9:00" user="Tomer Shmul" title="Student at GT" subj="Example Subject" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" prior="true" anon="false" /> 
-    <br></br>
+    
+    
     </div>
     <br></br><br></br>
     
@@ -103,10 +100,13 @@ function Dashboard() {
     
 {/*     
     {cells && <BasicTable columns={columns} data={cells} />}
-    */}
+    */
+    }
 
     
     </div>;
 };
 
 export default Dashboard;
+
+// <ComplaintBox date="2022-01-01" time="9:00" user="Tomer Shmul" title="Student at GT" subj="Example Subject" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" prior="true" anon="false" /> 

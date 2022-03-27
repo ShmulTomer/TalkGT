@@ -66,7 +66,7 @@ export default ({ url, size, onUpload }) => {
       />
       {uploading ? "Uploading..." : (
         <><label className="button primary block" htmlFor="single">
-                  Upload an avatar
+                  Upload profile pic
               </label><VisuallyHidden>
                       <input
                           type="file"

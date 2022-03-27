@@ -64,7 +64,7 @@ export default function ComplaintBox({ id, date, time, avatar_url, user, title, 
                 <div className="box-user">
                   {(anon == "true" || !avatar_url) ? <i className='bx bx-user'> </i> : <AvatarIcon
                   url={avatar_url}
-                  size={30}/>}
+                  size={21}/>}
                 <b>&nbsp;{userH}</b> 
 
                 </div>
@@ -80,8 +80,8 @@ export default function ComplaintBox({ id, date, time, avatar_url, user, title, 
                   <div className="box-right">
                     <i className='bx bx-time'></i> &nbsp;{date} at {time.substring(0,5)}
                     <br></br>
-                    
-                    <i className='bx bx-error'></i> &nbsp;<b>Priority</b>
+                    {(anon == "true") && <i className='bx bx-error'></i>}
+                    {(anon == "true") && <b>&nbsp;Priority</b>}
                     
                     <br></br>
                     <i className='bx bx-like'></i>&nbsp;{likeH} &emsp;<i className='bx bx-dislike'></i>&nbsp;{dislikeH} 

@@ -35,7 +35,7 @@ export default function AddEntry() {
 
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, title`)
+        .select(`username, title, email, avatar_url`)
         .eq('id', user.id)
         .single()
 

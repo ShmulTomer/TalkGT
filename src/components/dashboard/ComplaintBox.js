@@ -42,6 +42,7 @@ export default function ComplaintBox({ id, date, time, avatar_url, user, title, 
             <div className="box">
               
             <div className="box-subject">
+              
             <img
                 src={avatar_url}
                 alt={avatar_url ? 'Avatar' : 'No image'}

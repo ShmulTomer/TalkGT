@@ -126,15 +126,35 @@
     max-width: 600px;
   }
 
+  .boxR {
+    border-radius: 25px;
+    border: 5px solid #31ac50;
+    padding: 30px;
+    max-width: 600px;
+  }
+
   .box-subject {
     font-size: 20px;
     text-align: left; 
+  }
+
+  .boxR-subject {
+    font-size: 20px;
+    text-align: left; 
+    color:rgb(153, 153, 153);
   }
 
   .box-description {
     font-size: 13px;
     text-align: left;
     min-height: 60px; 
+  }
+
+  .boxR-description {
+    font-size: 13px;
+    text-align: left;
+    min-height: 60px; 
+    color:rgb(153, 153, 153);
   }
 
   .box-user {
@@ -144,14 +164,34 @@
     flex-direction: row;
   }
 
+  .boxR-user {
+    font-size: 20px;
+    text-align: left; 
+    display: flex; 
+    flex-direction: row;
+    color:rgb(153, 153, 153);
+  }
+
   .box-title {
     font-size: 16px;
     text-align: left; 
   }
 
+  .boxR-title {
+    font-size: 16px;
+    text-align: left; 
+    color:rgb(153, 153, 153);
+  }
+
   .box-right {
     font-size: 14px;
     text-align: right; 
+  }
+
+  .boxR-right {
+    font-size: 14px;
+    text-align: right; 
+    color:rgb(153, 153, 153);
   }
 
   .grid-container {

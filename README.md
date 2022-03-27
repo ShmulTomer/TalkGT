@@ -5,6 +5,8 @@ Project by Tomer Shmul
 
 To Do:
 - ability to resolve / remove entries from DB
+    - only your own, so get email into added entries!
+- make dashboard refresh automatically after resolving a complaint
 - make only GT emails work
 - My Complaints tab
 - unique usernames

@@ -4,7 +4,6 @@ import { supabase } from '../../supabaseClient'
 
 export default ({ url, size }) => {
   const [avatarUrl, setAvatarUrl] = useState(null)
-  const [uploading, setUploading] = useState(false)
 
   useEffect(() => {
     if (url) downloadImage(url)

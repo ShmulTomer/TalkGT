@@ -2,6 +2,7 @@ import React from "react";
 import '../../styles.css'
 import { supabase } from "../../supabaseClient";
 import { useState, useEffect } from "react";
+import AvatarIcon from "../authentication/AvatarIcon";
 
 export default function ComplaintBox({ id, date, time, avatar_url, user, title, subj, desc, prior, anon, like, dislike }) {
 
@@ -43,12 +44,6 @@ export default function ComplaintBox({ id, date, time, avatar_url, user, title, 
               
             <div className="box-subject">
               
-            <img
-                src={avatar_url}
-                alt={avatar_url ? 'Avatar' : 'No image'}
-                className="avatar image"
-                style={{ height: "30", width: "30" }}
-              />
               <b>Subject:</b> {subj}
             </div>
 
@@ -71,6 +66,7 @@ export default function ComplaintBox({ id, date, time, avatar_url, user, title, 
                 </div>
 
                 <div className="box-title">
+                  <AvatarIcon url={avatar_url} size={30} />
                 {titleH}
                 </div>
                 </div>

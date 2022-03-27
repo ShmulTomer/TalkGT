@@ -87,7 +87,7 @@ function Dashboard() {
     
     {
                 cells.map((item, index) => (
-                  <ComplaintBox id={item.id} date={item.date} time={item.time} user={item.username} title={item.title} subj={item.subject} desc={item.description} prior={item.priority} anon={item.anon} like={item.like} dislike={item.dislike} /> 
+                  <ComplaintBox id={item.id} date={item.date} time={item.time} avatar={item.avatar_url} user={item.username} title={item.title} subj={item.subject} desc={item.description} prior={item.priority} anon={item.anon} like={item.like} dislike={item.dislike} /> 
                 ))
             }
 

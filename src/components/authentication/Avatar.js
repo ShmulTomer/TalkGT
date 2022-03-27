@@ -7,8 +7,13 @@ export default ({ url, size, onUpload }) => {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
 
+  console.log("hello")
   useEffect(() => {
-    if (url) downloadImage(url)
+    if (url) {
+      downloadImage(url)
+
+      console.log(avatarUrl)
+    }
   }, [url])
 
   const downloadImage = async (path) => {
@@ -19,6 +24,8 @@ export default ({ url, size, onUpload }) => {
       }
       const url = URL.createObjectURL(data)
       setAvatarUrl(url)
+
+      {console.log(avatarUrl)}
     } catch (error) {
       console.log('Error downloading image: ', error.message)
     }

@@ -62,16 +62,16 @@ export default function ComplaintBox({ id, date, time, avatar_url, user, title, 
             <div className="grid-container">
                <div className="grid1"> 
                 <div className="box-user">
-                  <i className='bx bx-user'></i> <b>{userH}</b> 
+                  {(anon == "true" || !avatar_url) ? <i className='bx bx-user'> </i> : <AvatarIcon
+                  url={avatar_url}
+                  size={30}/>}
+                <b>&nbsp;{userH}</b> 
 
                 </div>
 
                 <div className="box-title">
-                <Avatar
-                  url={avatar_url}
-                  size={30}
-                  
-                  />
+                
+                
                 {titleH}
                 </div>
                 </div>

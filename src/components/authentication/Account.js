@@ -8,6 +8,8 @@ export default function Account({ session }) {
   const [username, setUsername] = useState(null)
   const [title, setTitle] = useState(null)
 
+  const [avatar_url, setAvatarUrl] = useState(null)
+
 
   useEffect(() => {
     getProfile()
@@ -20,7 +22,7 @@ export default function Account({ session }) {
 
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, title`)
+        .select(`username, title, avatar_url`)
         .eq('id', user.id)
         .single()
 
@@ -31,6 +33,7 @@ export default function Account({ session }) {
       if (data) {
         setUsername(data.username)
         setTitle(data.title)
+        setAvatarUrl(data.avatar_url)
       }
     } catch (error) {
       alert(error.message)
@@ -48,6 +51,7 @@ export default function Account({ session }) {
         id: user.id,
         username,
         title,
+        avatar_url,
         updated_at: new Date(),
       }
 
@@ -99,6 +103,15 @@ export default function Account({ session }) {
           onChange={(e) => setTitle(e.target.value)}
         />
       </div>
+      <br></br>
+      <Avatar
+      url={avatar_url}
+      size={150}
+      onUpload={(url) => {
+        setAvatarUrl(url)
+        updateProfile({ username, title, avatar_url: url })
+      }}
+      />
       <br></br>
       <div>
         <button

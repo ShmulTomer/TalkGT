@@ -59,7 +59,7 @@ export default function AddEntry() {
     const {data, error} = await supabase
       .from('ComplaintDB')
         .insert([
-    { description: desc, subject: subj, priority: prior, username: username, title: title, anon: anony, email: email },])
+    { description: desc, subject: subj, priority: prior, username: username, title: title, anon: anony, email: email},])
     
     setDesc("");
     setSubj("");

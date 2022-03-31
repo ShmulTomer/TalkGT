@@ -6,8 +6,10 @@ Project by Tomer Shmul
 To Do:
 - ability to resolve / remove entries from DB
     - only your own, so get email into added entries!
+- button on Dashboard to show only resolved / unresolvedx
 - make dashboard refresh automatically after resolving a complaint
 - make only GT emails work
-- My Complaints tab
+- set max char for subject, description, and other text fields
+- My Complaints tab, delete "FAQ" tab
 - unique usernames
 - ability to add other complaints to My Complaints tab

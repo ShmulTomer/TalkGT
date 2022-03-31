@@ -81,7 +81,7 @@ return (
             
           </textarea>
           <br></br>
-          <br></br>
+          {/* <br></br>
           Priority &nbsp;&nbsp;  
           
           <label class="switch">
@@ -89,7 +89,7 @@ return (
             <span class="slider round"></span>
           </label>
           
-          <br></br>
+          <br></br> */}
           <br></br>
           Anonymous &nbsp;&nbsp;  
           

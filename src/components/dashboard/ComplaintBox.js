@@ -89,8 +89,6 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
                 <div className="boxR-right">
                   <i className='bx bx-time'></i> &nbsp;{date} at {time.substring(0,5)}
                   <br></br>
-                  {(anon == "true") && <i className='bx bx-error'></i>}
-                  {(anon == "true") && <b>&nbsp;Priority</b>}
                   
                   <br></br>
                   <i className='bx bx-like'></i>&nbsp;{likeH} &emsp;<i className='bx bx-dislike'></i>&nbsp;{dislikeH} 
@@ -110,7 +108,7 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
               
             <div className="box-subject">
               
-              <b>Subject:</b> {subj}
+              Subject: {subj}
             </div>
 
             <div className="box-description">
@@ -145,12 +143,12 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
                   <div className="box-right">
                     <i className='bx bx-time'></i> &nbsp;{date} at {time.substring(0,5)}
                     <br></br>
-                    {(anon == "true") && <i className='bx bx-error'></i>}
-                    {(anon == "true") && <b>&nbsp;Priority</b>}
                     
-                    <br></br>
-                    <i className='bx bx-like'></i>&nbsp;{likeH} &emsp;<i className='bx bx-dislike'></i>&nbsp;{dislikeH} 
-                    
+              
+                    <div className="likeDisplay">
+                      
+                      <i className='bx bx-upvote'></i>&nbsp;{likeH} &emsp;<i className='bx bx-downvote'></i>&nbsp;{dislikeH} 
+                    </div>
                   </div>
 
                 </div>
@@ -160,17 +158,21 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
                 <br></br>
                 
                   <button class="greenButton" onClick={() => Like()}> 
-                &emsp;&emsp;<i className='bx bx-like'></i>&emsp;&emsp;
+                &emsp;<i className='bx bx-upvote'></i>&emsp;
                 </button > 
               
               &nbsp;&nbsp; 
               
               <button class="redButton" onClick={() => Dislike()}> 
-              &emsp;&emsp;<i className='bx bx-dislike'></i>&emsp;&emsp;
+              &emsp;<i className='bx bx-downvote'></i>&emsp;
               </button > 
               &nbsp;&nbsp; 
               <button onClick={() => Resolve()}> 
-              &emsp;&emsp;Resolve&emsp;&emsp;
+              &emsp;Resolve&emsp;
+              </button > 
+              &nbsp;&nbsp; 
+              <button > 
+              &emsp;Reply&emsp;
               </button > 
             </div>
           </div>

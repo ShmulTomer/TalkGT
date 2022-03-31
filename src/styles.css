@@ -134,7 +134,8 @@
   }
 
   .box-subject {
-    font-size: 20px;
+    font-size: 21px;
+    font-weight: 700 !important;
     text-align: left; 
   }
 
@@ -192,6 +193,10 @@
     font-size: 14px;
     text-align: right; 
     color:rgb(153, 153, 153);
+  }
+
+  .likeDisplay {
+    font-size: 20px;
   }
 
   .grid-container {

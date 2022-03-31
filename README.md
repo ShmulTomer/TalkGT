@@ -13,3 +13,8 @@ To Do:
 - My Complaints tab, delete "FAQ" tab
 - unique usernames
 - ability to add other complaints to My Complaints tab
+- limit each user to upvote and downvote
+- Sorting and filter feature, searching
+- Followed/Starred Complaints
+- CSS to fix on phone
+- password feature

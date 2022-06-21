@@ -46,10 +46,12 @@ export default function AddEntry() {
 
   async function DisplayD(desc, subj, anony) {
     
-    if(subj.length() > 10) {
-      setMsg("The subject must be less than 100 characters.")
-      return;
-    }
+    console.log("Hello");
+
+    // if(subj.length() > 100) {
+    //   setMsg("The subject must be less than 100 characters.")
+    //   return;
+    // }
 
     const {data, error} = await supabase
       .from('COMPLAINT')

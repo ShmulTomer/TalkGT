@@ -27,7 +27,7 @@ const Add = () => {
 
         <div className="App-text">
             
-            {(!session) ? <PleaseLogin /> : <AddEntry />}
+            {(!session) ? <AddEntry /> : <AddEntry />}
             <p>
                 
             </p>

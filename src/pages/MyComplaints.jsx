@@ -18,13 +18,15 @@ function MyComplaints() {
         const { data, error } = await supabase
           .from('COMPLAINT')
           .select('*')
-          .eq('id', user.id)
+          .eq('userID', user.id)
           .order('id', { ascending: false });
 
       setCells(data);
     };
 
+
     const [session, setSession] = useState(null)
+
 
   useEffect(() => {
     setSession(supabase.auth.session())
@@ -34,6 +36,8 @@ function MyComplaints() {
     })
   }, [])
 
+
+  
     const columns = React.useMemo(
         () => [
             {

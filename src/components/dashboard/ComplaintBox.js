@@ -27,36 +27,41 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
 
   async function getProfile() {
     try {
-      setUser(supabase.auth.user())
+      //setUser(supabase.auth.user())
+
+      
+      const user = supabase.auth.user()
 
       if (session && userID == user.id) {
         setMine(true);
       }
       
+
+      if(session) {
+        // const { data, error } = await supabase
+        //   .from('VOTES')
+        //   .upsert({userID: user.id, comID: id, vote: 0}, { onConflict: 'id' })
+        //   .eq('userID', user.id)
+        //   .eq('comID', id)
+          
+          // if(data) {
+          //   setVote(data.vote);
+
+          // } else {
+
+          //   // const {data2, error} = await supabase
+          //   // .from('VOTES')
+          //   // .insert([
+          //   // { userID: user.id, comID: id, vote: 0},])
+          // }
+
+      }
+
       if(anon == true) {
         setName("Anonymous")
         setTitle("Anonymous User")
         setAvatar(null)
         return;
-      }
-
-      if(session) {
-        const { data, error } = await supabase
-          .from('VOTE')
-          .select(`vote`)
-          .eq('userID', user.id)
-          .eq('comID', id)
-          .single()
-
-          if(data) {
-            setVote(data.vote);
-          } else {
-            const {data2, error} = await supabase
-            .from('VOTE')
-            .insert([
-            { userID: user.id, comID: id, vote: 0},])
-          }
-
       }
 
       setLoading(true)
@@ -91,38 +96,38 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
         }
  
         const { data, error } = await supabase
-          .from('VOTE')
+          .from('VOTES')
           .update({vote: 1})
           .eq('userID', user.id)
           .eq('comID', id);
         
 
-
           const { data2, error2 } = await supabase
-          .from('VOTE')
+          .from('COMPLAINT')
           .select(`upv`)
-          .eq('userID', user.id)
-          .eq('comID', id)
+          .eq('id', id)
           .single();
         
           if(data2) {
             setUp(data2.upv + 1);
+
+            const { data3, error3 } = await supabase
+              .from('COMPLAINT')
+              .update({upv: tempUp})
+              .eq('id', id)
+
+            
+              setLike(tempUp);
+            
           }
 
-          const { data3, error3 } = await supabase
-          .from('VOTE')
-          .update({upv: tempUp})
-          .eq('userID', user.id)
-          .eq('comID', id)
 
-          if (data3) {
-            setLike(tempUp);
-          }
+          
           
       if (vote == -1) {
         
         const { data2, error2 } = await supabase
-        .from('VOTE')
+        .from('VOTES')
         .select(`dov`)
         .eq('userID', user.id)
         .eq('comID', id)
@@ -133,7 +138,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
         }
 
         const { data3, error3 } = await supabase
-        .from('VOTE')
+        .from('VOTES')
         .update({dov: tempDown})
         .eq('userID', user.id)
         .eq('comID', id)
@@ -155,7 +160,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
       }
 
       const { data, error } = await supabase
-        .from('VOTE')
+        .from('VOTES')
         .update({vote: -1})
         .eq('userID', user.id)
         .eq('comID', id);
@@ -163,7 +168,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
 
 
         const { data2, error2 } = await supabase
-        .from('VOTE')
+        .from('VOTES')
         .select(`dov`)
         .eq('userID', user.id)
         .eq('comID', id)
@@ -174,7 +179,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
         }
 
         const { data3, error3 } = await supabase
-        .from('VOTE')
+        .from('VOTES')
         .update({dov: tempDown})
         .eq('userID', user.id)
         .eq('comID', id)
@@ -186,7 +191,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
     if (vote == 1) {
       
       const { data2, error2 } = await supabase
-      .from('VOTE')
+      .from('VOTES')
       .select(`upv`)
       .eq('userID', user.id)
       .eq('comID', id)
@@ -197,7 +202,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
       }
 
       const { data3, error3 } = await supabase
-      .from('VOTE')
+      .from('VOTES')
       .update({upv: tempUp})
       .eq('userID', user.id)
       .eq('comID', id)
@@ -337,20 +342,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
 
             <div>
                 <br></br>
-                
-                  {/* <button class="greenButton" onClick={() => Like()}> 
-                &emsp;<i className='bx bx-upvote'></i>&emsp;
-                </button > 
               
-              &nbsp;&nbsp; 
-              
-              <button class="redButton" onClick={() => Dislike()}> 
-              &emsp;<i className='bx bx-downvote'></i>&emsp;
-              </button > 
-              &nbsp;&nbsp; 
-              <button onClick={() => Resolve()}> 
-              &emsp;Resolve&emsp;
-              </button >  */}
               &nbsp;&nbsp; 
               {(session) ? 
               <div>

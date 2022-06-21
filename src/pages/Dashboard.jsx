@@ -45,6 +45,9 @@ function Dashboard() {
               GT Complaints</b>
               </p>
           </header>
+          {(!session) ? "Log in to gain access to voting and replying." : ""}
+          <br></br>
+          <br></br>
           <button onClick={getData}> Refresh</button > 
           
           <div className="Box-center">

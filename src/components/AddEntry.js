@@ -34,7 +34,6 @@ export default function AddEntry() {
       }
 
       if (data) {
-        setMsg(data.username + " is logged in.")
         setUUID(user.id);
       }
     } catch (error) {
@@ -48,10 +47,10 @@ export default function AddEntry() {
     
     console.log("Hello");
 
-    // if(subj.length() > 100) {
-    //   setMsg("The subject must be less than 100 characters.")
-    //   return;
-    // }
+    if(subj.length > 100) {
+      setMsg("The subject must be less than 100 characters.")
+      return;
+    }
 
     const {data, error} = await supabase
       .from('COMPLAINT')

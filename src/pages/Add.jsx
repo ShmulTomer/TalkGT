@@ -27,7 +27,9 @@ const Add = () => {
 
         <div className="App-text">
             
-            {(!session) ? <AddEntry /> : <AddEntry />}
+        {/* CHANGE THIS TO PLEASE LOGIN SCREEN */}
+
+            {(!session) ? <PleaseLogin /> : <AddEntry />}
             <p>
                 
             </p>

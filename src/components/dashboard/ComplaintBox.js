@@ -5,102 +5,117 @@ import { useState, useEffect } from "react";
 import Avatar from "../authentication/Avatar";
 import AvatarIcon from "../authentication/AvatarIcon";
 
-export default function ComplaintBox({ id, resolve, date, time, avatar_url, user, title, subj, desc, prior, anon, like, dislike }) {
+export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, date, anon, userID }) {
 
-  const [likeH, setLike] = useState(like)
-  const [dislikeH, setDislike] = useState(dislike)
-  const [userH, setUser] = useState(user)
-  const [titleH, setTitle] = useState(title)
+
+  const [loading, setLoading] = useState(false);
+  const [name, setName] = useState(null);
+  const [title, setTitle] = useState(null);
+  const [avatar_url, setAvatar] = useState(null);
 
   useEffect(() => {
-    if(anon == "true") {
-      setUser("Anonymous")
-      setTitle("Anonymous User")
+    getProfile()
+  }, )
+
+  async function getProfile() {
+    try {
+      if(anon == true) {
+        setName("Anonymous")
+        setTitle("Anonymous User")
+        setAvatar(null)
+        return;
+      }
+
+      setLoading(true)
+
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`username, title, avatar_url`)
+        .eq('id', userID)
+        .single()
+
+      // if (error && status !== 406) {
+      //   throw error
+      // }
+
+      if (data) {
+        if (anon == true) {}
+        setName(data.username);
+        setTitle(data.title);
+        setAvatar(data.avatar_url);
+      }
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      setLoading(false)
     }
-  }, []);
+  }
 
-    async function Like() {
 
-      const { data, error } = await supabase
-        .from('ComplaintDB')
-        .update({ 'like': likeH + 1 })
-        .eq('id', id)
+    // async function Resolve() {
 
-        setLike(likeH + 1)
-    }
+    //   const { data, error } = await supabase
+    //     .from('ComplaintDB')
+    //     .update({ 'resolve': "true" })
+    //     .eq('id', id)
+    // }
 
-    async function Dislike() {
+    // if(resolve == "true") {
+    //       return <div className="App">
 
-      const { data, error } = await supabase
-        .from('ComplaintDB')
-        .update({ 'dislike': dislikeH + 1 })
-        .eq('id', id)
-
-        setDislike(dislikeH + 1)
-    }
-
-    async function Resolve() {
-
-      const { data, error } = await supabase
-        .from('ComplaintDB')
-        .update({ 'resolve': "true" })
-        .eq('id', id)
-    }
-
-    if(resolve == "true") {
-          return <div className="App">
-
-          <div className="boxR">
+    //       <div className="boxR">
             
-          <div className="boxR-subject">
+    //       <div className="boxR-subject">
             
-            <b>Subject:</b> {subj}
-          </div>
+    //         <b></b> {subj}
+    //       </div>
 
-          <div className="boxR-description">
-            <br></br>
-            {desc}
-            <br></br>
-            <br></br>
-            <hr></hr>
-          </div>
+    //       <div className="boxR-description">
+    //         <br></br>
+    //         {desc}
+    //         <br></br>
+    //         <br></br>
+    //         <hr></hr>
+    //       </div>
 
           
           
-            <br></br>
-          <div className="grid-container">
-            <div className="grid1"> 
-              <div className="boxR-user">
-                {(anon == "true" || !avatar_url) ? <i className='bx bx-user'> </i> : <AvatarIcon
-                url={avatar_url}
-                size={21}/>}
-              <b>&nbsp;{userH}</b> 
+    //         <br></br>
+    //       <div className="grid-container">
+    //         <div className="grid1"> 
+    //           <div className="boxR-user">
+    //             {(anon == "true" || !avatar_url) ? <i className='bx bx-user'> </i> : <AvatarIcon
+    //             url={avatar_url}
+    //             size={21}/>}
+    //           <b>&nbsp;{userH}</b> 
 
-              </div>
+    //           </div>
 
-              <div className="boxR-title">
+    //           <div className="boxR-title">
               
               
-              {titleH}
-              </div>
-              </div>
+    //           {titleH}
+    //           </div>
+    //           </div>
 
-              <div className="grid2"> 
-                <div className="boxR-right">
-                  <i className='bx bx-time'></i> &nbsp;{date} at {time.substring(0,5)}
-                  <br></br>
+    //           <div className="grid2"> 
+    //             <div className="boxR-right">
+    //               <i className='bx bx-time'></i> &nbsp;{date} at {time.substring(0,5)}
+    //               <br></br>
                   
-                  <br></br>
-                  <i className='bx bx-like'></i>&nbsp;{likeH} &emsp;<i className='bx bx-dislike'></i>&nbsp;{dislikeH} 
+    //               <br></br>
+    //               <i className='bx bx-like'></i>&nbsp;{likeH} &emsp;<i className='bx bx-dislike'></i>&nbsp;{dislikeH} 
                   
-                </div>
+    //             </div>
 
-              </div>
-          </div>
-        </div>
-          <br></br>
-      </div>;
-    }
+    //           </div>
+    //       </div>
+    //     </div>
+    //       <br></br>
+    //   </div>;
+    // }
+
+    
 
     return <div className="App">
 
@@ -108,7 +123,7 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
               
             <div className="box-subject">
               
-              Subject: {subj}
+              {subj}
             </div>
 
             <div className="box-description">
@@ -128,14 +143,14 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
                   {(anon == "true" || !avatar_url) ? <i className='bx bx-user'> </i> : <AvatarIcon
                   url={avatar_url}
                   size={21}/>}
-                <b>&nbsp;{userH}</b> 
+                <b>&nbsp;{name}</b> 
 
                 </div>
 
                 <div className="box-title">
                 
                 
-                {titleH}
+                {title}
                 </div>
                 </div>
 
@@ -147,7 +162,7 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
               
                     <div className="likeDisplay">
                       
-                      <i className='bx bx-upvote'></i>&nbsp;{likeH} &emsp;<i className='bx bx-downvote'></i>&nbsp;{dislikeH} 
+                      <i className='bx bx-upvote'></i>&nbsp;{upv} &emsp;<i className='bx bx-downvote'></i>&nbsp;{dov} 
                     </div>
                   </div>
 
@@ -157,7 +172,7 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
             <div>
                 <br></br>
                 
-                  <button class="greenButton" onClick={() => Like()}> 
+                  {/* <button class="greenButton" onClick={() => Like()}> 
                 &emsp;<i className='bx bx-upvote'></i>&emsp;
                 </button > 
               
@@ -169,7 +184,7 @@ export default function ComplaintBox({ id, resolve, date, time, avatar_url, user
               &nbsp;&nbsp; 
               <button onClick={() => Resolve()}> 
               &emsp;Resolve&emsp;
-              </button > 
+              </button >  */}
               &nbsp;&nbsp; 
               <button > 
               &emsp;Reply&emsp;

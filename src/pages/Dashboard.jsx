@@ -4,59 +4,29 @@ import "../styles.css"
 import { supabase } from "../supabaseClient";
 import ComplaintBox from "../components/dashboard/ComplaintBox";
 
-
-
-
 function Dashboard() {
 
     const [cells, setCells] = useState([]);
 
     const getData = async () => {
         const { data, error } = await supabase
-          .from('ComplaintDB')
+          .from('COMPLAINT')
           .select('*')
           .order('id', { ascending: false });
 
       setCells(data);
     };
 
-    const columns = React.useMemo(
-        () => [
-            {
-            Header: "Date",
-            accessor: "date" // accessor is the "key" in the data
-          },
-          {
-            Header: "Time",
-            accessor: "time" // accessor is the "key" in the data
-          },
-          {
-            Header: "Username",
-            accessor: "username" // accessor is the "key" in the data
-          },
-          {
-            Header: "Title",
-            accessor: "title" // accessor is the "key" in the data
-          },
-          {
-            Header: "Subject",
-            accessor: "subject" // accessor is the "key" in the data
-          },
-          {
-            Header: "Description",
-            accessor: "description"
-          },
-          {
-            Header: "Priority",
-            accessor: "priority"
-          },
-          {
-            Header: "Anonymous",
-            accessor: "anon" // accessor is the "key" in the data
-          },
-        ],
-        []
-      );
+    const [session, setSession] = useState(null)
+
+  useEffect(() => {
+    setSession(supabase.auth.session())
+
+  supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
+
 
     useEffect(() => {
         getData()
@@ -83,7 +53,7 @@ function Dashboard() {
           
             {
                       cells.map((item, index) => (
-                        <ComplaintBox id={item.id} resolve={item.resolve} date={item.date} time={item.time} avatar_url={item.avatar_url} user={item.username} title={item.title} subj={item.subject} desc={item.description} prior={item.priority} anon={item.anon} like={item.like} dislike={item.dislike} /> 
+                        <ComplaintBox session={session} id={item.id} subj={item.subj} desc={item.desc} upv={item.upv} dov={item.dov} time={item.time} date={item.date} anon={item.anon} userID={item.userID} /> 
                       ))
                   }
           

@@ -2,8 +2,7 @@ import React from "react";
 import '../styles.css'
 
 export default function PleaseLogin() {
-
-    
+        
     return (
         <div className="App">
            <div className="App-text">

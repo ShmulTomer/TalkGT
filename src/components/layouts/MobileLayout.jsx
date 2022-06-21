@@ -4,7 +4,7 @@ import SidebarMobile from "../sidebar/SidebarMobile";
 
 const MobileLayout = () => {
     return <div style = {{
-        padding: '50px 0px 0px 130px'
+        padding: '25px 0px 0px 130px'
     }}>
 
         <SidebarMobile />

@@ -24,16 +24,17 @@ const sidebarNavItems = [
     },
     {
         display: '',
+        icon: <i className='bx bx-receipt'></i>,
+        to: '/mycomplaints',
+        section: 'mycomplaints'
+    },
+    {
+        display: '',
         icon: <i className='bx bx-user'></i>,
         to: '/contact',
         section: 'contact'
     },
-    {
-        display: '',
-        icon: <i className='bx bx-receipt'></i>,
-        to: '/faq',
-        section: 'faq'
-    },
+    
     {
         display: '',
         icon: <i className='bx bx-user-circle'></i>,

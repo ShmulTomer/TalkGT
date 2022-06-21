@@ -4,7 +4,7 @@ import AppLayout from './components/layouts/AppLayout';
 import Dashboard from './pages/Dashboard';
 import Contact from './pages/Contact';
 import Start from './pages/Start';
-import FAQ from './pages/FAQ';
+import MyComplaints from './pages/MyComplaints';
 import Add from './pages/Add';
 import User from './pages/User';
 import MobileLayout from './components/layouts/MobileLayout';
@@ -13,9 +13,8 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-    const [windowDimension, setWindowDimension] = useState(null);
+  const [windowDimension, setWindowDimension] = useState(null);
     
-
   useEffect(() => {
     setWindowDimension(window.innerWidth);
   }, []);
@@ -27,7 +26,6 @@ function App() {
 
     window.addEventListener("resize", handleResize);
 
-    
   }, []);
 
   const isMobile = windowDimension <= 900;
@@ -42,7 +40,7 @@ function App() {
                     <Route path='/start' element={<Start />} />
                     <Route path='/add' element={<Add />} />
                     <Route path='/contact' element={<Contact />} />
-                    <Route path='/faq' element={<FAQ />} />
+                    <Route path='/mycomplaints' element={<MyComplaints />} />
                     <Route path='/user' element={<User />} />
                 </Route>
             </Routes>
@@ -55,7 +53,7 @@ function App() {
                 <Route path='/start' element={<Start />} />
                 <Route path='/add' element={<Add />} />
                 <Route path='/contact' element={<Contact />} />
-                <Route path='/faq' element={<FAQ />} />
+                <Route path='/mycomplaints' element={<MyComplaints />} />
                 <Route path='/user' element={<User />} />
             </Route>
         </Routes>
@@ -64,10 +62,6 @@ function App() {
     )}
     </div>
   );
-  
-
 }
-
-
 
 export default App;

@@ -7,7 +7,15 @@ import AvatarIcon from "../authentication/AvatarIcon";
 
 export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, date, anon, userID }) {
 
+  const [like, setLike] = useState(upv);
+  const [dislike, setDislike] = useState(dov);
+  
 
+  const [vote, setVote] = useState(0);
+  const [mine, setMine] = useState(false);
+  const [tempUp, setUp] = useState(null);
+  const [tempDown, setDown] = useState(null);
+  const[user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState(null);
   const [title, setTitle] = useState(null);
@@ -19,11 +27,36 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
 
   async function getProfile() {
     try {
+      setUser(supabase.auth.user())
+
+      if (session && userID == user.id) {
+        setMine(true);
+      }
+      
       if(anon == true) {
         setName("Anonymous")
         setTitle("Anonymous User")
         setAvatar(null)
         return;
+      }
+
+      if(session) {
+        const { data, error } = await supabase
+          .from('VOTE')
+          .select(`vote`)
+          .eq('userID', user.id)
+          .eq('comID', id)
+          .single()
+
+          if(data) {
+            setVote(data.vote);
+          } else {
+            const {data2, error} = await supabase
+            .from('VOTE')
+            .insert([
+            { userID: user.id, comID: id, vote: 0},])
+          }
+
       }
 
       setLoading(true)
@@ -39,10 +72,10 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
       // }
 
       if (data) {
-        if (anon == true) {}
         setName(data.username);
         setTitle(data.title);
         setAvatar(data.avatar_url);
+  
       }
     } catch (error) {
       alert(error.message)
@@ -50,6 +83,76 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
       setLoading(false)
     }
   }
+
+  async function Like() {
+
+        if (vote == 1) {
+          return;
+        }
+ 
+        const { data, error } = await supabase
+          .from('VOTE')
+          .update({vote: 1})
+          .eq('userID', user.id)
+          .eq('comID', id);
+        
+
+
+          const { data2, error2 } = await supabase
+          .from('VOTE')
+          .select(`upv`)
+          .eq('userID', user.id)
+          .eq('comID', id)
+          .single();
+        
+          if(data2) {
+            setUp(data2.upv + 1);
+          }
+
+          const { data3, error3 } = await supabase
+          .from('VOTE')
+          .update({upv: tempUp})
+          .eq('userID', user.id)
+          .eq('comID', id)
+
+          if (data3) {
+            setLike(tempUp);
+          }
+          
+      if (vote == -1) {
+        
+        const { data2, error2 } = await supabase
+        .from('VOTE')
+        .select(`dov`)
+        .eq('userID', user.id)
+        .eq('comID', id)
+        .single();
+      
+        if(data2) {
+          setDown(data2.dov - 1);
+        }
+
+        const { data3, error3 } = await supabase
+        .from('VOTE')
+        .update({dov: tempDown})
+        .eq('userID', user.id)
+        .eq('comID', id)
+
+        if (data3) {
+          setDislike(tempDown);
+        }
+      }
+
+      setVote(1);
+
+
+    }
+
+//
+// .from('profiles')
+//         .select(`username, title, email, avatar_url`)
+//         .eq('id', user.id)
+//         .single()
 
 
     // async function Resolve() {
@@ -162,7 +265,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
               
                     <div className="likeDisplay">
                       
-                      <i className='bx bx-upvote'></i>&nbsp;{upv} &emsp;<i className='bx bx-downvote'></i>&nbsp;{dov} 
+                      <i className='bx bx-upvote'></i>&nbsp;{like} &emsp;<i className='bx bx-downvote'></i>&nbsp;{dislike} 
                     </div>
                   </div>
 
@@ -186,9 +289,32 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
               &emsp;Resolve&emsp;
               </button >  */}
               &nbsp;&nbsp; 
-              <button > 
-              &emsp;Reply&emsp;
+              {(session) ? 
+              <div>
+
+              <button class="greenButton" > 
+                &emsp;<i className='bx bx-upvote'></i>&emsp;
+                </button > 
+              
+              &nbsp;&nbsp; 
+              
+              <button class="redButton"> 
+              &emsp;<i className='bx bx-downvote'></i>&emsp;
               </button > 
+              &nbsp;&nbsp;
+              {(mine) ? <button > 
+              &emsp;Resolve&emsp;
+              </button > : "" } 
+              
+              &nbsp;&nbsp; 
+              <button > 
+                  &emsp;Reply&emsp;
+              </button >  
+              
+              </div>
+              : "" }
+
+              
             </div>
           </div>
             <br></br>

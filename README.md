@@ -18,3 +18,4 @@ To Do:
 - Followed/Starred Complaints
 - CSS to fix on phone
 - password feature
+- max char length for subject 

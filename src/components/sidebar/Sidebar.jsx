@@ -5,7 +5,7 @@ import logo from "./Web-Logo1.png";
 
 const sidebarNavItems = [
     {
-        display: 'Dashboard',
+        display: 'Home',
         icon: <i className='bx bx-home-alt'></i>,
         to: '/',
         section: ''

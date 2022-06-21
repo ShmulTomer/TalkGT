@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles.css"
-import BasicTable from "../components/dashboard/BasicTable";
+
 import { supabase } from "../supabaseClient";
 import ComplaintBox from "../components/dashboard/ComplaintBox";
 
@@ -19,8 +19,6 @@ function Dashboard() {
 
       setCells(data);
     };
-
-    
 
     const columns = React.useMemo(
         () => [
@@ -64,47 +62,39 @@ function Dashboard() {
         getData()
       }, []);
       
+
      const data = React.useMemo(() => cells, []);
      //console.log(cells);
 
-     /*
-     
-     
-     */
+
 
     return <div className="App">
       
-    <header className="App-header3">
-        <p ><b>
-        Dashboard</b>
-        </p>
-    </header>
-    <button onClick={getData}> Refresh</button > 
-    
-    <div className="Box-center">
-    <br></br>
-    
-    
-    {
-                cells.map((item, index) => (
-                  <ComplaintBox id={item.id} resolve={item.resolve} date={item.date} time={item.time} avatar_url={item.avatar_url} user={item.username} title={item.title} subj={item.subject} desc={item.description} prior={item.priority} anon={item.anon} like={item.like} dislike={item.dislike} /> 
-                ))
-            }
+          <header className="App-header3">
+              <p ><b>
+              GT Complaints</b>
+              </p>
+          </header>
+          <button onClick={getData}> Refresh</button > 
+          
+          <div className="Box-center">
+          <br></br>
+          
+          
+            {
+                      cells.map((item, index) => (
+                        <ComplaintBox id={item.id} resolve={item.resolve} date={item.date} time={item.time} avatar_url={item.avatar_url} user={item.username} title={item.title} subj={item.subject} desc={item.description} prior={item.priority} anon={item.anon} like={item.like} dislike={item.dislike} /> 
+                      ))
+                  }
+          
+          </div>
+          <br></br><br></br>
+          
+          
+          
 
-    
-    
-    </div>
-    <br></br><br></br>
-    
-    
-    
-{/*     
-    {cells && <BasicTable columns={columns} data={cells} />}
-    */
-    }
-
-    
-    </div>;
+          
+      </div>;
 };
 
 export default Dashboard;

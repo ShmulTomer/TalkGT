@@ -1,27 +1,16 @@
-
 import { supabase } from '../supabaseClient'
 import { useState } from 'react'
 import { useEffect } from 'react';
 
 
 
-
-
 export default function AddEntry() {
-
-    
-  const [count, setCount] = useState(1);
-  const countHandler = event => setCount(count + 1);
 
   const [desc, setDesc] = useState("Description");
   const [subj, setSubj] = useState("Subject Line");
   const [msg, setMsg] = useState("Enter a new complaint here!");
   
-  const [loading, setLoading] = useState(true)
-  const [username, setUsername] = useState(null)
-  const [title, setTitle] = useState(null)
-  const [email, setEmail] = useState(null)
-  const [avatar_url, setAvatarUrl] = useState(null)
+  const [uuid, setUUID] = useState(null);
 
 
   useEffect(() => {
@@ -44,10 +33,7 @@ export default function AddEntry() {
       }
 
       if (data) {
-        setUsername(data.username)
-        setTitle(data.title)
-        setEmail(data.email)
-        setAvatarUrl(data.avatar_url)
+        setUUID(user.id);
       }
     } catch (error) {
       alert(error.message)
@@ -56,12 +42,17 @@ export default function AddEntry() {
     }
   }
 
-  async function DisplayD(desc, subj, prior, anony) {
+  async function DisplayD(desc, subj, anony) {
     
+    if(subj.length() > 10) {
+      setMsg("The subject must be less than 100 characters.")
+      return;
+    }
+
     const {data, error} = await supabase
-      .from('ComplaintDB')
+      .from('COMPLAINT')
         .insert([
-    { description: desc, subject: subj, priority: prior, avatar_url, avatar_url, username: username, title: title, anon: anony, email: email},])
+          { subj: subj, desc: desc, anon: anony, userID: uuid},])
     
     setDesc("");
     setSubj("");
@@ -81,15 +72,7 @@ return (
             
           </textarea>
           <br></br>
-          {/* <br></br>
-          Priority &nbsp;&nbsp;  
           
-          <label class="switch">
-            <input id='toggle' type="checkbox" />
-            <span class="slider round"></span>
-          </label>
-          
-          <br></br> */}
           <br></br>
           Anonymous &nbsp;&nbsp;  
           
@@ -102,7 +85,7 @@ return (
           <p>
           </p>
             
-          <button onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle').checked, document.querySelector('#toggle2').checked)}> 
+          <button onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle2').checked)}> 
              Submit complaint
           </button > 
           

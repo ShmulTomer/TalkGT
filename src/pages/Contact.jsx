@@ -20,9 +20,9 @@ const Contact = () => {
         Email: &nbsp;&nbsp;tshmul@gatech.edu
         <p></p>
     </div>
-    <div classname="App-text">
-        <AddMessage />
-    </div>
+        <div classname="App-text">
+            <AddMessage />
+        </div>
     </div>;
 };
 

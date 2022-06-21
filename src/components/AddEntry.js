@@ -14,7 +14,6 @@ export default function AddEntry() {
   
   const [uuid, setUUID] = useState(null);
 
-
   useEffect(() => {
     getProfile()
   }, [supabase.auth.session()])
@@ -35,6 +34,7 @@ export default function AddEntry() {
       }
 
       if (data) {
+        setMsg(data.username + " is logged in.")
         setUUID(user.id);
       }
     } catch (error) {

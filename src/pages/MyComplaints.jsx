@@ -7,6 +7,7 @@ import ComplaintBox from "../components/dashboard/ComplaintBox";
 function MyComplaints() {
 
     const [cells, setCells] = useState([]);
+    const [count, setCount] = useState(1);
 
     useEffect(() => {
         getData()
@@ -15,13 +16,14 @@ function MyComplaints() {
     const getData = async () => {
 
         const user = supabase.auth.user()
-        const { data, error } = await supabase
+        const { data, error, count} = await supabase
           .from('COMPLAINT')
-          .select('*')
+          .select('*', { count: 'exact' })
           .eq('userID', user.id)
           .order('id', { ascending: false });
 
       setCells(data);
+      setCount(count);
     };
 
 
@@ -114,9 +116,11 @@ function MyComplaints() {
           </header>
           <button onClick={getData}> Refresh</button > 
           
+
           <div className="Box-center">
           <br></br>
           
+          {(count == 0) ? <div className="Submit-first">"Submit your first complaint to see it here!"</div> : ""}
           
             {
                       cells.map((item, index) => (

@@ -19,11 +19,11 @@ const Add = () => {
   }, [])
 
     return <div className="App">
-        <div className="App-header">  
-            <p ><b>
-            Add your Complaint</b>
-            </p>
-        </div>
+        <header className="App-header3">
+                    <p ><b>
+                    Add your Complaint</b>
+                    </p>
+       </header>
 
         <div className="App-text">
             

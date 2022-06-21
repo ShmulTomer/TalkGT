@@ -4,13 +4,11 @@ import "../styles.css"
 const Start = () => {
      
     return <div className="App">
-    <header className="App-header">
-        <p ><b>
-        Getting Started</b>
-        </p>
-        <p>
-        </p>
-    </header>
+    <header className="App-header3">
+                    <p ><b>
+                    Getting Started</b>
+                    </p>
+       </header>
     <div className="App-header2">
         <b>Creating an Account</b>
     </div>

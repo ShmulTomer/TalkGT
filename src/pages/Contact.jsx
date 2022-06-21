@@ -5,14 +5,11 @@ import AddMessage from "../components/AddMessage";
 const Contact = () => {
      
     return <div className="App">
-    <header className="App-header">
-        <p ><b>
-        Contact Me</b>
-        </p>
-        <p>
-            
-        </p>
-    </header>
+    <header className="App-header3">
+                    <p ><b>
+                    Contact Me</b>
+                    </p>
+       </header>
     <div className="App-text2">
         
         <b>Tomer Shmul</b> 

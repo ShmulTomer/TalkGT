@@ -148,6 +148,69 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
 
     }
 
+    async function Dislike() {
+
+      if (vote == -1) {
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('VOTE')
+        .update({vote: -1})
+        .eq('userID', user.id)
+        .eq('comID', id);
+      
+
+
+        const { data2, error2 } = await supabase
+        .from('VOTE')
+        .select(`dov`)
+        .eq('userID', user.id)
+        .eq('comID', id)
+        .single();
+      
+        if(data2) {
+          setDown(data2.dov + 1);
+        }
+
+        const { data3, error3 } = await supabase
+        .from('VOTE')
+        .update({dov: tempDown})
+        .eq('userID', user.id)
+        .eq('comID', id)
+
+        if (data3) {
+          setDislike(tempDown);
+        }
+        
+    if (vote == 1) {
+      
+      const { data2, error2 } = await supabase
+      .from('VOTE')
+      .select(`upv`)
+      .eq('userID', user.id)
+      .eq('comID', id)
+      .single();
+    
+      if(data2) {
+        setUp(data2.upv - 1);
+      }
+
+      const { data3, error3 } = await supabase
+      .from('VOTE')
+      .update({upv: tempUp})
+      .eq('userID', user.id)
+      .eq('comID', id)
+
+      if (data3) {
+        setLike(tempUp);
+      }
+    }
+
+    setVote(-1);
+
+
+  }
 //
 // .from('profiles')
 //         .select(`username, title, email, avatar_url`)
@@ -292,13 +355,13 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
               {(session) ? 
               <div>
 
-              <button class="greenButton" > 
+              <button class="greenButton" onClick={() => Like()}>
                 &emsp;<i className='bx bx-upvote'></i>&emsp;
                 </button > 
               
               &nbsp;&nbsp; 
               
-              <button class="redButton"> 
+              <button class="redButton" onClick={() => Dislike()}> 
               &emsp;<i className='bx bx-downvote'></i>&emsp;
               </button > 
               &nbsp;&nbsp;

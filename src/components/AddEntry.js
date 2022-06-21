@@ -9,6 +9,8 @@ export default function AddEntry() {
   const [desc, setDesc] = useState("Description");
   const [subj, setSubj] = useState("Subject Line");
   const [msg, setMsg] = useState("Enter a new complaint here!");
+
+  const [loading, setLoading] = useState(false);
   
   const [uuid, setUUID] = useState(null);
 

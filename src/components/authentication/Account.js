@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../../supabaseClient'
 import Avatar from './Avatar'
+import { TextField, Button } from '@mui/material';
 import "../../styles.css"
 
 export default function Account({ session }) {
@@ -71,37 +72,49 @@ export default function Account({ session }) {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p ><b>
-        Account Information</b>
-        </p>
-        <p>
-        </p>
+      <header className="App-header3">
+        <b>
+        My Account</b>
     </header>
+    <br></br>
+    <br></br>
+    <br></br>
     <div className="App-text">
       <div className="input2">
-        <label htmlFor="email">Email: &nbsp;&nbsp;</label>
-        <input id="email" type="text" value={session.user.email} disabled />
-      </div>
+        <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }} multiline={true}
+              variant="filled" label="Email" id="email" value={session.user.email} disabled />
+      
       <br></br>
-      <div>
-        <label htmlFor="username">Name: &nbsp;&nbsp;</label>
-        <input
-          id="username"
-          type="text"
-          value={username || ''}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div>
+      
+        
+        <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }} multiline={true}
+              variant="filled" label="Username" id="username"
+              value={username || ''}
+              onChange={(e) => setUsername(e.target.value)} />
+      
       <br></br>
-      <div>
-        <label htmlFor="title">Title: &nbsp;&nbsp;</label>
-        <input
-          id="title"
-          type="text"
-          value={title || ''}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+      
+
+          <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }} multiline={true}
+              variant="filled" label="Title" id="title"
+              value={title || ''}
+              onChange={(e) => setTitle(e.target.value)} />
+      
       </div>
       <br></br>
       <Avatar

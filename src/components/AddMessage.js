@@ -1,12 +1,13 @@
 import { supabase } from '../supabaseClient'
 import { useState } from 'react'
+import { TextField, Button } from '@mui/material';
 
 
 export default function AddMessage() {
 
-  const [desc, setDesc] = useState("Description");
-  const [name, setName] = useState("Name");
-  const [email, setEmail] = useState("Email address");
+  const [desc, setDesc] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [title, setTitle] = useState("Get in Touch!");
   
 
@@ -23,23 +24,43 @@ export default function AddMessage() {
     setTitle("Your message has been sent!");
   } 
 
+   
 return (
-      <div>
+      <div className="App-text">
         <header>
           <p>
             <b>{title}</b>
               </p>
-              <textarea id='name' value={name} onChange={(e) => setName(e.target.value)} rows="2" cols="30">
-              </textarea>
-              <br></br>
-              <textarea id='email' value={email} onChange={(e) => setEmail(e.target.value)} rows="2" cols="30">
-              </textarea>
-              <br></br>
-              <textarea id='description' value={desc} onChange={(e) => setDesc(e.target.value)} rows="8" cols="60">
-                
-              </textarea>
-              <br></br>
-              <br></br>
+              <div className="input3">
+              <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }}
+              variant="filled" label="Name" id='name' value={name} onChange={(e) => setName(e.target.value)}  />
+              
+              
+
+              <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }}
+              variant="filled" label="Email" id='email' value={email} onChange={(e) => setEmail(e.target.value)} />              
+
+              <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }} multiline={true}
+              variant="filled" label="Description" id='description' value={desc} onChange={(e) => setDesc(e.target.value)} rows="8" />
+
+              </div>
+              
+             
               <p>
               </p>
                 

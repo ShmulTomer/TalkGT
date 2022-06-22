@@ -1,13 +1,15 @@
 import { supabase } from '../supabaseClient'
 import { useState } from 'react'
 import { useEffect } from 'react';
+import { TextField, Button } from '@mui/material';
+import SendSharpIcon from '@mui/icons-material/SendSharp';
 
 
 
 export default function AddEntry() {
 
-  const [desc, setDesc] = useState("Description");
-  const [subj, setSubj] = useState("Subject Line");
+  const [desc, setDesc] = useState("");
+  const [subj, setSubj] = useState("");
   const [msg, setMsg] = useState("Enter a new complaint here!");
 
   const [loading, setLoading] = useState(false);
@@ -68,15 +70,27 @@ return (
           <p>
             {msg}
           </p>
-          <textarea id='subject' value={subj} onChange={(e) => setSubj(e.target.value)} rows="2" cols="30">
-          </textarea>
-          <br></br>
-          <textarea id='description' value={desc} onChange={(e) => setDesc(e.target.value)} rows="10" cols="60">
-            
-          </textarea>
-          <br></br>
+          
+          <div className="input3">
+            <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }} variant="filled" label="Subject" id='subject' value={subj} onChange={(e) => setSubj(e.target.value)} />
           
           <br></br>
+         
+          <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }} multiline={true}
+              variant="filled" label="Description" id='description' value={desc} onChange={(e) => setDesc(e.target.value)} rows="10" />
+          </div>
+          <br></br>
+          
           Anonymous &nbsp;&nbsp;  
           
           <label class="switch">
@@ -88,9 +102,17 @@ return (
           <p>
           </p>
             
-          <button onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle2').checked)}> 
+          {/* <button onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle2').checked)}> 
              Submit complaint
-          </button > 
+          </button >  */}
+          <Button variant="contained" style={{
+                input: {
+                  backgroundColor: "#fffff",
+                  fontSize: "30px"
+                }
+              }} onClick={() => DisplayD(document.getElementById('description').value, document.getElementById('subject').value, document.querySelector('#toggle2').checked)} endIcon={<SendSharpIcon />}>
+            Submit
+          </Button>
           
       
           

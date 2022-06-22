@@ -24,6 +24,11 @@
     width: 220px;
   }
 
+  .input3 {
+    background-color: #ffffff;
+    width: 500px;
+  }
+
   .App-text2 {
     background-color: #282c34;
     min-height: 20px;
@@ -111,6 +116,15 @@
   .Submit-first {
     font-size: 20px;
     margin-top: 100px;
+  }
+
+  .textSub {
+    
+    background: white;
+    width: 500px;
+    margin-top: 10px;
+    justify-content: space-between;
+    
   }
   
   .App-header {
@@ -274,6 +288,11 @@
     opacity: 0;
     width: 0;
     height: 0;
+  }
+
+  .input2 {
+    background-color: white;
+    width: 300px;
   }
   
   /* The slider */

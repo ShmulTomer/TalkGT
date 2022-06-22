@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles.css"
 import AddMessage from "../components/AddMessage";
-import { TextField, Button } from '@mui/material';
+
 
 const Contact = () => {
      
@@ -17,6 +17,7 @@ const Contact = () => {
         
         Email: &nbsp;&nbsp;tshmul@gatech.edu
         <p></p>
+        
     </div>
         <div classname="App-text">
             <AddMessage />

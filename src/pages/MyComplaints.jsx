@@ -54,7 +54,7 @@ function MyComplaints() {
                 </header>
                 
                 
-                <div className="Box-center">
+                <div className="App-text">
                     Log in and submit a complaint to gain access to this page
                 
                 </div>

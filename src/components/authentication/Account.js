@@ -45,6 +45,11 @@ export default function Account({ session }) {
 
   async function updateProfile({ username, title }) {
     try {
+      if (username.length < 2 || title.length < 2) {
+        alert("Please enter a valid username and title.");
+        return;
+      }
+
       setLoading(true)
       const user = supabase.auth.user()
 

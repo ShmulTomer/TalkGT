@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { supabase } from '../../supabaseClient'
 import "../../styles.css"
+import { TextField, Button } from '@mui/material';
 
 export default function Auth() {
   const [loading, setLoading] = useState(false)
@@ -23,21 +24,24 @@ export default function Auth() {
 
   return (
     <div className="App">
-        <div className="App-header">
-          <b>Account Authentication</b>
+        <div className="App-header3">
+          <b>Account Login</b>
              </div>
         
         <div className="App-text">
           <br></br>
-          <br></br>
+          <br></br><br></br><br></br>
           <p>Sign in with your email below</p>
-          <input
-            className="inputField"
-            type="email"
-            placeholder="Your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <div className="input4">
+            <TextField fullWidth sx={{
+                input: {
+                  color: "black",
+                  background: "white"
+                }
+              }}
+              variant="filled" label="Email" id='email' value={email}
+              onChange={(e) => setEmail(e.target.value)} />              
+        </div>
         </div>
 
         <div classname="App-text">

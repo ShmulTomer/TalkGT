@@ -47,7 +47,12 @@ export default function AddEntry() {
 
   async function DisplayD(desc, subj, anony) {
     
-    console.log("Hello");
+    
+
+    if(desc.length < 5 || subj.length < 5) {
+      setMsg("Please enter a valid subject and description.")
+      return;
+    }
 
     if(subj.length > 100) {
       setMsg("The subject must be less than 100 characters.")

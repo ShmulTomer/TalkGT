@@ -92,6 +92,22 @@
     color: white;
   }
 
+  .plugText {
+    justify-content: center;
+    text-align: center;
+    color: rgb(244, 244, 244);
+    position: absolute;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    bottom: 20px;
+    left: 55px;
+    text-decoration: none;
+  border-bottom: #e0ac1c 0.125em solid;
+  text-underline-offset: 3px;
+  
+
+  }
+
   .Submit-first {
     font-size: 20px;
     margin-top: 100px;

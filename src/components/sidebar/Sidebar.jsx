@@ -92,7 +92,11 @@ const Sidebar = () => {
                     </Link>
                 ))
             }
+            
         </div>
+        <a href="http://www.tomershmul.com" target="_blank" className="plugText">
+            Created by Tomer Shmul
+        </a>
     </div>;
 };
 

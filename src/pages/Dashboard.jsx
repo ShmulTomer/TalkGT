@@ -6,7 +6,7 @@ import ComplaintBox from "../components/dashboard/ComplaintBox";
 
 function Dashboard() {
 
-    const [cells, setCells] = useState([]);
+    const [cells, setCell] = useState([]);
 
     const getData = async () => {
         const { data, error } = await supabase
@@ -14,18 +14,21 @@ function Dashboard() {
           .select('*')
           .order('id', { ascending: false });
 
-      setCells(data);
+      setCell(data);
+      // console.log("TESTTTT")
     };
+
+
 
     const [session, setSession] = useState(null)
 
-  useEffect(() => {
-    setSession(supabase.auth.session())
+    useEffect(() => {
+      setSession(supabase.auth.session())
 
-  supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
+      supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session)
+      })
+    }, [])
 
 
     useEffect(() => {
@@ -34,7 +37,7 @@ function Dashboard() {
       
 
      const data = React.useMemo(() => cells, []);
-     //console.log(cells);
+    //  console.log("HELLO WRODL!!!");
 
 
 
@@ -53,12 +56,12 @@ function Dashboard() {
           <div className="Box-center">
           <br></br>
           
-          
+          {console.log("HELLOOO!")}
             {
-                      cells.map((item, index) => (
-                        <ComplaintBox session={session} id={item.id} subj={item.subj} desc={item.desc} upv={item.upv} dov={item.dov} time={item.time} date={item.date} anon={item.anon} userID={item.userID} /> 
-                      ))
-                  }
+              cells.map((item, index) => (
+                 <ComplaintBox key={index} session={session} id={item.id} subj={item.subj} desc={item.desc} upv={item.upv} dov={item.dov} time={item.time} date={item.date} anon={item.anon} userID={item.userID} /> 
+               ))
+            }
           
           </div>
           <br></br><br></br>
@@ -71,5 +74,3 @@ function Dashboard() {
 };
 
 export default Dashboard;
-
-// <ComplaintBox date="2022-01-01" time="9:00" user="Tomer Shmul" title="Student at GT" subj="Example Subject" desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur" prior="true" anon="false" /> 

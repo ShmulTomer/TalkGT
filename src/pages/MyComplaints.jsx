@@ -39,45 +39,6 @@ function MyComplaints() {
   }, [])
 
 
-  
-    const columns = React.useMemo(
-        () => [
-            {
-            Header: "Date",
-            accessor: "date" // accessor is the "key" in the data
-          },
-          {
-            Header: "Time",
-            accessor: "time" // accessor is the "key" in the data
-          },
-          {
-            Header: "Username",
-            accessor: "username" // accessor is the "key" in the data
-          },
-          {
-            Header: "Title",
-            accessor: "title" // accessor is the "key" in the data
-          },
-          {
-            Header: "Subject",
-            accessor: "subject" // accessor is the "key" in the data
-          },
-          {
-            Header: "Description",
-            accessor: "description"
-          },
-          {
-            Header: "Priority",
-            accessor: "priority"
-          },
-          {
-            Header: "Anonymous",
-            accessor: "anon" // accessor is the "key" in the data
-          },
-        ],
-        []
-      );
-
       
 
      const data = React.useMemo(() => cells, []);

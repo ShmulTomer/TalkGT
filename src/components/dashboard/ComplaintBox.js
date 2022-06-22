@@ -2,7 +2,6 @@ import React from "react";
 import '../../styles.css'
 import { supabase } from "../../supabaseClient";
 import { useState, useEffect } from "react";
-import Avatar from "../authentication/Avatar";
 import AvatarIcon from "../authentication/AvatarIcon";
 
 export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, date, anon, userID }) {
@@ -15,8 +14,8 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
   const [mine, setMine] = useState(false);
   const [tempUp, setUp] = useState(null);
   const [tempDown, setDown] = useState(null);
-  const[user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null);
+  
   const [name, setName] = useState(null);
   const [title, setTitle] = useState(null);
   const [avatar_url, setAvatar] = useState(null);
@@ -25,6 +24,9 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
     getProfile()
   }, )
 
+
+  console.log("Hello")
+  
   async function getProfile() {
     try {
       //setUser(supabase.auth.user())
@@ -37,34 +39,27 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
       }
       
 
-      if(session) {
-        // const { data, error } = await supabase
-        //   .from('VOTES')
-        //   .upsert({userID: user.id, comID: id, vote: 0}, { onConflict: 'id' })
-        //   .eq('userID', user.id)
-        //   .eq('comID', id)
+      // if(session) {
+      //   // const { data, error } = await supabase
+      //   //   .from('VOTES')
+      //   //   .upsert({userID: user.id, comID: id, vote: 0}, { onConflict: 'id' })
+      //   //   .eq('userID', user.id)
+      //   //   .eq('comID', id)
           
-          // if(data) {
-          //   setVote(data.vote);
+      //     // if(data) {
+      //     //   setVote(data.vote);
 
-          // } else {
+      //     // } else {
 
-          //   // const {data2, error} = await supabase
-          //   // .from('VOTES')
-          //   // .insert([
-          //   // { userID: user.id, comID: id, vote: 0},])
-          // }
+      //     //   // const {data2, error} = await supabase
+      //     //   // .from('VOTES')
+      //     //   // .insert([
+      //     //   // { userID: user.id, comID: id, vote: 0},])
+      //     // }
 
-      }
+      // }
 
-      if(anon == true) {
-        setName("Anonymous")
-        setTitle("Anonymous User")
-        setAvatar(null)
-        return;
-      }
 
-      setLoading(true)
 
       let { data, error, status } = await supabase
         .from('profiles')
@@ -72,20 +67,27 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
         .eq('id', userID)
         .single()
 
-      // if (error && status !== 406) {
-      //   throw error
-      // }
+      if (error && status !== 406) {
+         throw error
+      }
 
       if (data) {
-        setName(data.username);
-        setTitle(data.title);
-        setAvatar(data.avatar_url);
+        if(anon == true) {
+          setName("Anonymous")
+          setTitle("Anonymous User")
+          setAvatar(null)
+        } else {
+          setName(data.username);
+          setTitle(data.title);
+          setAvatar(data.avatar_url);
+        }
+        
   
       }
     } catch (error) {
       alert(error.message)
     } finally {
-      setLoading(false)
+      
     }
   }
 

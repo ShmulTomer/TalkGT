@@ -66,9 +66,12 @@ const SidebarMobile = () => {
     }, [location]);
 
     return <div className='sidebarmobile'>
+        
         <div className="sidebarmobile__logo">
             
+            <Link to="/" >
             <img src={logo} />
+            </Link>
         </div>
         <div ref={sidebarRef} className="sidebarmobile__menu">
             {/* <div

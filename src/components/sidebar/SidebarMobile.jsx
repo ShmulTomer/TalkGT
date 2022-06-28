@@ -71,13 +71,13 @@ const SidebarMobile = () => {
             <img src={logo} />
         </div>
         <div ref={sidebarRef} className="sidebarmobile__menu">
-            <div
+            {/* <div
                 ref={indicatorRef}
                 className="sidebarmobile__menu__indicator"
                 style={{
                     transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
                 }}
-            ></div>
+            ></div> */}
             {
                 sidebarNavItems.map((item, index) => (
                     <Link to={item.to} key={index} style={{ textDecoration: 'none' }}>

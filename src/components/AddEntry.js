@@ -46,8 +46,6 @@ export default function AddEntry() {
   }
 
   async function DisplayD(desc, subj, anony) {
-    
-    
 
     if(desc.length < 5 || subj.length < 5) {
       setMsg("Please enter a valid subject and description.")

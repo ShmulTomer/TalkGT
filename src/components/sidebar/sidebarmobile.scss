@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 90px;
+    width: 80px;
     background-color: #21242b;
 
     &__logo img {
@@ -15,7 +15,7 @@
 
     &__logo {
         display: block;
-        margin-left: 12px;
+        margin-left: 8px;
         margin-top: 30px;
         margin-bottom: 20px;
         margin-right: auto;
@@ -27,13 +27,13 @@
 
     &__menu {
         position: relative;
-        margin-top: 70px;
+        margin-top: 60px;
 
         &__item {
             display: flex;
             align-items: center;
             place-content: flex-start;
-            padding: 1rem 2rem;
+            padding: 1rem 1.6rem;
             font-size: 1rem;
             font-family: Verdana;
             font-weight: 500;
@@ -42,6 +42,8 @@
 
             &.active {
                 color: #21242b;
+                border-radius: 10px;
+                background-color: #e0ac1c;
             }
 
             &__icon {
@@ -54,15 +56,15 @@
         }
 
         &__indicator {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: calc(100% - 30px);
-            border-radius: 10px;
-            background-color: #e0ac1c;
-            z-index: -1;
-            transform: translateX(-50%);
-            transition: 0.3s ease-in-out;
+            // position: absolute;
+            // top: 0;
+            // left: 50%;
+            // width: calc(100% - 30px);
+            // border-radius: 10px;
+            // background-color: #e0ac1c;
+            // z-index: -1;
+            // transform: translateX(-50%);
+            // transition: 0.3s ease-in-out;
         }
     }
 }

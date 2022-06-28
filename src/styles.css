@@ -26,12 +26,13 @@
 
   .input3 {
     background-color: #ffffff;
-    width: 500px;
+    width: calc(400px+2vmin);
   }
 
   .input4 {
     background-color: #ffffff;
-    width: 300px;
+    width: calc(200px+2vmin);
+
   }
 
   .App-text2 {

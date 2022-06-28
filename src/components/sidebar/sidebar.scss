@@ -28,8 +28,10 @@
     }
 
     &__menu {
-        margin-top: 70px;
+        margin-top: 110px;
         position: relative;
+        margin-left: 10px;
+        margin-right: 10px;
 
         &__item {
             display: flex;
@@ -41,9 +43,13 @@
             font-weight: 500;
             color: #ffffff;
             transition: color 0.3s ease-in-out;
+            
 
             &.active {
                 color: #21242b;
+                border-radius: 15px;
+                background-color: #e0ac1c;
+                
             }
 
             &__icon {
@@ -56,15 +62,15 @@
         }
 
         &__indicator {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: calc(100% - 40px);
-            border-radius: 10px;
-            background-color: #e0ac1c;
-            z-index: -1;
-            transform: translateX(-50%);
-            transition: 0.3s ease-in-out;
+            // position: absolute;
+            // top: 0;
+            // left: 50%;
+            // width: calc(100% - 40px);
+            // border-radius: 10px;
+            // background-color: #e0ac1c;
+            // z-index: -1;
+            // transform: translateX(-50%);
+            // transition: 0.3s ease-in-out;
         }
     }
 }

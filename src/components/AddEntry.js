@@ -68,7 +68,7 @@ export default function AddEntry() {
   } 
 
 return (
-      <div>
+      <div className="App-text">
         <header>
           <p>
             {msg}
@@ -82,7 +82,6 @@ return (
                 }
               }} variant="filled" label="Subject" id='subject' value={subj} onChange={(e) => setSubj(e.target.value)} />
           
-          <br></br>
          
           <TextField fullWidth sx={{
                 input: {
@@ -117,9 +116,9 @@ return (
             Submit
           </Button>
           
+        </header>
       
           
-        </header>
       </div>
   );
 }

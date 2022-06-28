@@ -43,7 +43,7 @@ function Dashboard() {
 
     return <div className="App">
       
-          <header className="App-header3">
+          <header className="App-title">
               <p ><b>
               GT Complaints</b>
               </p>

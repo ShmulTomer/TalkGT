@@ -26,12 +26,12 @@
 
   .input3 {
     background-color: #ffffff;
-    width: calc(400px+2vmin);
+    width: calc(400px + 2vmin);
   }
 
   .input4 {
     background-color: #ffffff;
-    width: calc(200px+2vmin);
+    width: calc(200px + 8vmin);
 
   }
 
@@ -90,7 +90,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: calc(20px + 4vmin);
+    font-size: calc(25px + 4vmin);
     font-family: 'Raleway', sans-serif;
     text-shadow: 6px 3px 4px rgba(0,0,0,0.5);
     color: white;

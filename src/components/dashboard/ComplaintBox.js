@@ -3,6 +3,7 @@ import '../../styles.css'
 import { supabase } from "../../supabaseClient";
 import { useState, useEffect } from "react";
 import AvatarIcon from "../authentication/AvatarIcon";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, date, anon, userID }) {
 
@@ -25,13 +26,40 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
   }, )
 
 
-  console.log("Hello")
   
+  async function loadData() {
+    try {
+      
+        
+      const user = supabase.auth.user()
+
+
+
+      let { data, error, status } = await supabase
+      .from('VOTES')
+      .select(`vote`, { count: 'exact' })
+      .eq('userID', user.id)
+      .eq('comID', id)
+      .single();
+
+      if (error && status !== 406) {
+         throw error
+      }
+
+      if (data) {
+        setVote(data.vote);
+      }
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      
+    }
+  }
+
   async function getProfile() {
     try {
-      //setUser(supabase.auth.user())
+      setUser(supabase.auth.user())
 
-      
       const user = supabase.auth.user()
 
       if (session && userID == user.id) {
@@ -39,25 +67,15 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
       }
       
 
-      // if(session) {
-      //   // const { data, error } = await supabase
-      //   //   .from('VOTES')
-      //   //   .upsert({userID: user.id, comID: id, vote: 0}, { onConflict: 'id' })
-      //   //   .eq('userID', user.id)
-      //   //   .eq('comID', id)
-          
-      //     // if(data) {
-      //     //   setVote(data.vote);
-
-      //     // } else {
-
-      //     //   // const {data2, error} = await supabase
-      //     //   // .from('VOTES')
-      //     //   // .insert([
-      //     //   // { userID: user.id, comID: id, vote: 0},])
-      //     // }
-
-      // }
+      if(session) {
+        
+        let { ins } = await supabase
+          .from('VOTES')
+          .upsert({userID: user.id, comID: id}, {ignoreDuplicates: true})
+        
+          loadData();
+          console.log("here")
+      }
 
 
 
@@ -90,6 +108,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
       
     }
   }
+ 
 
   async function Like() {
 
@@ -110,114 +129,120 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
           .eq('id', id)
           .single();
         
+
+          console.log("test1")
+
           if(data2) {
             setUp(data2.upv + 1);
 
-            const { data3, error3 } = await supabase
-              .from('COMPLAINT')
-              .update({upv: tempUp})
-              .eq('id', id)
+            console.log(tempUp)
+            console.log("test")
+
+      //       const { data3, error3 } = await supabase
+      //         .from('COMPLAINT')
+      //         .update({upv: tempUp})
+      //         .eq('id', id)
 
             
-              setLike(tempUp);
+      //         setLike(tempUp);
             
-          }
+           }
 
 
           
           
-      if (vote == -1) {
+      // if (vote == -1) {
         
-        const { data2, error2 } = await supabase
-        .from('VOTES')
-        .select(`dov`)
-        .eq('userID', user.id)
-        .eq('comID', id)
-        .single();
+      //   const { data2, error2 } = await supabase
+      //   .from('VOTES')
+      //   .select(`dov`)
+      //   .eq('userID', user.id)
+      //   .eq('comID', id)
+      //   .single();
       
-        if(data2) {
-          setDown(data2.dov - 1);
-        }
+      //   if(data2) {
+      //     setDown(data2.dov - 1);
+      //   }
 
-        const { data3, error3 } = await supabase
-        .from('VOTES')
-        .update({dov: tempDown})
-        .eq('userID', user.id)
-        .eq('comID', id)
+      //   const { data3, error3 } = await supabase
+      //   .from('VOTES')
+      //   .update({dov: tempDown})
+      //   .eq('userID', user.id)
+      //   .eq('comID', id)
 
-        if (data3) {
-          setDislike(tempDown);
-        }
-      }
+      //   if (data3) {
+      //     setDislike(tempDown);
+      //   }
+      // }
 
-      setVote(1);
+      // setVote(1);
 
 
     }
 
-    async function Dislike() {
+     async function Dislike() {
 
-      if (vote == -1) {
-        return;
-      }
+  //     if (vote == -1) {
+  //       return;
+  //     }
 
-      const { data, error } = await supabase
-        .from('VOTES')
-        .update({vote: -1})
-        .eq('userID', user.id)
-        .eq('comID', id);
+  //     const { data, error } = await supabase
+  //       .from('VOTES')
+  //       .update({vote: -1})
+  //       .eq('userID', user.id)
+  //       .eq('comID', id);
       
 
 
-        const { data2, error2 } = await supabase
-        .from('VOTES')
-        .select(`dov`)
-        .eq('userID', user.id)
-        .eq('comID', id)
-        .single();
+  //       const { data2, error2 } = await supabase
+  //       .from('VOTES')
+  //       .select(`dov`)
+  //       .eq('userID', user.id)
+  //       .eq('comID', id)
+  //       .single();
       
-        if(data2) {
-          setDown(data2.dov + 1);
-        }
+  //       if(data2) {
+  //         setDown(data2.dov + 1);
+  //       }
 
-        const { data3, error3 } = await supabase
-        .from('VOTES')
-        .update({dov: tempDown})
-        .eq('userID', user.id)
-        .eq('comID', id)
+  //       const { data3, error3 } = await supabase
+  //       .from('VOTES')
+  //       .update({dov: tempDown})
+  //       .eq('userID', user.id)
+  //       .eq('comID', id)
 
-        if (data3) {
-          setDislike(tempDown);
-        }
+  //       if (data3) {
+  //         setDislike(tempDown);
+  //       }
         
-    if (vote == 1) {
+  //   if (vote == 1) {
       
-      const { data2, error2 } = await supabase
-      .from('VOTES')
-      .select(`upv`)
-      .eq('userID', user.id)
-      .eq('comID', id)
-      .single();
+  //     const { data2, error2 } = await supabase
+  //     .from('VOTES')
+  //     .select(`upv`)
+  //     .eq('userID', user.id)
+  //     .eq('comID', id)
+  //     .single();
     
-      if(data2) {
-        setUp(data2.upv - 1);
-      }
+  //     if(data2) {
+  //       setUp(data2.upv - 1);
+  //     }
 
-      const { data3, error3 } = await supabase
-      .from('VOTES')
-      .update({upv: tempUp})
-      .eq('userID', user.id)
-      .eq('comID', id)
+  //     const { data3, error3 } = await supabase
+  //     .from('VOTES')
+  //     .update({upv: tempUp})
+  //     .eq('userID', user.id)
+  //     .eq('comID', id)
 
-      if (data3) {
-        setLike(tempUp);
-      }
-    }
+  //     if (data3) {
+  //       setLike(tempUp);
+  //     }
+  //   }
 
-    setVote(-1);
+  //   setVote(-1);
 
 
-  }
+   }
 //
 // .from('profiles')
 //         .select(`username, title, email, avatar_url`)

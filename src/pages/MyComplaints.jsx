@@ -55,6 +55,9 @@ function MyComplaints() {
                 
                 
                 <div className="App-text">
+                  <br></br>
+                  <br></br>
+                  <br></br>
                     Log in and submit a complaint to gain access to this page
                 
                 </div>

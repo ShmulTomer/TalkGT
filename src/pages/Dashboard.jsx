@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles.css"
-
+import { Link, useLocation } from 'react-router-dom';
 import { supabase } from "../supabaseClient";
 import ComplaintBox from "../components/dashboard/ComplaintBox";
 
@@ -52,7 +52,10 @@ function Dashboard() {
           <br></br>
           <br></br>
           <button onClick={getData}> Refresh</button > 
-          
+          <Link to="/add" >
+          &nbsp;&nbsp;
+          <button> Add</button > 
+          </Link>
           <div className="Box-center">
           <br></br>
           

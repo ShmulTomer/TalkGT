@@ -5,10 +5,13 @@ export default function PleaseLogin() {
         
     return (
         <div className="App">
-           <div className="App-text">
-                <p>
-               Please login under the "Account" tab and then set a <b>name</b> and <b>title</b> to gain ability to add complaint
-               </p>
+           <div className="App-text">   
+            <br></br>
+            <br></br>
+            <br></br>
+               Login under the "Account" tab and set a name 
+               <br></br>and title to gain the ability to add complaint
+               
            </div>
         </div>
     );

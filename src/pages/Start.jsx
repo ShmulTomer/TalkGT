@@ -9,6 +9,8 @@ const Start = () => {
                     Getting Started</b>
                     </p>
        </header>
+    
+    
     <div className="App-header2">
         <b>Creating an Account</b>
     </div>
@@ -36,11 +38,9 @@ const Start = () => {
         <br></br>
         &nbsp;&nbsp; <b>2.</b> &nbsp;Enter a proper subject and description
         <br></br>
-        &nbsp;&nbsp; <b>3.</b> &nbsp;Select whether the complaint is a priority 
-        <br></br>
         &nbsp;&nbsp; <b>4.</b> &nbsp;Decide whether to submit the complaint as anonymous
         <br></br>
-        &nbsp;&nbsp; <b>5.</b> &nbsp;Click "Submit Complaint" to add your complaint
+        &nbsp;&nbsp; <b>5.</b> &nbsp;Click "Submit" to add your complaint
         
         </p>
     </div>

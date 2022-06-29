@@ -16,7 +16,6 @@ function Dashboard() {
           .order('id', { ascending: false });
 
       setCell(data);
-      // console.log("TESTTTT")
     };
 
 
@@ -68,7 +67,6 @@ function Dashboard() {
           <div className="Box-center">
           <br></br>
           
-          {console.log("HELLOOO!")}
             {
               cells.map((item, index) => (
                  <ComplaintBox key={index} session={session} id={item.id} subj={item.subj} desc={item.desc} upv={item.upv} dov={item.dov} timedate={item.timedate} anon={item.anon} userID={item.userID} /> 

@@ -6,7 +6,7 @@ import ReplyBox from "./ReplyBox";
 import AvatarIcon from "../authentication/AvatarIcon";
 import { CompressOutlined, ConstructionOutlined } from "@mui/icons-material";
 import { getAccordionDetailsUtilityClass } from "@mui/material";
-import { FaEye, FaEyeSlash, FaTrash, FaCheck, FaArrowUp, FaPlus, FaArrowDown, FaReply, FaClock } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaTrash, FaCheck, FaArrowUp, FaPlus, FaArrowDown, FaComment, FaClock } from "react-icons/fa";
 import { TextField, Button } from '@mui/material';
 import { ImCross } from "react-icons/im";
 import ReactTimeAgo from "react-time-ago";
@@ -470,7 +470,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, timeda
 
               &nbsp;&nbsp; 
               <button onClick={() => clickReply()}> 
-                  &emsp;<FaReply />&emsp;
+                  &emsp;<FaComment />&emsp;
               </button >  
               
               </div>
@@ -521,7 +521,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, timeda
 
             {
               cells.map((item, index) => (
-                <ReplyBox owner={userID} ownerAnon={anon} comment={item.comment} anon={item.anon} userID={item.userID} timedate={item.timedate}/>
+                <ReplyBox key={index} owner={userID} ownerAnon={anon} comment={item.comment} anon={item.anon} userID={item.userID} timedate={item.timedate}/>
                ))
             }
             

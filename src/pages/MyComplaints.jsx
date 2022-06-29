@@ -80,10 +80,10 @@ function MyComplaints() {
               My Complaints</b>
               </p>
           </header>
-          <button onClick={getData}> <FaRedo /></button > 
+          <button className="hover" onClick={getData}> <FaRedo /></button > 
           <Link to="/add" >
           &nbsp;&nbsp;
-          <button> <FaPlus /></button > 
+          <button className="hover"> <FaPlus /></button > 
           </Link>
 
           <div className="Box-center">

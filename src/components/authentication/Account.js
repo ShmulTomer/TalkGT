@@ -37,7 +37,7 @@ export default function Account({ session }) {
         setAvatarUrl(data.avatar_url)
       }
     } catch (error) {
-      alert(error.message)
+      console.error(error.message);
     } finally {
       setLoading(false)
     }
@@ -69,7 +69,7 @@ export default function Account({ session }) {
         throw error
       }
     } catch (error) {
-      alert(error.message)
+      console.error(error.message);
     } finally {
       setLoading(false)
     }

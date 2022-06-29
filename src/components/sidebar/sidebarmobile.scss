@@ -29,6 +29,12 @@
         position: relative;
         margin-top: 60px;
 
+        &__item:hover {
+            
+            font-weight: 900;
+            text-shadow: 0 0 10px #FFFFFF;
+        }
+
         &__item {
             display: flex;
             align-items: center;
@@ -44,6 +50,10 @@
                 color: #21242b;
                 border-radius: 10px;
                 background-color: #e0ac1c;
+            }
+
+            &.active:hover {
+                text-shadow: none;
             }
 
             &__icon {

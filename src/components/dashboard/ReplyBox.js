@@ -57,7 +57,7 @@ export default function ReplyBox({owner, ownerAnon, comment, anon, userID, timed
       
           }
         } catch (error) {
-          alert(error.message)
+          console.error(error.message);
         } finally {
           
         }

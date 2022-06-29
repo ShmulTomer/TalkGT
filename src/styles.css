@@ -471,11 +471,19 @@
   }
 
   @media screen and (max-width: 600px) {
-    .boxR {
+    /* .boxR {
       width: 300px;
+    } */
+
+    .Box-center {
+      padding-left: 140px;
     }
 
-    .box {
-      width: 300px;
+    .dbIcons {
+      padding-left: 140px;
+    }
+
+    .App-title {
+      padding-left: 140px;
     }
   }

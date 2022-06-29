@@ -7,8 +7,8 @@ PRIORITY:
 - ability to resolve "mine" complaint
 - upvote/downvote capability
 - use MUI for more components (i.e. buttons)
-- clean/fix up CSS
-- responsive wed design
+- clean up CSS
+- responsive web design
 
 
 To Do:

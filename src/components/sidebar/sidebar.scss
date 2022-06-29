@@ -33,23 +33,38 @@
         margin-left: 10px;
         margin-right: 10px;
 
+
+        &__item:hover {
+            
+            font-weight: 900;
+            text-shadow: 0 0 10px #FFFFFF;
+        }
+
         &__item {
             display: flex;
             align-items: center;
+            
+            
             place-content: flex-start;
             padding: 1rem 3rem;
+            
             font-size: 1.25rem;
             font-family: 'Ubuntu', sans-serif;
             font-weight: 500;
             color: #ffffff;
             transition: color 0.3s ease-in-out;
             
+        
 
             &.active {
                 color: #21242b;
                 border-radius: 15px;
                 background-color: #e0ac1c;
                 
+            }
+
+            &.active:hover {
+                text-shadow: none;
             }
 
             &__icon {

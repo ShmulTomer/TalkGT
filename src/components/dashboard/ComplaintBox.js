@@ -95,7 +95,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, timeda
         setVote(data.vote);
       }
     } catch (error) {
-      alert(error.message)
+      console.error(error.message);
     } finally {
       
     }
@@ -148,7 +148,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, timeda
   
       }
     } catch (error) {
-      alert(error.message)
+      console.error(error.message);
     } finally {
       
     }
@@ -451,13 +451,13 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, timeda
               <div>
 
               <button class="greenButton" onClick={() => Like()}>
-                &nbsp;<FaArrowUp />&nbsp;
+                  <FaArrowUp />
                 </button > 
               
               &nbsp;&nbsp; 
               
               <button class="redButton" onClick={() => Dislike()}> 
-              &nbsp;<FaArrowDown />&nbsp;
+                <FaArrowDown />
               </button > 
               &nbsp;&nbsp;
               {(mine) ? <button onClick={() => { if (window.confirm('Are you sure you want to resolve this complaint?')) Resolve()}}> 

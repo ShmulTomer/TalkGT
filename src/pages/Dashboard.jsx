@@ -51,6 +51,7 @@ function Dashboard() {
           {(!session) ? <div>Login to gain access to voting and replying.</div> : <></>}
           
           <br></br>
+          <div className="dbIcons">
           <button className="hover" nClick={() => getData()}> <FaRedo /></button > 
           <Link to="/add" >
           &nbsp;&nbsp;
@@ -64,6 +65,7 @@ function Dashboard() {
           &nbsp;&nbsp;
           <button className="hover"> <FaQuestion /></button > 
           </Link>
+          </div>
           <div className="Box-center">
           <br></br>
           

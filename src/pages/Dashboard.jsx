@@ -51,18 +51,18 @@ function Dashboard() {
           {(!session) ? <div>Login to gain access to voting and replying.</div> : <></>}
           
           <br></br>
-          <button onClick={() => getData()}> <FaRedo /></button > 
+          <button className="hover" nClick={() => getData()}> <FaRedo /></button > 
           <Link to="/add" >
           &nbsp;&nbsp;
-          <button> <FaPlus /></button > 
+          <button className="hover"> <FaPlus /></button > 
           </Link>
           <Link to="/mycomplaints" >
           &nbsp;&nbsp;
-          <button> <FaChild /></button > 
+          <button className="hover"> <FaChild /></button > 
           </Link>
           <Link to="/start" >
           &nbsp;&nbsp;
-          <button> <FaQuestion /></button > 
+          <button className="hover"> <FaQuestion /></button > 
           </Link>
           <div className="Box-center">
           <br></br>

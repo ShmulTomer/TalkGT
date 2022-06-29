@@ -190,6 +190,12 @@
     text-align: center;
     
   }
+  .hover {
+    transition: all .2s ease-in-out; 
+  }
+  .hover:hover {
+    transform: scale(1.2);
+  }
 
   .box {
     border-radius: 25px;

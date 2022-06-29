@@ -8,6 +8,7 @@ PRIORITY:
 - upvote/downvote capability
 - use MUI for more components (i.e. buttons)
 - clean/fix up CSS
+- responsive wed design
 
 
 To Do:

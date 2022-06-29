@@ -24,6 +24,11 @@
     width: 220px;
   }
 
+  .input2 {
+    background-color: white;
+    width: 300px;
+  }
+
   .input3 {
     background-color: #ffffff;
     width: calc(400px + 2vmin);
@@ -33,6 +38,12 @@
     background-color: #ffffff;
     width: calc(200px + 8vmin);
 
+  }
+
+  .input-reply {
+    
+    font-size: 13px;
+    margin-botton: 14px;
   }
 
   .container2 {
@@ -230,6 +241,15 @@
     flex-direction: row;
   }
 
+  .reply-user {
+    font-size: 12px;
+    text-align: right; 
+    display: flex;
+    flex-direction: row;
+    
+
+  }
+
   .boxR-user {
     font-size: 20px;
     text-align: left; 
@@ -254,6 +274,34 @@
     text-align: right; 
   }
 
+  .box-right2 {
+    font-size: 13px;
+    text-align: right; 
+  }
+
+  .box-right3 {
+    font-size: 13px;
+    text-align: center; 
+    margin-top: 4px;
+    margin-left: 3px;
+  }
+
+  .test1 {
+    display: inline-block;
+    margin-right: 7px;
+  }
+
+  .test2 {
+    display: inline-block;
+
+  }
+
+  .test3 {
+    display: inline-block;
+    color:#e0ac1c;
+  }
+
+
   .boxR-right {
     font-size: 14px;
     text-align: right; 
@@ -262,12 +310,28 @@
 
   .likeDisplay {
     font-size: 20px;
+    margin-top: 5px;
   }
 
   .grid-container {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 20px;
+}
+
+  .comment-text {
+    text-align: left;
+    font-size: 12px;
+    inline-size: 300px;
+    overflow-wrap: break-word;
+
+  }
+
+.grid-container2 {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 10px;
 }
   
   textarea {
@@ -315,10 +379,7 @@
     height: 0;
   }
 
-  .input2 {
-    background-color: white;
-    width: 300px;
-  }
+  
   
   /* The slider */
   .slider {

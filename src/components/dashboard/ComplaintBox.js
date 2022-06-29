@@ -2,16 +2,24 @@ import React from "react";
 import '../../styles.css'
 import { supabase } from "../../supabaseClient";
 import { useState, useEffect } from "react";
+import ReplyBox from "./ReplyBox";
 import AvatarIcon from "../authentication/AvatarIcon";
-import { ConstructionOutlined } from "@mui/icons-material";
+import { CompressOutlined, ConstructionOutlined } from "@mui/icons-material";
 import { getAccordionDetailsUtilityClass } from "@mui/material";
-import { FaTrash, FaCheck, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaTrash, FaCheck, FaArrowUp, FaPlus, FaArrowDown, FaReply, FaClock } from "react-icons/fa";
+import { TextField, Button } from '@mui/material';
+import { ImCross } from "react-icons/im";
+import ReactTimeAgo from "react-time-ago";
 
-export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, date, anon, userID }) {
+export default function ComplaintBox({ session, id, subj, desc, upv, dov, timedate, anon, userID }) {
 
   const [like, setLike] = useState(upv);
   const [dislike, setDislike] = useState(dov);
   
+  const [inReply, setReply] = useState(false);
+  const [anonReply, setAnon] = useState(false);
+  
+  const [comment, setComment] = useState("This is a comment text. I completely agree with this complaint but I think there are many problems")
 
   const [del, setDelete] = useState(false);
 
@@ -25,19 +33,52 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
   const [title, setTitle] = useState(null);
   const [avatar_url, setAvatar] = useState(null);
 
+  const [cells, setCell] = useState([]);
+
+    const getData = async () => {
+        const { data, error } = await supabase
+          .from('REPLY')
+          .select('*')
+          .eq("comID", id)
+          .order('id');
+
+      setCell(data);
+    };
+
+
+    useEffect(() => {
+      getData()
+    }, []);
+    
+    const data = React.useMemo(() => cells, []);
+
+
   useEffect(() => {
     getProfile()
   }, )
 
+  async function clickReply() {
 
+    setReply(!inReply);
+    
+  }
   
+  async function clickAnon() {
+
+    setAnon(!anonReply);
+  }
+
+  async function Resolve() {
+
+  }
+
   async function loadData() {
     try {
       
         
       const user = supabase.auth.user()
 
-
+      setUser(user);
 
       let { data, error, status } = await supabase
       .from('VOTES')
@@ -78,7 +119,6 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
           .upsert({userID: user.id, comID: id}, {ignoreDuplicates: true})
         
           loadData();
-          console.log("here")
       }
 
 
@@ -98,6 +138,7 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
           setName("Anonymous")
           setTitle("Anonymous User")
           setAvatar(null)
+          
         } else {
           setName(data.username);
           setTitle(data.title);
@@ -113,8 +154,29 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
     }
   }
 
-  async function Delete() {
+  async function submitReply(reply) {
+    
+    if (reply.length < 5) {
+      alert("Replies must be over 5 characters.");
+      return;
+    }
 
+    if (reply.length > 100) {
+      alert("Replies must be under 100 characters.");
+      return;
+    }
+
+    const {data, error} = await supabase
+    .from('REPLY')
+      .insert([
+        { comID: id, userID: user.id, comment: reply, anon: anonReply},])
+    
+    clickReply();
+    getData();
+  }
+
+  async function Delete() {
+    
   
       const { data, error } = await supabase
       .from('COMPLAINT')
@@ -145,13 +207,11 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
           .single();
         
 
-          console.log("test1")
+          
 
           if(data2) {
             setUp(data2.upv + 1);
 
-            console.log(tempUp)
-            console.log("test")
 
       //       const { data3, error3 } = await supabase
       //         .from('COMPLAINT')
@@ -372,13 +432,12 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
 
                 <div className="grid2"> 
                   <div className="box-right">
-                    <i className='bx bx-time'></i> &nbsp;{date} at {time.substring(0,5)}
+                    <FaClock />&nbsp;<ReactTimeAgo date={timedate} locale="en-US"/>
                     <br></br>
-                    
               
                     <div className="likeDisplay">
                       
-                      <i className='bx bx-upvote'></i>&nbsp;{like} &emsp;<i className='bx bx-downvote'></i>&nbsp;{dislike} 
+                      <FaArrowUp />&nbsp;{like} &emsp;<FaArrowDown />&nbsp;{dislike} 
                     </div>
                   </div>
 
@@ -401,24 +460,73 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
               &nbsp;<FaArrowDown />&nbsp;
               </button > 
               &nbsp;&nbsp;
-              {(mine) ? <button > 
+              {(mine) ? <button onClick={() => { if (window.confirm('Are you sure you want to resolve this complaint?')) Resolve()}}> 
               &emsp;<FaCheck />&emsp;
               </button > : "" } 
               &nbsp;&nbsp;
-              {(mine) ? <button class="redButton" onClick={() => Delete()}> 
+              {(mine) ? <button class="redButton" onClick={() => { if (window.confirm('Are you sure you want to delete this complaint?')) Delete()}}> 
               &emsp;<FaTrash />&emsp;
               </button > : "" } 
 
               &nbsp;&nbsp; 
-              <button > 
-                  &emsp;Reply&emsp;
+              <button onClick={() => clickReply()}> 
+                  &emsp;<FaReply />&emsp;
               </button >  
               
               </div>
               : <></> }
 
+            <br></br>
+
+            {(inReply) ? 
+            <div className="grid-container2">
+            <div className="input-reply">
+                
+              <TextField fullWidth sx={{
+                  input: {
+                    color: "black",
+                    background: "white",
+                    borderRadius: 2,
+                    fontWeight: 'fontWeightLight',
+                    fontSize: 13
+                  }
+                }}
+                 variant="filled" size="small" label="Comment" id='reply'  />              
+           
+           
+            </div>
+                <div className="box-right3">
+                <button onClick={() => clickAnon()}>
+                  {(!anonReply) ?
+                    <FaEye /> : <FaEyeSlash />}
+                    </button > 
+                    &nbsp;
+                    
+                    <button class="greenButton" onClick={() => submitReply(document.getElementById('reply').value)}>
+                    <FaPlus />
+                    </button > 
+                  
+                  &nbsp;
+                  
+                  <button class="redButton" onClick={() => clickReply()}> 
+                  <ImCross />
+                  </button >  
+
+                </div>
+            </div>
+            : <></> }
+
               
             </div>
+
+            {
+              cells.map((item, index) => (
+                <ReplyBox owner={userID} ownerAnon={anon} comment={item.comment} anon={item.anon} userID={item.userID} timedate={item.timedate}/>
+               ))
+            }
+            
+            
+            
           </div>
             <br></br>
         </div>;

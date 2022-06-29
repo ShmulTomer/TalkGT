@@ -3,7 +3,7 @@ import "../styles.css"
 import { Link, useLocation } from 'react-router-dom';
 import { supabase } from "../supabaseClient";
 import ComplaintBox from "../components/dashboard/ComplaintBox";
-import { FaRedo, FaChild, FaPlus } from "react-icons/fa";
+import { FaRedo, FaChild, FaPlus , FaQuestion} from "react-icons/fa";
 
 function Dashboard() {
 
@@ -52,7 +52,7 @@ function Dashboard() {
           {(!session) ? <div>Login to gain access to voting and replying.</div> : <></>}
           
           <br></br>
-          <button onClick={getData}> <FaRedo /></button > 
+          <button onClick={() => getData()}> <FaRedo /></button > 
           <Link to="/add" >
           &nbsp;&nbsp;
           <button> <FaPlus /></button > 
@@ -61,13 +61,17 @@ function Dashboard() {
           &nbsp;&nbsp;
           <button> <FaChild /></button > 
           </Link>
+          <Link to="/start" >
+          &nbsp;&nbsp;
+          <button> <FaQuestion /></button > 
+          </Link>
           <div className="Box-center">
           <br></br>
           
           {console.log("HELLOOO!")}
             {
               cells.map((item, index) => (
-                 <ComplaintBox key={index} session={session} id={item.id} subj={item.subj} desc={item.desc} upv={item.upv} dov={item.dov} time={item.time} date={item.date} anon={item.anon} userID={item.userID} /> 
+                 <ComplaintBox key={index} session={session} id={item.id} subj={item.subj} desc={item.desc} upv={item.upv} dov={item.dov} timedate={item.timedate} anon={item.anon} userID={item.userID} /> 
                ))
             }
           

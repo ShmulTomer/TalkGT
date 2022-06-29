@@ -93,7 +93,7 @@ function MyComplaints() {
           
             {
                       cells.map((item, index) => (
-                        <ComplaintBox session={session} id={item.id} subj={item.subj} desc={item.desc} upv={item.upv} dov={item.dov} time={item.time} date={item.date} anon={item.anon} userID={item.userID} /> 
+                        <ComplaintBox key={index} session={session} id={item.id} subj={item.subj} desc={item.desc} upv={item.upv} dov={item.dov} timedate={item.timedate} anon={item.anon} userID={item.userID} /> 
                       ))
                   }
           

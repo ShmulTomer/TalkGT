@@ -480,21 +480,22 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, timeda
 
             {(inReply) ? 
             <div className="grid-container2">
-            <div className="input-reply">
-                
-              <TextField fullWidth sx={{
-                  input: {
-                    color: "black",
-                    background: "white",
-                    borderRadius: 2,
-                    fontWeight: 'fontWeightLight',
-                    fontSize: 13
-                  }
-                }}
-                 variant="filled" size="small" label="Comment" id='reply'  />              
-           
-           
-            </div>
+              <div className="input-reply">
+                  
+                <TextField fullWidth sx={{
+                    input: {
+                      color: "black",
+                      background: "white",
+                      borderRadius: 2,
+                      fontWeight: 'fontWeightLight',
+                      fontSize: 13
+                    }
+                  }}
+                  variant="filled" size="small" label="Comment" id='reply'  />              
+            
+            
+              </div>
+              
                 <div className="box-right3">
                 <button onClick={() => clickAnon()}>
                   {(!anonReply) ?

@@ -464,7 +464,7 @@
     border: 1px solid var(--custom-color-brand);
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 600px) {
     .boxR {
       width: 300px;
     }

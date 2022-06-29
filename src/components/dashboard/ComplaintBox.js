@@ -4,12 +4,16 @@ import { supabase } from "../../supabaseClient";
 import { useState, useEffect } from "react";
 import AvatarIcon from "../authentication/AvatarIcon";
 import { ConstructionOutlined } from "@mui/icons-material";
+import { getAccordionDetailsUtilityClass } from "@mui/material";
+import { FaTrash, FaCheck, FaArrowUp, FaArrowDown } from "react-icons/fa";
 
 export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, date, anon, userID }) {
 
   const [like, setLike] = useState(upv);
   const [dislike, setDislike] = useState(dov);
   
+
+  const [del, setDelete] = useState(false);
 
   const [vote, setVote] = useState(0);
   const [mine, setMine] = useState(false);
@@ -107,6 +111,17 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
     } finally {
       
     }
+  }
+
+  async function Delete() {
+
+  
+      const { data, error } = await supabase
+      .from('COMPLAINT')
+      .delete()
+      .eq('id', id)
+
+      setDelete(true);
   }
  
 
@@ -314,6 +329,9 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
     // }
 
     
+   if (del) {
+     return <div></div>;
+   }
 
     return <div className="App">
 
@@ -368,33 +386,36 @@ export default function ComplaintBox({ session, id, subj, desc, upv, dov, time, 
             </div>
 
             <div>
-                <br></br>
               
               &nbsp;&nbsp; 
               {(session) ? 
               <div>
 
               <button class="greenButton" onClick={() => Like()}>
-                &emsp;<i className='bx bx-upvote'></i>&emsp;
+                &nbsp;<FaArrowUp />&nbsp;
                 </button > 
               
               &nbsp;&nbsp; 
               
               <button class="redButton" onClick={() => Dislike()}> 
-              &emsp;<i className='bx bx-downvote'></i>&emsp;
+              &nbsp;<FaArrowDown />&nbsp;
               </button > 
               &nbsp;&nbsp;
               {(mine) ? <button > 
-              &emsp;Resolve&emsp;
+              &emsp;<FaCheck />&emsp;
               </button > : "" } 
-              
+              &nbsp;&nbsp;
+              {(mine) ? <button class="redButton" onClick={() => Delete()}> 
+              &emsp;<FaTrash />&emsp;
+              </button > : "" } 
+
               &nbsp;&nbsp; 
               <button > 
                   &emsp;Reply&emsp;
               </button >  
               
               </div>
-              : "" }
+              : <></> }
 
               
             </div>

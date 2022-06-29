@@ -3,6 +3,7 @@ import "../styles.css"
 import { Link, useLocation } from 'react-router-dom';
 import { supabase } from "../supabaseClient";
 import ComplaintBox from "../components/dashboard/ComplaintBox";
+import { FaRedo, FaChild, FaPlus } from "react-icons/fa";
 
 function Dashboard() {
 
@@ -48,13 +49,17 @@ function Dashboard() {
               GT Complaints</b>
               </p>
           </header>
-          {(!session) ? "Login to gain access to voting and replying." : ""}
+          {(!session) ? <div>Login to gain access to voting and replying.</div> : <></>}
+          
           <br></br>
-          <br></br>
-          <button onClick={getData}> Refresh</button > 
+          <button onClick={getData}> <FaRedo /></button > 
           <Link to="/add" >
           &nbsp;&nbsp;
-          <button> Add</button > 
+          <button> <FaPlus /></button > 
+          </Link>
+          <Link to="/mycomplaints" >
+          &nbsp;&nbsp;
+          <button> <FaChild /></button > 
           </Link>
           <div className="Box-center">
           <br></br>

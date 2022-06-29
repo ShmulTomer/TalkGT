@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import "../styles.css"
 
 import { supabase } from "../supabaseClient";
+import { Link, useLocation } from 'react-router-dom';
 import ComplaintBox from "../components/dashboard/ComplaintBox";
+import { FaRedo, FaPlus } from "react-icons/fa";
 
 function MyComplaints() {
 
@@ -78,8 +80,11 @@ function MyComplaints() {
               My Complaints</b>
               </p>
           </header>
-          <button onClick={getData}> Refresh</button > 
-          
+          <button onClick={getData}> <FaRedo /></button > 
+          <Link to="/add" >
+          &nbsp;&nbsp;
+          <button> <FaPlus /></button > 
+          </Link>
 
           <div className="Box-center">
           <br></br>

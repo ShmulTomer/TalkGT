@@ -4,7 +4,7 @@ Project by Tomer Shmul
 - using React JS, Supabase Database, AWS
 
 PRIORITY:
-- ability to resolve & delete "mine" complaints
+- ability to resolve "mine" complaints
 - reply capability
 - upvote/downvote capability
 - use MUI for more components (i.e. buttons)

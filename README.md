@@ -16,4 +16,3 @@ To Do:
 - email replies
 - Sorting and filter feature, searching
 - Followed/Starred Complaints to my Complaints Tab
-

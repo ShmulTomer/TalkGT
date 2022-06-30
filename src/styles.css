@@ -131,6 +131,8 @@
   font-size: 18px;
   text-align: center;
   color: #26bb5d;
+  margin-top: -10px;
+  margin-bottom: 8px;
 }
 
 .comLine {
@@ -225,37 +227,16 @@
   border: 5px solid #31ac50;
 }
 
-.boxR {
-  border-radius: 25px;
-  border: 5px solid #31ac50;
-  padding: 30px 30px 30px 30px;
-  max-width: 500px;
-  width: 500px;
-}
-
 .box-subject {
   font-size: 21px;
   font-weight: 700 !important;
   text-align: left;
 }
 
-.boxR-subject {
-  font-size: 20px;
-  text-align: left;
-  color: rgb(153, 153, 153);
-}
-
 .box-description {
   font-size: 13px;
   text-align: left;
   min-height: 60px;
-}
-
-.boxR-description {
-  font-size: 13px;
-  text-align: left;
-  min-height: 60px;
-  color: rgb(153, 153, 153);
 }
 
 .box-user {
@@ -272,23 +253,9 @@
   flex-direction: row;
 }
 
-.boxR-user {
-  font-size: 20px;
-  text-align: left;
-  display: flex;
-  flex-direction: row;
-  color: rgb(153, 153, 153);
-}
-
 .box-title {
   font-size: 16px;
   text-align: left;
-}
-
-.boxR-title {
-  font-size: 16px;
-  text-align: left;
-  color: rgb(153, 153, 153);
 }
 
 .box-right {
@@ -320,12 +287,6 @@
 .test3 {
   display: inline-block;
   color: #e0ac1c;
-}
-
-.boxR-right {
-  font-size: 14px;
-  text-align: right;
-  color: rgb(153, 153, 153);
 }
 
 .likeDisplay {
@@ -534,10 +495,6 @@ button.primary,
 }
 
 @media screen and (max-width: 600px) {
-  /* .boxR {
-      width: 300px;
-    } */
-
   .Box-center {
     padding-left: 140px;
   }

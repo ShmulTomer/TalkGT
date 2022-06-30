@@ -188,112 +188,120 @@ export default function ComplaintBox({
   }
 
   async function Like() {
-    if (vote == 1) {
-      return;
+    if (vote == 0) {
+
+      //change VOTE value to 1
+      const { data, error } = await supabase
+        .from("VOTES")
+        .update({ vote: 1 })
+        .eq("userID", user.id)
+        .eq("comID", id);
+      // change vote value to 1
+      setVote(1);
+      // increment COMPLAINT like value by 1
+      const { data2, error2 } = await supabase
+        .rpc('changelike', { x: 1, com_id: id })
+      // increment like value by 1
+      setLike(like + 1);
+
+
+    } else if (vote == 1) {
+      // set VOTE table value to 0
+      const { data, error } = await supabase
+        .from("VOTES")
+        .update({ vote: 0 })
+        .eq("userID", user.id)
+        .eq("comID", id);
+      // set vote value to 0
+      setVote(0);
+      // increment COMPLAINT like value by -1 !
+      const { data2, error2 } = await supabase
+        .rpc('changelike', { x: -1, com_id: id })
+      // increment like value by -1
+      setLike(like - 1);
+
+    } else if (vote == -1) {
+      //change VOTE value to 1
+      const { data, error } = await supabase
+        .from("VOTES")
+        .update({ vote: 1 })
+        .eq("userID", user.id)
+        .eq("comID", id);
+        console.log("test!!!")
+      // change vote value to 1
+      setVote(1);
+      // increment COMPLAINT like value by 1
+      const { data2, error2 } = await supabase
+        .rpc('changelike', { x: 1, com_id: id })
+      // increment like value by 1
+      setLike(like + 1);
+      // decrement COMPLAINT dislike value by 1
+      const { data3, error3 } = await supabase
+        .rpc('changedislike', { x: -1, com_id: id })
+      // decrement dislike value by 1
+      setDislike(dislike - 1);
     }
 
-    const { data, error } = await supabase
-      .from("VOTES")
-      .update({ vote: 1 })
-      .eq("userID", user.id)
-      .eq("comID", id);
-
-    const { data2, error2 } = await supabase
-      .from("COMPLAINT")
-      .select(`upv`)
-      .eq("id", id)
-      .single();
-
-    if (data2) {
-      setUp(data2.upv + 1);
-
-      //       const { data3, error3 } = await supabase
-      //         .from('COMPLAINT')
-      //         .update({upv: tempUp})
-      //         .eq('id', id)
-
-      //         setLike(tempUp);
-    }
-
-    // if (vote == -1) {
-
-    //   const { data2, error2 } = await supabase
-    //   .from('VOTES')
-    //   .select(`dov`)
-    //   .eq('userID', user.id)
-    //   .eq('comID', id)
-    //   .single();
-
-    //   if(data2) {
-    //     setDown(data2.dov - 1);
-    //   }
-
-    //   const { data3, error3 } = await supabase
-    //   .from('VOTES')
-    //   .update({dov: tempDown})
-    //   .eq('userID', user.id)
-    //   .eq('comID', id)
-
-    //   if (data3) {
-    //     setDislike(tempDown);
-    //   }
-    // }
-
-    // setVote(1);
+    
+    
   }
 
   async function Dislike() {
-    //     if (vote == -1) {
-    //       return;
-    //     }
-    //     const { data, error } = await supabase
-    //       .from('VOTES')
-    //       .update({vote: -1})
-    //       .eq('userID', user.id)
-    //       .eq('comID', id);
-    //       const { data2, error2 } = await supabase
-    //       .from('VOTES')
-    //       .select(`dov`)
-    //       .eq('userID', user.id)
-    //       .eq('comID', id)
-    //       .single();
-    //       if(data2) {
-    //         setDown(data2.dov + 1);
-    //       }
-    //       const { data3, error3 } = await supabase
-    //       .from('VOTES')
-    //       .update({dov: tempDown})
-    //       .eq('userID', user.id)
-    //       .eq('comID', id)
-    //       if (data3) {
-    //         setDislike(tempDown);
-    //       }
-    //   if (vote == 1) {
-    //     const { data2, error2 } = await supabase
-    //     .from('VOTES')
-    //     .select(`upv`)
-    //     .eq('userID', user.id)
-    //     .eq('comID', id)
-    //     .single();
-    //     if(data2) {
-    //       setUp(data2.upv - 1);
-    //     }
-    //     const { data3, error3 } = await supabase
-    //     .from('VOTES')
-    //     .update({upv: tempUp})
-    //     .eq('userID', user.id)
-    //     .eq('comID', id)
-    //     if (data3) {
-    //       setLike(tempUp);
-    //     }
-    //   }
-    //   setVote(-1);
+    if (vote == 0) {
+
+      //change VOTE value to -1
+      const { data, error } = await supabase
+        .from("VOTES")
+        .update({ vote: -1 })
+        .eq("userID", user.id)
+        .eq("comID", id);
+      // change vote value to -1
+      setVote(-1);
+      // increment COMPLAINT dislike value by 1
+      const { data2, error2 } = await supabase
+        .rpc('changedislike', { x: 1, com_id: id })
+      // increment dislike value by 1
+      setDislike(dislike + 1);
+
+
+    } else if (vote == -1) {
+      // set VOTE table value to 0
+      const { data, error } = await supabase
+        .from("VOTES")
+        .update({ vote: 0 })
+        .eq("userID", user.id)
+        .eq("comID", id);
+      // set vote value to 0
+      setVote(0);
+      // increment COMPLAINT dislike value by -1 !
+      const { data2, error2 } = await supabase
+        .rpc('changedislike', { x: -1, com_id: id })
+      // increment dislike value by -1
+      setDislike(dislike - 1);
+
+    } else if (vote == 1) {
+      //change VOTE value to -1
+      const { data, error } = await supabase
+        .from("VOTES")
+        .update({ vote: -1 })
+        .eq("userID", user.id)
+        .eq("comID", id);
+        console.log("test!!!")
+      // change vote value to -1
+      setVote(-1);
+      // increment COMPLAINT dislike value by 1
+      const { data2, error2 } = await supabase
+        .rpc('changedislike', { x: 1, com_id: id })
+      // increment dislike value by 1
+      setDislike(dislike + 1);
+      // decrement COMPLAINT like value by 1
+      const { data3, error3 } = await supabase
+        .rpc('changelike', { x: -1, com_id: id })
+      // decrement like value by 1
+      setLike(like - 1);
+    }
   }
-  //
-  // .from('profiles')
-  //         .select(`username, title, email, avatar_url`)
-  //         .eq('id', user.id)
-  //         .single()
+  
 
   // async function Resolve() {
 
@@ -394,10 +402,17 @@ export default function ComplaintBox({
               <ReactTimeAgo date={timedate} locale="en-US" />
               <br></br>
               <div className="likeDisplay">
+
+                {(session) ? <button class="likeButton" onClick={() => Like()}>
                 <FaArrowUp />
+              </button> : <FaArrowUp />}
                 &nbsp;{like} &emsp;
+
+                {(session) ? <button class="disButton" onClick={() => Dislike()}>
                 <FaArrowDown />
+              </button> : <FaArrowDown />}
                 &nbsp;{dislike}
+              
               </div>
             </div>
           </div>
@@ -407,13 +422,9 @@ export default function ComplaintBox({
           &nbsp;&nbsp;
           {session ? (
             <div>
-              <button class="greenButton" onClick={() => Like()}>
-                <FaArrowUp />
-              </button>
+              
               &nbsp;&nbsp;
-              <button class="redButton" onClick={() => Dislike()}>
-                <FaArrowDown />
-              </button>
+              
               &nbsp;&nbsp;
               {mine ? (
                 <button
@@ -434,6 +445,12 @@ export default function ComplaintBox({
                 ""
               )}
               &nbsp;&nbsp;
+              <button onClick={() => clickReply()}>
+                &emsp;
+                <FaComment />
+                &emsp;
+              </button>
+              &nbsp;&nbsp;
               {mine ? (
                 <button
                   class="redButton"
@@ -453,12 +470,7 @@ export default function ComplaintBox({
               ) : (
                 ""
               )}
-              &nbsp;&nbsp;
-              <button onClick={() => clickReply()}>
-                &emsp;
-                <FaComment />
-                &emsp;
-              </button>
+              
             </div>
           ) : (
             <></>

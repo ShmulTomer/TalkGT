@@ -4,8 +4,11 @@ Project by Tomer Shmul
 
 PRIORITY:
 
+!!! -> complaint box button format, clean up!
+- also add the red and green buttons for everyone, but alert to login!
+- maybe change color if they are currently liking or disliking it!
+
 - ability to resolve "mine" complaint
-- upvote/downvote capability
 - use MUI for more components (i.e. buttons)
 - clean up CSS
 - responsive web design

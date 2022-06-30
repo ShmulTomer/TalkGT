@@ -434,10 +434,23 @@ button.greenButton,
 .greenButton {
   background-color: #5da030;
 }
-s button.redButton,
+button.redButton,
 .redButton {
   background-color: #971313;
 }
+
+button.likeButton,
+.likeButton {
+  background-color: #79bc4c;
+  padding: 5px;
+}
+
+button.disButton,
+.disButton {
+  background-color: #c44040;
+  padding: 5px;
+}
+
 
 button.primary,
 .button.primary {

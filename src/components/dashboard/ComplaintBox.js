@@ -89,14 +89,12 @@ export default function ComplaintBox({
   }
 
   async function Resolve() {
-    
     console.log("one" + res);
-    
 
     const { data, error } = await supabase
-        .from("COMPLAINT")
-        .update({ "res": !res })
-        .eq("id", id);
+      .from("COMPLAINT")
+      .update({ res: !res })
+      .eq("id", id);
 
     setRes(!res);
     console.log("two " + res);
@@ -358,7 +356,6 @@ export default function ComplaintBox({
     setLoad(false);
   }
 
-
   if (del) {
     return <div></div>;
   }
@@ -366,8 +363,13 @@ export default function ComplaintBox({
   return (
     <div className="App">
       <div className={`box ${res == true ? "res" : ""}`}>
-
-        {(res) ? <div className="resolveText"><b>RESOLVED</b></div> : <></>}
+        {res ? (
+          <div className="resolveText">
+            <b>RESOLVED</b>
+          </div>
+        ) : (
+          <></>
+        )}
 
         <div className="box-subject">{subj}</div>
 
@@ -399,16 +401,22 @@ export default function ComplaintBox({
               <div className="boxButtons">
                 {mine ? (
                   <button
-                  class={`resolve ${res == true ? "res" : ""}`} onClick={() => {
+                    class={`resolve ${res == true ? "res" : ""}`}
+                    onClick={() => {
                       if (!res) {
-                          if (window.confirm(
-                            "Are you sure you want to resolve this complaint?"))
-                            Resolve();
-                      } else if (window.confirm(
-                        "Are you sure you want to unresolve this complaint?")){
+                        if (
+                          window.confirm(
+                            "Are you sure you want to resolve this complaint?"
+                          )
+                        )
                           Resolve();
+                      } else if (
+                        window.confirm(
+                          "Are you sure you want to unresolve this complaint?"
+                        )
+                      ) {
+                        Resolve();
                       }
-                        
                     }}
                   >
                     <FaCheck />
@@ -417,10 +425,13 @@ export default function ComplaintBox({
                   ""
                 )}
                 &nbsp;
-                {(!res) ? <button onClick={() => clickReply()}>
-                  <FaReply />
-                </button> : <></>}
-                
+                {!res ? (
+                  <button onClick={() => clickReply()}>
+                    <FaReply />
+                  </button>
+                ) : (
+                  <></>
+                )}
                 &nbsp;
                 {mine ? (
                   <button
@@ -451,40 +462,35 @@ export default function ComplaintBox({
               &nbsp;
               <ReactTimeAgo date={timedate} locale="en-US" />
               <br></br>
-              {(!res) ? <div className="likeDisplay">
-                <button
-                  className={`likeButton ${vote == 1 ? "active" : ""}`}
-                  onClick={() => Like()}
-                >
-                  <FaArrowUp />
-                </button>
-                &nbsp;{like} &nbsp;&nbsp;
-                <button
-                  className={`disButton ${vote == -1 ? "active" : ""}`}
-                  onClick={() => Dislike()}
-                >
-                  <FaArrowDown />
-                </button>
-                &nbsp;{dislike}
-              </div> :
-              <div className="likeDisplay">
-              <button
-                className="offButton"
-                
-              >
-                <FaArrowUp />
-              </button>
-              &nbsp;{like} &nbsp;&nbsp;
-              <button
-                className="offButton"
-                
-              >
-                <FaArrowDown />
-              </button>
-              &nbsp;{dislike}
-            </div>
-              }
-              
+              {!res ? (
+                <div className="likeDisplay">
+                  <button
+                    className={`likeButton ${vote == 1 ? "active" : ""}`}
+                    onClick={() => Like()}
+                  >
+                    <FaArrowUp />
+                  </button>
+                  &nbsp;{like} &nbsp;&nbsp;
+                  <button
+                    className={`disButton ${vote == -1 ? "active" : ""}`}
+                    onClick={() => Dislike()}
+                  >
+                    <FaArrowDown />
+                  </button>
+                  &nbsp;{dislike}
+                </div>
+              ) : (
+                <div className="likeDisplay">
+                  <button className="offButton">
+                    <FaArrowUp />
+                  </button>
+                  &nbsp;{like} &nbsp;&nbsp;
+                  <button className="offButton">
+                    <FaArrowDown />
+                  </button>
+                  &nbsp;{dislike}
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ Project by Tomer Shmul
 - using React JS, Supabase Database, AWS
 
 PRIORITY:
-- ability to resolve "mine" complaint
+
 - use MUI for more components (i.e. buttons)
 - clean up CSS
 - responsive web design (also for mobile)

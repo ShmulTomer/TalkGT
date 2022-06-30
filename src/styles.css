@@ -139,7 +139,6 @@
 }
 
 .comLine.res {
-  
   border: 1.5px solid #31ac50;
 }
 
@@ -223,9 +222,7 @@
 }
 
 .box.res {
-  
   border: 5px solid #31ac50;
-  
 }
 
 .boxR {
@@ -498,9 +495,7 @@ button.redButton,
 }
 
 button.resolve,
-
 .resolve {
-  
 }
 .resolve.res {
   background-color: #26bb5d;

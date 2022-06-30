@@ -34,6 +34,7 @@ export default function ComplaintBox({
 }) {
   const [like, setLike] = useState(upv);
   const [dislike, setDislike] = useState(dov);
+  const [loading, setLoad] = useState(false);
 
   const [inReply, setReply] = useState(false);
   const [anonReply, setAnon] = useState(false);
@@ -188,39 +189,60 @@ export default function ComplaintBox({
   }
 
   async function Like() {
+    if (!session) {
+      alert ("Log in to gain the ability to vote.");
+      return;
+    }
+
+    if (loading) {
+      return;
+    }
+
+    setLoad(true);
+
     if (vote == 0) {
 
+      // change vote value to 1
+      setVote(1);
+       // increment like value by 1
+       setLike(like + 1);
       //change VOTE value to 1
       const { data, error } = await supabase
         .from("VOTES")
         .update({ vote: 1 })
         .eq("userID", user.id)
         .eq("comID", id);
-      // change vote value to 1
-      setVote(1);
+      
       // increment COMPLAINT like value by 1
       const { data2, error2 } = await supabase
         .rpc('changelike', { x: 1, com_id: id })
-      // increment like value by 1
-      setLike(like + 1);
+     
 
 
     } else if (vote == 1) {
+      // set vote value to 0
+      setVote(0);
+      // increment like value by -1
+      setLike(like - 1);
       // set VOTE table value to 0
       const { data, error } = await supabase
         .from("VOTES")
         .update({ vote: 0 })
         .eq("userID", user.id)
         .eq("comID", id);
-      // set vote value to 0
-      setVote(0);
+      
       // increment COMPLAINT like value by -1 !
       const { data2, error2 } = await supabase
         .rpc('changelike', { x: -1, com_id: id })
-      // increment like value by -1
-      setLike(like - 1);
+      
 
     } else if (vote == -1) {
+      // change vote value to 1
+      setVote(1);
+      // decrement dislike value by 1
+      setDislike(dislike - 1);
+      // increment like value by 1
+      setLike(like + 1);
       //change VOTE value to 1
       const { data, error } = await supabase
         .from("VOTES")
@@ -228,58 +250,76 @@ export default function ComplaintBox({
         .eq("userID", user.id)
         .eq("comID", id);
         console.log("test!!!")
-      // change vote value to 1
-      setVote(1);
+      
       // increment COMPLAINT like value by 1
       const { data2, error2 } = await supabase
         .rpc('changelike', { x: 1, com_id: id })
-      // increment like value by 1
-      setLike(like + 1);
+      
       // decrement COMPLAINT dislike value by 1
       const { data3, error3 } = await supabase
         .rpc('changedislike', { x: -1, com_id: id })
-      // decrement dislike value by 1
-      setDislike(dislike - 1);
+      
     }
 
+    setLoad(false);
     
     
   }
 
   async function Dislike() {
-    if (vote == 0) {
+    if (!session) {
+      alert ("Log in to gain the ability to vote.");
+      return;
+    }
 
+    if (loading) {
+      return;
+    }
+
+    setLoad(true);
+
+    if (vote == 0) {
+        // change vote value to -1
+        setVote(-1);
+        // increment dislike value by 1
+      setDislike(dislike + 1);
       //change VOTE value to -1
       const { data, error } = await supabase
         .from("VOTES")
         .update({ vote: -1 })
         .eq("userID", user.id)
         .eq("comID", id);
-      // change vote value to -1
-      setVote(-1);
+      
       // increment COMPLAINT dislike value by 1
       const { data2, error2 } = await supabase
         .rpc('changedislike', { x: 1, com_id: id })
-      // increment dislike value by 1
-      setDislike(dislike + 1);
+      
 
 
     } else if (vote == -1) {
+      // set vote value to 0
+      setVote(0);
+      // increment dislike value by -1
+      setDislike(dislike - 1);
       // set VOTE table value to 0
       const { data, error } = await supabase
         .from("VOTES")
         .update({ vote: 0 })
         .eq("userID", user.id)
         .eq("comID", id);
-      // set vote value to 0
-      setVote(0);
+      
       // increment COMPLAINT dislike value by -1 !
       const { data2, error2 } = await supabase
         .rpc('changedislike', { x: -1, com_id: id })
-      // increment dislike value by -1
-      setDislike(dislike - 1);
+      
 
     } else if (vote == 1) {
+      // change vote value to -1
+      setVote(-1);
+      // decrement like value by 1
+      setLike(like - 1);
+      // increment dislike value by 1
+      setDislike(dislike + 1);
       //change VOTE value to -1
       const { data, error } = await supabase
         .from("VOTES")
@@ -287,19 +327,18 @@ export default function ComplaintBox({
         .eq("userID", user.id)
         .eq("comID", id);
         console.log("test!!!")
-      // change vote value to -1
-      setVote(-1);
+      
       // increment COMPLAINT dislike value by 1
       const { data2, error2 } = await supabase
         .rpc('changedislike', { x: 1, com_id: id })
-      // increment dislike value by 1
-      setDislike(dislike + 1);
+      
       // decrement COMPLAINT like value by 1
       const { data3, error3 } = await supabase
         .rpc('changelike', { x: -1, com_id: id })
-      // decrement like value by 1
-      setLike(like - 1);
+      
     }
+
+    setLoad(false);
   }
   
 
@@ -377,7 +416,7 @@ export default function ComplaintBox({
           {desc}
           <br></br>
           <br></br>
-          <hr></hr>
+          <hr className="comLine"></hr>
         </div>
 
         <br></br>
@@ -403,14 +442,20 @@ export default function ComplaintBox({
               <br></br>
               <div className="likeDisplay">
 
-                {(session) ? <button class="likeButton" onClick={() => Like()}>
+              
+            
+              <button className={`likeButton ${
+                vote == 1 ? "active" : ""
+              }`} onClick={() => Like()}>
                 <FaArrowUp />
-              </button> : <FaArrowUp />}
-                &nbsp;{like} &emsp;
+              </button>
+                &nbsp;{like} &nbsp;&nbsp;
 
-                {(session) ? <button class="disButton" onClick={() => Dislike()}>
+                <button className={`disButton ${
+                vote == -1 ? "active" : ""
+              }`} onClick={() => Dislike()}>
                 <FaArrowDown />
-              </button> : <FaArrowDown />}
+              </button>
                 &nbsp;{dislike}
               
               </div>

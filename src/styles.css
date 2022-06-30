@@ -127,6 +127,11 @@
   color: white;
 }
 
+.comLine {
+  border-radius: 3px;
+  border: 1.5px solid #e0ac1c;;
+}
+
 .plugText {
   justify-content: center;
   text-align: center;
@@ -445,10 +450,19 @@ button.likeButton,
   padding: 5px;
 }
 
+.likeButton.active {
+
+  box-shadow: 0px 1px 13px -3px #79bc4c;
+}
+
 button.disButton,
 .disButton {
   background-color: #c44040;
   padding: 5px;
+}
+
+.disButton.active {
+  box-shadow: 0px 1px 13px -3px #c44040;
 }
 
 

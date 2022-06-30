@@ -127,9 +127,20 @@
   color: white;
 }
 
+.resolveText {
+  font-size: 18px;
+  text-align: center;
+  color: #26bb5d;
+}
+
 .comLine {
   border-radius: 3px;
   border: 1.5px solid #e0ac1c;
+}
+
+.comLine.res {
+  
+  border: 1.5px solid #31ac50;
 }
 
 .plugText {
@@ -209,6 +220,12 @@
   padding: 30px 30px 30px 30px;
   max-width: 500px;
   width: 500px;
+}
+
+.box.res {
+  
+  border: 5px solid #31ac50;
+  
 }
 
 .boxR {
@@ -480,6 +497,15 @@ button.redButton,
   background-color: #971313;
 }
 
+button.resolve,
+
+.resolve {
+  
+}
+.resolve.res {
+  background-color: #26bb5d;
+}
+
 button.likeButton,
 .likeButton {
   background-color: #79bc4c;
@@ -488,6 +514,12 @@ button.likeButton,
 
 .likeButton.active {
   box-shadow: 0px 1px 13px -3px #79bc4c;
+}
+
+button.offButton,
+.offButton {
+  background-color: #848484;
+  padding: 5px;
 }
 
 button.disButton,

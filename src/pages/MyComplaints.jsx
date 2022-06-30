@@ -102,6 +102,7 @@ function MyComplaints() {
             timedate={item.timedate}
             anon={item.anon}
             userID={item.userID}
+            re={item.res}
           />
         ))}
       </div>

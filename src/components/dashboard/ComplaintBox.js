@@ -32,10 +32,12 @@ export default function ComplaintBox({
   timedate,
   anon,
   userID,
+  re,
 }) {
   const [like, setLike] = useState(upv);
   const [dislike, setDislike] = useState(dov);
   const [loading, setLoad] = useState(false);
+  const [res, setRes] = useState(re);
 
   const [inReply, setReply] = useState(false);
   const [anonReply, setAnon] = useState(false);
@@ -86,10 +88,23 @@ export default function ComplaintBox({
     setAnon(!anonReply);
   }
 
-  async function Resolve() {}
+  async function Resolve() {
+    
+    console.log("one" + res);
+    
+
+    const { data, error } = await supabase
+        .from("COMPLAINT")
+        .update({ "res": !res })
+        .eq("id", id);
+
+    setRes(!res);
+    console.log("two " + res);
+  }
 
   async function loadData() {
     try {
+      console.log(res);
       const user = supabase.auth.user();
 
       setUser(user);
@@ -343,65 +358,6 @@ export default function ComplaintBox({
     setLoad(false);
   }
 
-  // async function Resolve() {
-
-  //   const { data, error } = await supabase
-  //     .from('ComplaintDB')
-  //     .update({ 'resolve': "true" })
-  //     .eq('id', id)
-  // }
-
-  // if(resolve == "true") {
-  //       return <div className="App">
-
-  //       <div className="boxR">
-
-  //       <div className="boxR-subject">
-
-  //         <b></b> {subj}
-  //       </div>
-
-  //       <div className="boxR-description">
-  //         <br></br>
-  //         {desc}
-  //         <br></br>
-  //         <br></br>
-  //         <hr></hr>
-  //       </div>
-
-  //         <br></br>
-  //       <div className="grid-container">
-  //         <div className="grid1">
-  //           <div className="boxR-user">
-  //             {(anon == "true" || !avatar_url) ? <i className='bx bx-user'> </i> : <AvatarIcon
-  //             url={avatar_url}
-  //             size={21}/>}
-  //           <b>&nbsp;{userH}</b>
-
-  //           </div>
-
-  //           <div className="boxR-title">
-
-  //           {titleH}
-  //           </div>
-  //           </div>
-
-  //           <div className="grid2">
-  //             <div className="boxR-right">
-  //               <i className='bx bx-time'></i> &nbsp;{date} at {time.substring(0,5)}
-  //               <br></br>
-
-  //               <br></br>
-  //               <i className='bx bx-like'></i>&nbsp;{likeH} &emsp;<i className='bx bx-dislike'></i>&nbsp;{dislikeH}
-
-  //             </div>
-
-  //           </div>
-  //       </div>
-  //     </div>
-  //       <br></br>
-  //   </div>;
-  // }
 
   if (del) {
     return <div></div>;
@@ -409,7 +365,10 @@ export default function ComplaintBox({
 
   return (
     <div className="App">
-      <div className="box">
+      <div className={`box ${res == true ? "res" : ""}`}>
+
+        {(res) ? <div className="resolveText"><b>RESOLVED</b></div> : <></>}
+
         <div className="box-subject">{subj}</div>
 
         <div className="box-description">
@@ -417,7 +376,7 @@ export default function ComplaintBox({
           {desc}
           <br></br>
           <br></br>
-          <hr className="comLine"></hr>
+          <hr className={`comLine ${res == true ? "res" : ""}`}></hr>
         </div>
 
         <br></br>
@@ -440,13 +399,16 @@ export default function ComplaintBox({
               <div className="boxButtons">
                 {mine ? (
                   <button
-                    onClick={() => {
-                      if (
-                        window.confirm(
-                          "Are you sure you want to resolve this complaint?"
-                        )
-                      )
-                        Resolve();
+                  class={`resolve ${res == true ? "res" : ""}`} onClick={() => {
+                      if (!res) {
+                          if (window.confirm(
+                            "Are you sure you want to resolve this complaint?"))
+                            Resolve();
+                      } else if (window.confirm(
+                        "Are you sure you want to unresolve this complaint?")){
+                          Resolve();
+                      }
+                        
                     }}
                   >
                     <FaCheck />
@@ -455,9 +417,10 @@ export default function ComplaintBox({
                   ""
                 )}
                 &nbsp;
-                <button onClick={() => clickReply()}>
+                {(!res) ? <button onClick={() => clickReply()}>
                   <FaReply />
-                </button>
+                </button> : <></>}
+                
                 &nbsp;
                 {mine ? (
                   <button
@@ -488,7 +451,7 @@ export default function ComplaintBox({
               &nbsp;
               <ReactTimeAgo date={timedate} locale="en-US" />
               <br></br>
-              <div className="likeDisplay">
+              {(!res) ? <div className="likeDisplay">
                 <button
                   className={`likeButton ${vote == 1 ? "active" : ""}`}
                   onClick={() => Like()}
@@ -503,7 +466,25 @@ export default function ComplaintBox({
                   <FaArrowDown />
                 </button>
                 &nbsp;{dislike}
-              </div>
+              </div> :
+              <div className="likeDisplay">
+              <button
+                className="offButton"
+                
+              >
+                <FaArrowUp />
+              </button>
+              &nbsp;{like} &nbsp;&nbsp;
+              <button
+                className="offButton"
+                
+              >
+                <FaArrowDown />
+              </button>
+              &nbsp;{dislike}
+            </div>
+              }
+              
             </div>
           </div>
         </div>

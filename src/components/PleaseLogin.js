@@ -8,8 +8,10 @@ export default function PleaseLogin() {
         <br></br>
         <br></br>
         <br></br>
-        Log in under the "Account" tab and set a name
-        <br></br>and title to gain the ability to add complaint
+        <div>
+          Log in under the "Account" tab and set a <b>name</b>
+          <br></br>and <b>occupation</b> to gain the ability to add complaint
+        </div>
       </div>
     </div>
   );

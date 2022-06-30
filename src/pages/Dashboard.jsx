@@ -51,7 +51,7 @@ function Dashboard() {
 
       <br></br>
       <div className="dbIcons">
-        <button className="hover" nClick={() => getData()}>
+        <button className="hover" onClick={getData}>
           {" "}
           <FaRedo />
         </button>

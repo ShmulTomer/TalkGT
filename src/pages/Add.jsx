@@ -7,6 +7,8 @@ import PleaseLogin from "../components/PleaseLogin";
 
 const Add = () => {
   const [session, setSession] = useState(null);
+  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     setSession(supabase.auth.session());
@@ -15,6 +17,34 @@ const Add = () => {
       setSession(session);
     });
   }, []);
+
+  async function getProfile() {
+    try {
+      const user = supabase.auth.user();
+
+      let { data, error, status } = await supabase
+        .from("profiles")
+        .select(`username, title, email, avatar_url`)
+        .eq("id", user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setName(data.username);
+        setTitle(data.title);
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+    }
+  }
+
+  useEffect(() => {
+    getProfile();
+  }, [supabase.auth.session()]);
 
   return (
     <div className="App">
@@ -25,7 +55,7 @@ const Add = () => {
       </header>
 
       <div className="App-text">
-        {!session ? <PleaseLogin /> : <AddEntry />}
+        {!session || name == "" || title == "" ? <PleaseLogin /> : <AddEntry />}
         <p></p>
       </div>
     </div>

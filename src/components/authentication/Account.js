@@ -45,7 +45,7 @@ export default function Account({ session }) {
   async function updateProfile({ username, title }) {
     try {
       if (username.length < 2 || title.length < 2) {
-        alert("Please enter a valid username and title.");
+        alert("Please enter a valid username and occupation.");
         return;
       }
 
@@ -130,7 +130,7 @@ export default function Account({ session }) {
             }}
             multiline={true}
             variant="filled"
-            label="Title"
+            label="Occupation"
             id="title"
             value={title || ""}
             onChange={(e) => setTitle(e.target.value)}

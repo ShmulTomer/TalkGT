@@ -4,8 +4,7 @@ import { supabase } from "../../supabaseClient";
 import { useState, useEffect } from "react";
 import ReplyBox from "./ReplyBox";
 import AvatarIcon from "../authentication/AvatarIcon";
-import { CompressOutlined, ConstructionOutlined } from "@mui/icons-material";
-import { getAccordionDetailsUtilityClass } from "@mui/material";
+
 import {
   FaEye,
   FaEyeSlash,
@@ -427,7 +426,7 @@ export default function ComplaintBox({
                 &nbsp;
                 {!res ? (
                   <button onClick={() => clickReply()}>
-                    <FaReply />
+                    <FaComment />
                   </button>
                 ) : (
                   <></>

@@ -177,6 +177,10 @@
   color: #61dafb;
 }
 
+.avatarimage {
+  border-radius: 4px;
+}
+
 .Box-center {
   display: flex;
   flex-direction: column;

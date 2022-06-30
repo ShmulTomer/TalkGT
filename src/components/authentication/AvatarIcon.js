@@ -28,7 +28,7 @@ export default ({ url, size }) => {
       <img
         src={avatarUrl ? avatarUrl : `https://place-hold.it/${size}x${size}`}
         alt={avatarUrl ? "Avatar" : "No image"}
-        className="avatar image"
+        className="avatarimage"
         style={{ height: size, width: size }}
       />
     </div>

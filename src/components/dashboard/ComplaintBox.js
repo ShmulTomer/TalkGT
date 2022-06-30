@@ -16,6 +16,7 @@ import {
   FaArrowDown,
   FaComment,
   FaClock,
+  FaReply,
 } from "react-icons/fa";
 import { TextField, Button } from "@mui/material";
 import { ImCross } from "react-icons/im";
@@ -190,7 +191,7 @@ export default function ComplaintBox({
 
   async function Like() {
     if (!session) {
-      alert ("Log in to gain the ability to vote.");
+      alert("Log in to gain the ability to vote.");
       return;
     }
 
@@ -201,24 +202,22 @@ export default function ComplaintBox({
     setLoad(true);
 
     if (vote == 0) {
-
       // change vote value to 1
       setVote(1);
-       // increment like value by 1
-       setLike(like + 1);
+      // increment like value by 1
+      setLike(like + 1);
       //change VOTE value to 1
       const { data, error } = await supabase
         .from("VOTES")
         .update({ vote: 1 })
         .eq("userID", user.id)
         .eq("comID", id);
-      
+
       // increment COMPLAINT like value by 1
-      const { data2, error2 } = await supabase
-        .rpc('changelike', { x: 1, com_id: id })
-     
-
-
+      const { data2, error2 } = await supabase.rpc("changelike", {
+        x: 1,
+        com_id: id,
+      });
     } else if (vote == 1) {
       // set vote value to 0
       setVote(0);
@@ -230,12 +229,12 @@ export default function ComplaintBox({
         .update({ vote: 0 })
         .eq("userID", user.id)
         .eq("comID", id);
-      
-      // increment COMPLAINT like value by -1 !
-      const { data2, error2 } = await supabase
-        .rpc('changelike', { x: -1, com_id: id })
-      
 
+      // increment COMPLAINT like value by -1 !
+      const { data2, error2 } = await supabase.rpc("changelike", {
+        x: -1,
+        com_id: id,
+      });
     } else if (vote == -1) {
       // change vote value to 1
       setVote(1);
@@ -249,26 +248,27 @@ export default function ComplaintBox({
         .update({ vote: 1 })
         .eq("userID", user.id)
         .eq("comID", id);
-        console.log("test!!!")
-      
+      console.log("test!!!");
+
       // increment COMPLAINT like value by 1
-      const { data2, error2 } = await supabase
-        .rpc('changelike', { x: 1, com_id: id })
-      
+      const { data2, error2 } = await supabase.rpc("changelike", {
+        x: 1,
+        com_id: id,
+      });
+
       // decrement COMPLAINT dislike value by 1
-      const { data3, error3 } = await supabase
-        .rpc('changedislike', { x: -1, com_id: id })
-      
+      const { data3, error3 } = await supabase.rpc("changedislike", {
+        x: -1,
+        com_id: id,
+      });
     }
 
     setLoad(false);
-    
-    
   }
 
   async function Dislike() {
     if (!session) {
-      alert ("Log in to gain the ability to vote.");
+      alert("Log in to gain the ability to vote.");
       return;
     }
 
@@ -279,9 +279,9 @@ export default function ComplaintBox({
     setLoad(true);
 
     if (vote == 0) {
-        // change vote value to -1
-        setVote(-1);
-        // increment dislike value by 1
+      // change vote value to -1
+      setVote(-1);
+      // increment dislike value by 1
       setDislike(dislike + 1);
       //change VOTE value to -1
       const { data, error } = await supabase
@@ -289,13 +289,12 @@ export default function ComplaintBox({
         .update({ vote: -1 })
         .eq("userID", user.id)
         .eq("comID", id);
-      
+
       // increment COMPLAINT dislike value by 1
-      const { data2, error2 } = await supabase
-        .rpc('changedislike', { x: 1, com_id: id })
-      
-
-
+      const { data2, error2 } = await supabase.rpc("changedislike", {
+        x: 1,
+        com_id: id,
+      });
     } else if (vote == -1) {
       // set vote value to 0
       setVote(0);
@@ -307,12 +306,12 @@ export default function ComplaintBox({
         .update({ vote: 0 })
         .eq("userID", user.id)
         .eq("comID", id);
-      
-      // increment COMPLAINT dislike value by -1 !
-      const { data2, error2 } = await supabase
-        .rpc('changedislike', { x: -1, com_id: id })
-      
 
+      // increment COMPLAINT dislike value by -1 !
+      const { data2, error2 } = await supabase.rpc("changedislike", {
+        x: -1,
+        com_id: id,
+      });
     } else if (vote == 1) {
       // change vote value to -1
       setVote(-1);
@@ -326,21 +325,23 @@ export default function ComplaintBox({
         .update({ vote: -1 })
         .eq("userID", user.id)
         .eq("comID", id);
-        console.log("test!!!")
-      
+      console.log("test!!!");
+
       // increment COMPLAINT dislike value by 1
-      const { data2, error2 } = await supabase
-        .rpc('changedislike', { x: 1, com_id: id })
-      
+      const { data2, error2 } = await supabase.rpc("changedislike", {
+        x: 1,
+        com_id: id,
+      });
+
       // decrement COMPLAINT like value by 1
-      const { data3, error3 } = await supabase
-        .rpc('changelike', { x: -1, com_id: id })
-      
+      const { data3, error3 } = await supabase.rpc("changelike", {
+        x: -1,
+        com_id: id,
+      });
     }
 
     setLoad(false);
   }
-  
 
   // async function Resolve() {
 
@@ -420,7 +421,7 @@ export default function ComplaintBox({
         </div>
 
         <br></br>
-        <div className="grid-container">
+        <div className="grid-container4">
           <div className="grid1">
             <div className="box-user">
               {anon == "true" || !avatar_url ? (
@@ -434,6 +435,53 @@ export default function ComplaintBox({
             <div className="box-title">{title}</div>
           </div>
 
+          <div className="gridmid">
+            {session ? (
+              <div className="boxButtons">
+                {mine ? (
+                  <button
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Are you sure you want to resolve this complaint?"
+                        )
+                      )
+                        Resolve();
+                    }}
+                  >
+                    <FaCheck />
+                  </button>
+                ) : (
+                  ""
+                )}
+                &nbsp;
+                <button onClick={() => clickReply()}>
+                  <FaReply />
+                </button>
+                &nbsp;
+                {mine ? (
+                  <button
+                    class="redButton"
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Are you sure you want to delete this complaint?"
+                        )
+                      )
+                        Delete();
+                    }}
+                  >
+                    <FaTrash />
+                  </button>
+                ) : (
+                  ""
+                )}
+              </div>
+            ) : (
+              <div className="neg-margin"></div>
+            )}
+          </div>
+
           <div className="grid2">
             <div className="box-right">
               <FaClock />
@@ -441,23 +489,20 @@ export default function ComplaintBox({
               <ReactTimeAgo date={timedate} locale="en-US" />
               <br></br>
               <div className="likeDisplay">
-
-              
-            
-              <button className={`likeButton ${
-                vote == 1 ? "active" : ""
-              }`} onClick={() => Like()}>
-                <FaArrowUp />
-              </button>
+                <button
+                  className={`likeButton ${vote == 1 ? "active" : ""}`}
+                  onClick={() => Like()}
+                >
+                  <FaArrowUp />
+                </button>
                 &nbsp;{like} &nbsp;&nbsp;
-
-                <button className={`disButton ${
-                vote == -1 ? "active" : ""
-              }`} onClick={() => Dislike()}>
-                <FaArrowDown />
-              </button>
+                <button
+                  className={`disButton ${vote == -1 ? "active" : ""}`}
+                  onClick={() => Dislike()}
+                >
+                  <FaArrowDown />
+                </button>
                 &nbsp;{dislike}
-              
               </div>
             </div>
           </div>
@@ -465,64 +510,8 @@ export default function ComplaintBox({
 
         <div>
           &nbsp;&nbsp;
-          {session ? (
-            <div>
-              
-              &nbsp;&nbsp;
-              
-              &nbsp;&nbsp;
-              {mine ? (
-                <button
-                  onClick={() => {
-                    if (
-                      window.confirm(
-                        "Are you sure you want to resolve this complaint?"
-                      )
-                    )
-                      Resolve();
-                  }}
-                >
-                  &emsp;
-                  <FaCheck />
-                  &emsp;
-                </button>
-              ) : (
-                ""
-              )}
-              &nbsp;&nbsp;
-              <button onClick={() => clickReply()}>
-                &emsp;
-                <FaComment />
-                &emsp;
-              </button>
-              &nbsp;&nbsp;
-              {mine ? (
-                <button
-                  class="redButton"
-                  onClick={() => {
-                    if (
-                      window.confirm(
-                        "Are you sure you want to delete this complaint?"
-                      )
-                    )
-                      Delete();
-                  }}
-                >
-                  &emsp;
-                  <FaTrash />
-                  &emsp;
-                </button>
-              ) : (
-                ""
-              )}
-              
-            </div>
-          ) : (
-            <></>
-          )}
-          <br></br>
           {inReply ? (
-            <div className="grid-container2">
+            <div className="grid-container5">
               <div className="input-reply">
                 <TextField
                   fullWidth

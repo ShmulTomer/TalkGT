@@ -42,7 +42,9 @@ function Dashboard() {
         </p>
       </header>
       {!session ? (
-        <div>Log in to gain access to voting and replying.</div>
+        <div>
+          <b>Log in to gain access to voting and replying.</b>
+        </div>
       ) : (
         <></>
       )}

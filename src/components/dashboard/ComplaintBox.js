@@ -41,7 +41,6 @@ export default function ComplaintBox({
   const [inReply, setReply] = useState(false);
   const [anonReply, setAnon] = useState(false);
 
-
   const [del, setDelete] = useState(false);
 
   const [vote, setVote] = useState(0);

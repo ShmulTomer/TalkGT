@@ -84,7 +84,7 @@ function MyComplaints() {
 
         {count == 0 ? (
           <div className="Submit-first">
-            "Submit your first post to see it here!"
+            Submit your first post to see it here!
           </div>
         ) : (
           ""

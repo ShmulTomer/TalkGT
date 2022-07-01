@@ -20,7 +20,8 @@ const Start = () => {
           &nbsp;&nbsp; <b>2.</b> &nbsp;Enter a valid email address and select
           "Send Email"
           <br></br>
-          &nbsp;&nbsp; <b>3.</b> &nbsp;Check your email (and spam) for "Talk GT Link"
+          &nbsp;&nbsp; <b>3.</b> &nbsp;Check your email (and spam) for "Talk GT
+          Link"
           <br></br>
           &nbsp;&nbsp; <b>4.</b> &nbsp;Click the link to return to the website
           <br></br>

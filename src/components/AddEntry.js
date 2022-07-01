@@ -7,7 +7,7 @@ import SendSharpIcon from "@mui/icons-material/SendSharp";
 export default function AddEntry() {
   const [desc, setDesc] = useState("");
   const [subj, setSubj] = useState("");
-  const [msg, setMsg] = useState("Enter a new complaint here!");
+  const [msg, setMsg] = useState("Enter a new post here!");
 
   const [loading, setLoading] = useState(false);
 

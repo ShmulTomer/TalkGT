@@ -50,7 +50,7 @@ const Add = () => {
     <div className="App">
       <header className="App-header3">
         <p>
-          <b>Add your Complaint</b>
+          <b>Add your Post</b>
         </p>
       </header>
 

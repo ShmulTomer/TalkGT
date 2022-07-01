@@ -38,7 +38,7 @@ function Dashboard() {
     <div className="App">
       <header className="App-title">
         <p>
-          <b>GT Complaints</b>
+          <b>Talk GT</b>
         </p>
       </header>
       {!session ? (
@@ -62,7 +62,7 @@ function Dashboard() {
             <FaPlus />
           </button>
         </Link>
-        <Link to="/mycomplaints">
+        <Link to="/myposts">
           &nbsp;&nbsp;
           <button className="hover">
             {" "}

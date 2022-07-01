@@ -10,7 +10,7 @@ export default function PleaseLogin() {
         <br></br>
         <div>
           Log in under the "Account" tab and set a <b>name</b>
-          <br></br>and <b>occupation</b> to gain the ability to add complaint
+          <br></br>and <b>occupation</b> to gain the ability to add a post
         </div>
       </div>
     </div>

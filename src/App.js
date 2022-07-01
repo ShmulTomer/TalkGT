@@ -38,7 +38,7 @@ function App() {
               <Route path="/start" element={<Start />} />
               <Route path="/add" element={<Add />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/mycomplaints" element={<MyComplaints />} />
+              <Route path="/myposts" element={<MyComplaints />} />
               <Route path="/user" element={<User />} />
             </Route>
           </Routes>
@@ -51,7 +51,7 @@ function App() {
               <Route path="/start" element={<Start />} />
               <Route path="/add" element={<Add />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/mycomplaints" element={<MyComplaints />} />
+              <Route path="/myposts" element={<MyComplaints />} />
               <Route path="/user" element={<User />} />
             </Route>
           </Routes>

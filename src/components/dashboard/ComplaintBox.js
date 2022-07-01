@@ -41,16 +41,11 @@ export default function ComplaintBox({
   const [inReply, setReply] = useState(false);
   const [anonReply, setAnon] = useState(false);
 
-  const [comment, setComment] = useState(
-    "This is a comment text. I completely agree with this complaint but I think there are many problems"
-  );
 
   const [del, setDelete] = useState(false);
 
   const [vote, setVote] = useState(0);
   const [mine, setMine] = useState(false);
-  const [tempUp, setUp] = useState(null);
-  const [tempDown, setDown] = useState(null);
   const [user, setUser] = useState(null);
 
   const [name, setName] = useState(null);
@@ -405,13 +400,13 @@ export default function ComplaintBox({
                       if (!res) {
                         if (
                           window.confirm(
-                            "Are you sure you want to resolve this complaint?"
+                            "Are you sure you want to resolve this post?"
                           )
                         )
                           Resolve();
                       } else if (
                         window.confirm(
-                          "Are you sure you want to unresolve this complaint?"
+                          "Are you sure you want to unresolve this post?"
                         )
                       ) {
                         Resolve();
@@ -438,7 +433,7 @@ export default function ComplaintBox({
                     onClick={() => {
                       if (
                         window.confirm(
-                          "Are you sure you want to delete this complaint?"
+                          "Are you sure you want to delete this post?"
                         )
                       )
                         Delete();

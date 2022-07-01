@@ -59,7 +59,7 @@ export default function AddEntry() {
 
     setDesc("");
     setSubj("");
-    setMsg("Your complaint has been submitted!");
+    setMsg("Your post has been submitted!");
   }
 
   return (

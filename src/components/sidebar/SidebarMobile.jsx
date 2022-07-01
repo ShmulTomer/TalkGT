@@ -25,8 +25,8 @@ const sidebarNavItems = [
   {
     display: "",
     icon: <i className="bx bx-receipt"></i>,
-    to: "/mycomplaints",
-    section: "mycomplaints",
+    to: "/myposts",
+    section: "myposts",
   },
   {
     display: "",

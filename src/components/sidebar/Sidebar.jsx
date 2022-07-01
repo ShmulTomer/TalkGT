@@ -17,17 +17,17 @@ const sidebarNavItems = [
     section: "start",
   },
   {
-    display: "Add Complaint",
+    display: "Add Post",
     icon: <i className="bx bx-message-square-add"></i>,
     to: "/add",
     section: "add",
   },
 
   {
-    display: "My Complaints",
+    display: "My Posts",
     icon: <i className="bx bx-receipt"></i>,
-    to: "/mycomplaints",
-    section: "mycomplaints",
+    to: "/myposts",
+    section: "myposts",
   },
   {
     display: "Contact",

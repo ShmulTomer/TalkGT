@@ -44,7 +44,7 @@ function MyComplaints() {
       <div className="App">
         <header className="App-header3">
           <p>
-            <b>My Complaints</b>
+            <b>My Posts</b>
           </p>
         </header>
 
@@ -52,7 +52,7 @@ function MyComplaints() {
           <br></br>
           <br></br>
           <br></br>
-          Log in and submit a complaint to gain access to this page
+          Log in and submit a post to gain access to this page
         </div>
         <br></br>
         <br></br>
@@ -64,7 +64,7 @@ function MyComplaints() {
     <div className="App">
       <header className="App-header3">
         <p>
-          <b>My Complaints</b>
+          <b>My Posts</b>
         </p>
       </header>
       <button className="hover" onClick={getData}>
@@ -84,7 +84,7 @@ function MyComplaints() {
 
         {count == 0 ? (
           <div className="Submit-first">
-            "Submit your first complaint to see it here!"
+            "Submit your first post to see it here!"
           </div>
         ) : (
           ""

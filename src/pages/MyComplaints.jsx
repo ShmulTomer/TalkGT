@@ -71,7 +71,7 @@ function MyComplaints() {
         {" "}
         <FaRedo />
       </button>
-      <Link to="/add">
+      <Link to="/add" style={{ textDecoration: 'none' }}>
         &nbsp;&nbsp;
         <button className="hover">
           {" "}

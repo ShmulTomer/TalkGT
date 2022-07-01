@@ -55,21 +55,21 @@ function Dashboard() {
           {" "}
           <FaRedo />
         </button>
-        <Link to="/add">
+        <Link to="/add" style={{ textDecoration: 'none' }}>
           &nbsp;&nbsp;
           <button className="hover">
             {" "}
             <FaPlus />
           </button>
         </Link>
-        <Link to="/myposts">
+        <Link to="/myposts" style={{ textDecoration: 'none' }}>
           &nbsp;&nbsp;
           <button className="hover">
             {" "}
             <FaChild />
           </button>
         </Link>
-        <Link to="/start">
+        <Link to="/start" style={{ textDecoration: 'none' }}>
           &nbsp;&nbsp;
           <button className="hover">
             {" "}

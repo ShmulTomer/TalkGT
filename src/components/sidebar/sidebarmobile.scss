@@ -76,3 +76,13 @@
     }
   }
 }
+
+@media screen and (max-height: 700px) {
+  .sidebarmobile__menu {
+    margin-top: 30px;
+  }
+
+  .sidebarmobile__logo {
+    margin-top: 5px;
+  }
+}

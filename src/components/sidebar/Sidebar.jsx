@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./sidebar.scss";
-import logo from "./Web-Logo1.png";
+import logo from "./talkgt-logo.png";
 
 const sidebarNavItems = [
   {

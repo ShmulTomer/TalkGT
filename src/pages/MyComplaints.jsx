@@ -53,6 +53,16 @@ function MyComplaints() {
           <br></br>
           <br></br>
           Log in and submit a post to gain access to this page
+
+          <br></br>
+          <br></br>
+          <Link to="/user" style={{ textDecoration: 'none' }}>
+          &nbsp;&nbsp;
+          <button className="hover">
+            {" "}
+            LOG IN
+          </button>
+        </Link>
         </div>
         <br></br>
         <br></br>

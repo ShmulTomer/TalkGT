@@ -101,6 +101,20 @@
   color: white;
 }
 
+.App-image img {
+  width: calc(200px + 20.7vw);
+  height: calc(85px + 9vw);
+  
+}
+
+.App-image {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+}
+
+
 .App-header3 {
   background-color: #282c34;
   min-height: 10px;
@@ -494,6 +508,14 @@ button.primary,
   border: 1px solid var(--custom-color-brand);
 }
 
+.dbIcons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  gap: 8px;
+}
+
 @media screen and (max-width: 600px) {
   .Box-center {
     padding-left: 140px;
@@ -503,7 +525,11 @@ button.primary,
     padding-left: 140px;
   }
 
-  .App-title {
+  .App-image {
+    padding-left: 140px;
+  }
+
+  .warningText {
     padding-left: 140px;
   }
 }

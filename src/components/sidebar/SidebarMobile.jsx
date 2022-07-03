@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./sidebarmobile.scss";
-import logo from "./talkgt-logo.png";
+import logo from "./TalkGT_Bottom.png";
 
 const sidebarNavItems = [
   {

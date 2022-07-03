@@ -7,27 +7,27 @@
   background-color: #21242b;
 
   &__logo img {
-    margin-top: 50px;
-    width: 140px;
-    height: 140px;
+    margin-top: 40px;
+    width: 200px;
+    height: 180px;
     
   }
 
   &__logo {
     display: block;
-    margin-left: 87px;
-    margin-top: 30px;
+    margin-left: 58px;
+    margin-top: 20px;
     margin-bottom: 20px;
     margin-right: auto;
     display: flex;
     place-items: center;
-    width: 160px;
-    height: 120px;
+    width: 140px;
+    height: 170px;
     
   }
 
   &__menu {
-    margin-top: 110px;
+    margin-top: 90px;
     position: relative;
     margin-left: 10px;
     margin-right: 10px;
@@ -85,7 +85,7 @@
 
 @media screen and (max-height: 700px) {
   .sidebar__menu {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .sidebar__logo {

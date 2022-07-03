@@ -4,6 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import ComplaintBox from "../components/dashboard/ComplaintBox";
 import { FaRedo, FaChild, FaPlus, FaQuestion } from "react-icons/fa";
+import logo from "../components/sidebar/TalkGT_Side.png";
+
 
 function Dashboard() {
   const [cells, setCell] = useState([]);
@@ -36,13 +38,13 @@ function Dashboard() {
 
   return (
     <div className="App">
-      <header className="App-title">
-        <p>
-          <b>Talk GT</b>
-        </p>
-      </header>
+      <div className="App-image">
+        
+          <img src={logo} />
+        
+      </div>
       {!session ? (
-        <div>
+        <div className="warningText">
           <b>Log in to gain access to voting and replying.</b>
         </div>
       ) : (
@@ -56,21 +58,21 @@ function Dashboard() {
           <FaRedo />
         </button>
         <Link to="/add" style={{ textDecoration: 'none' }}>
-          &nbsp;&nbsp;
+          
           <button className="hover">
             {" "}
             <FaPlus />
           </button>
         </Link>
         <Link to="/myposts" style={{ textDecoration: 'none' }}>
-          &nbsp;&nbsp;
+          
           <button className="hover">
             {" "}
             <FaChild />
           </button>
         </Link>
         <Link to="/start" style={{ textDecoration: 'none' }}>
-          &nbsp;&nbsp;
+          
           <button className="hover">
             {" "}
             <FaQuestion />

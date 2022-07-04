@@ -27,6 +27,8 @@
   &__menu {
     position: relative;
     margin-top: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &__item:hover {
       font-weight: 900;
@@ -38,6 +40,7 @@
       align-items: center;
       place-content: flex-start;
       padding: 1rem 1.6rem;
+      padding-left: 17px;
       font-size: 1rem;
       font-family: Verdana;
       font-weight: 500;

@@ -6,7 +6,6 @@ import ComplaintBox from "../components/dashboard/ComplaintBox";
 import { FaRedo, FaChild, FaPlus, FaQuestion } from "react-icons/fa";
 import logo from "../components/sidebar/TalkGT_Side.png";
 
-
 function Dashboard() {
   const [cells, setCell] = useState([]);
 
@@ -39,13 +38,15 @@ function Dashboard() {
   return (
     <div className="App">
       <div className="App-image">
-        
-          <img src={logo} />
-        
+        <img src={logo} />
       </div>
       {!session ? (
         <div className="warningText">
-          <b>Log in to gain access to voting and replying.</b>
+          <Link to="/user" style={{ textDecoration: "none" }}>
+            &nbsp;&nbsp;
+            <button className="logIn"> <b>Sign in</b></button> 
+          </Link>
+          <b>  to gain access to voting and replying.</b> 
         </div>
       ) : (
         <></>
@@ -57,22 +58,19 @@ function Dashboard() {
           {" "}
           <FaRedo />
         </button>
-        <Link to="/add" style={{ textDecoration: 'none' }}>
-          
+        <Link to="/add" style={{ textDecoration: "none" }}>
           <button className="hover">
             {" "}
             <FaPlus />
           </button>
         </Link>
-        <Link to="/myposts" style={{ textDecoration: 'none' }}>
-          
+        <Link to="/myposts" style={{ textDecoration: "none" }}>
           <button className="hover">
             {" "}
             <FaChild />
           </button>
         </Link>
-        <Link to="/start" style={{ textDecoration: 'none' }}>
-          
+        <Link to="/start" style={{ textDecoration: "none" }}>
           <button className="hover">
             {" "}
             <FaQuestion />

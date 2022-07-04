@@ -20,7 +20,6 @@ const Add = () => {
 
   async function getProfile() {
     try {
-      
       const user = supabase.auth.user();
 
       let { data, error, status } = await supabase
@@ -37,9 +36,7 @@ const Add = () => {
         setName(data.username);
         setTitle(data.title);
       }
-    
     } catch (error) {
-      
     } finally {
     }
   }

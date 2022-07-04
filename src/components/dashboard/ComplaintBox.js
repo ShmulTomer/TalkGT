@@ -197,7 +197,7 @@ export default function ComplaintBox({
 
   async function Like() {
     if (!session) {
-      alert("Log in to gain the ability to vote.");
+      alert("Sign in to gain the ability to vote.");
       return;
     }
 
@@ -274,7 +274,7 @@ export default function ComplaintBox({
 
   async function Dislike() {
     if (!session) {
-      alert("Log in to gain the ability to vote.");
+      alert("Sign in to gain the ability to vote.");
       return;
     }
 

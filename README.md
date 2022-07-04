@@ -4,6 +4,7 @@ Project by Tomer Shmul
 
 PRIORITY:
 
+- other ways to log in
 - use MUI for more components (i.e. buttons)
 - clean up CSS
 - responsive web design (also for mobile)

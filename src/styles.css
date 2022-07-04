@@ -104,7 +104,6 @@
 .App-image img {
   width: calc(200px + 20.7vw);
   height: calc(85px + 9vw);
-  
 }
 
 .App-image {
@@ -113,7 +112,6 @@
   text-align: center;
   display: flex;
 }
-
 
 .App-header3 {
   background-color: #282c34;
@@ -227,6 +225,10 @@
 }
 .hover:hover {
   transform: scale(1.2);
+}
+
+.logIn {
+  padding: 5px;
 }
 
 .box {
@@ -514,6 +516,10 @@ button.primary,
   justify-content: center;
   align-content: center;
   gap: 8px;
+}
+
+.warningText {
+  color: white;
 }
 
 @media screen and (max-width: 600px) {

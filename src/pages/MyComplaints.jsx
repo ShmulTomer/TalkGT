@@ -52,17 +52,13 @@ function MyComplaints() {
           <br></br>
           <br></br>
           <br></br>
-          Log in and submit a post to gain access to this page
-
+          Sign in and submit a post to gain access to this page
           <br></br>
           <br></br>
-          <Link to="/user" style={{ textDecoration: 'none' }}>
-          &nbsp;&nbsp;
-          <button className="hover">
-            {" "}
-            LOG IN
-          </button>
-        </Link>
+          <Link to="/user" style={{ textDecoration: "none" }}>
+            &nbsp;&nbsp;
+            <button className="hover"> SIGN IN</button>
+          </Link>
         </div>
         <br></br>
         <br></br>
@@ -81,7 +77,7 @@ function MyComplaints() {
         {" "}
         <FaRedo />
       </button>
-      <Link to="/add" style={{ textDecoration: 'none' }}>
+      <Link to="/add" style={{ textDecoration: "none" }}>
         &nbsp;&nbsp;
         <button className="hover">
           {" "}

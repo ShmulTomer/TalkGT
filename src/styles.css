@@ -538,4 +538,13 @@ button.primary,
   .warningText {
     padding-left: 140px;
   }
+
+  
+}
+
+@media screen and (max-height: 700px) {
+
+  .plugText {
+    visibility: hidden;
+  }
 }

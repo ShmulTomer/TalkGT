@@ -1,19 +1,14 @@
+View on www.talkgt.com
+
 Project by Tomer Shmul
 
 - using React JS, Postgres Database, AWS
 
 PRIORITY:
 
-- other ways to log in
-- use MUI for more components (i.e. buttons)
-- clean up CSS
-- responsive web design (also for mobile)
+- other methods for logging (Google Auth, Apple, etc)
+- more in detail info page
+- unique username functionality
+- email notifications
+- sorting, filtering, and favoriting
 
-To Do:
-
-- button on Dashboard to show only resolved / unresolved
-- unique usernames
-- (deleted comment) functionality
-- email replies
-- Sorting and filter feature, searching
-- Followed/Starred Complaints to my Complaints Tab

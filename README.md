@@ -1,6 +1,6 @@
 Project by Tomer Shmul
 
-- using React JS, Supabase Database, AWS
+- using React JS, Postgres Database, AWS
 
 PRIORITY:
 

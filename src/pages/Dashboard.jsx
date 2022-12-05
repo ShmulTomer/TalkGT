@@ -42,12 +42,26 @@ function Dashboard() {
       </div>
       {!session ? (
         <div className="warningText">
+          <b>First time? Learn how to</b> 
+          <Link to="/start" style={{ textDecoration: "none" }}>
+            &nbsp;&nbsp;
+            <button className="logIn"> <b>Get Started</b></button> 
+          </Link>
+          
+        </div>
+        
+      ) : (
+        <></>
+      )}
+      {!session ? (
+        <div className="warningText">
           <Link to="/user" style={{ textDecoration: "none" }}>
             &nbsp;&nbsp;
             <button className="logIn"> <b>Sign in</b></button> 
           </Link>
           <b>  to gain access to voting and replying.</b> 
         </div>
+        
       ) : (
         <></>
       )}
@@ -76,8 +90,10 @@ function Dashboard() {
             <FaQuestion />
           </button>
         </Link>
+        
       </div>
       <div className="Box-center">
+        
         <br></br>
 
         {cells.map((item, index) => (

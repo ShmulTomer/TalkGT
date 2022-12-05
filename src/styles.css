@@ -127,6 +127,18 @@
   color: white;
 }
 
+.App-header4 {
+  background-color: #282c34;
+  min-height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  text-align: left;
+  font-size: calc(15px + 2vmin);
+  color: white;
+}
+
 .App-header2 {
   background-color: #282c34;
   min-height: 20px;
